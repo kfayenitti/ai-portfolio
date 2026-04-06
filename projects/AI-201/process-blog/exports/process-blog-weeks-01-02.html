@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 201 Process Blog — Weeks 1 &amp; 2 · Katherine Faye Nitti</title>
+<style>
+:root {
+  --text: #1a1a1a;
+  --muted: #5c5c5c;
+  --rule: #d0d0d0;
+  --accent: #2563eb;
+  --bg: #ffffff;
+}
+@page { margin: 2cm 1.5cm; }
+* { box-sizing: border-box; }
+html {
+  font-size: 17px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+.doc-header {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.doc-header h1 {
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem 0;
+  letter-spacing: -0.02em;
+}
+.doc-header .meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+.week {
+  margin-bottom: 3rem;
+}
+.week h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--text);
+  letter-spacing: -0.02em;
+}
+.week:first-of-type h2 { border-top: none; padding-top: 0; }
+.week h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.6rem 0;
+  color: var(--text);
+}
+.week .topic {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 1.75rem 0 0.5rem 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+p { margin: 0 0 0.85rem 0; }
+ul, ol { margin: 0 0 1rem 0; padding-left: 1.25rem; }
+li { margin-bottom: 0.25rem; }
+li ul { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+.interaction {
+  margin: 1.25rem 0;
+  padding: 1rem 1.1rem;
+  background: #f7f8fa;
+  border-radius: 6px;
+  page-break-inside: avoid;
+}
+.interaction p { margin: 0 0 0.5rem 0; font-size: 0.95rem; }
+.interaction p:last-child { margin-bottom: 0; }
+.interaction strong {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.footer-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+@media print {
+  body { padding: 0; max-width: none; }
+}
+code { font-size: 0.9em; }
+</style>
+</head>
+<body>
+<header class="doc-header">
+  <h1>AI 201 · Process Blog</h1>
+  <p class="meta">Katherine Faye Nitti · Weeks 1 &amp; 2 combined · Export for portfolio / website</p>
+</header>
+
+<article class="week" id="week-1">
+<h2>Week 1, Session 1 — Research and Project 1 Kickoff</h2>
+<h3>What I Did</h3>
+<p>This week we were introduced to the first project, which is to build a project tied to a creative computing concept related to our industry. Provided examples of concepts (that I filtered to apply to VFX) are:</p>
+<ul>
+<li>Generative systems: Noise fields, particle systems, growth patterns, rule-based generation.</li>
+</ul>
+<ul>
+<li>Algorithmic art: Recursion, fractals, cellular automata, L-systems. Complex visual behavior from simple rules.</li>
+</ul>
+<ul>
+<li>Animation and motion: Frame-based rendering, physics simulation, easing, time-based composition.</li>
+</ul>
+<p>Below is a breakdown of my research and ideation.</p>
+<p class="topic">COMMON MODELS/ENVIRONMENTS USED FOR VFX</p>
+<p>Claude AI</p>
+<ul>
+<li>Coding</li>
+<ul>
+<li>Houdini VEX</li>
+<li>Maya Python</li>
+<li>MEL</li>
+<li>Pipeline</li>
+<li>etc</li>
+</ul>
+</ul>
+<p>Gemini</p>
+<ul>
+<li>Image generation</li>
+<ul>
+<li>concept art</li>
+<li>plate paint-overs</li>
+<li>render mockups</li>
+<li>ideation</li>
+<li>free license with student makes more accessible</li>
+</ul>
+</ul>
+<p>ChatGPT</p>
+<ul>
+<li>Coding</li>
+<li>Image generation</li>
+<ul>
+<li>Concept</li>
+<li>Iteration and ideation</li>
+</ul>
+<li>Less accessible, I do not have subscription</li>
+</ul>
+<p>Midjourney</p>
+<ul>
+<li>Image generation</li>
+<li>Concept art</li>
+<li>Ideation)</li>
+</ul>
+<p>Runway</p>
+<ul>
+<li>Image and video generation. Diverse</li>
+<ul>
+<li>Roto</li>
+<li>Background removal</li>
+<li>Upscale</li>
+<li>Video generation</li>
+</ul>
+</ul>
+<p>(Insert runway test)</p>
+<p>ComfyUI</p>
+<ul>
+<li>Node-based</li>
+<li>Main issue is accessibility (heavy models, dont have access to personal PC until maybe week 2?)</li>
+<li>Diverse range of models</li>
+<ul>
+<li>Image generation</li>
+<li>3D model generation</li>
+<li>relight</li>
+<li>text-to-video</li>
+<li>Plate paint-overs / removals</li>
+<li>Video replacements</li>
+<li>Beauty cleanups</li>
+<li>Composition separating</li>
+<li>Roto</li>
+</ul>
+</ul>
+<p>USES FOR VFX / PROBLEMS IT CAN ADDRESS (Catered to Project 1 Assignment)</p>
+<ul>
+<li>Algorithmic Growth / Generation in Houdini</li>
+<ul>
+<li>Claude / ChatGPT / Gemini</li>
+<li>Houdini VEX</li>
+<li>Use AI to generate code and complex equations</li>
+<li>Create procedural and algorithmic patterns</li>
+<ul>
+<li>Frost</li>
+<li>Plants</li>
+<li>Trees</li>
+<li>Vines</li>
+<li>Grass</li>
+<li>River networks</li>
+<li>Cracks (mud, paint, glass)</li>
+<ul>
+<li>Pottery? Kintsugi?</li>
+</ul>
+<li>Crystals</li>
+<li>Snowflakes</li>
+<li>Lightning</li>
+<li>Veins (leaves, humans)</li>
+<li>Roads</li>
+<li>Fire path</li>
+<ul>
+<li>Generate attributes for Pyro Simulation?</li>
+</ul>
+</ul>
+<li>Create customizable controls for artistic direction</li>
+<li>Have AI customize tool / value input based on keyword from user?</li>
+<ul>
+<li>EXAMPLE: River network</li>
+<ul>
+<li>AI create VEX wrangle sliders / base variables such as &quot;Number of Rivers&quot;, &quot;Average Width of Rivers&quot;, &quot;Max Width&quot;, &quot;Connection Frequency&quot; &quot;Branching&quot;</li>
+<li>User use mood buzz words that impact the created variables</li>
+<ul>
+<li>&quot;Generate a complex, busy, section of rivers&quot;. Which leads to variables with increased number of rivers, less width, higher connection frequency, more branching.</li>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<ul>
+<li>Particle Velocity Easy Customization / Initialization</li>
+<ul>
+<li>Claude / ChatGPT / Gemini</li>
+<li>Houdini VEX</li>
+<li>Use AI to generate code and complex equations</li>
+<li>Create code and easy to adjust variables / sliders that adjust the velocity of points prior to simulation</li>
+<ul>
+<li>Easy quaternion adjustments to create particles that move around counterpoints, in circular motions, outwards or inwards, etc</li>
+<li>Adjustable noises</li>
+<li>Intensities</li>
+<li>Create groups, so some particles move differently than others</li>
+</ul>
+<li>Also add code after simulation, to designate scale, color, etc</li>
+<li>Variables customizable with AI mood buzz words?</li>
+<ul>
+<li>IE: &quot;Generate a overwhelming and fast explosion of particles from origin&quot; -&gt; adjusts to have fast velocity, high noise, outward from 0,0,0</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<li>Matte Painting Basher</li>
+<ul>
+<li>ComfyUI</li>
+<li>Model?????</li>
+<li>Provide several source images to be added to a matte painting / set extension. Then provide written instruction on how to integrate images into final piece</li>
+</ul>
+</ul>
+<h3>AI Interactions</h3>
+<ul>
+<li><strong>Prompt:</strong></li>
+<li><strong>Output:</strong></li>
+<li><strong>Decision:</strong></li>
+<li><strong>Tag:</strong></li>
+</ul>
+<h3>What I Learned</h3>
+<h3>Quarter Question Connection</h3>
+<h3>What&#x27;s Next</h3>
+</article>
+
+<article class="week" id="week-2">
+<h2>Week 2, Session 1 — 03/31/26</h2>
+<h3>What I Did</h3>
+<p>This week we continued to research different tools and their applications. After developing ideas for AI-generated coding projects week 1, I shifted focus to researching more generative models. I began researching how generative Ai could be used for streamlining parts of pipelines such as:</p>
+<ul>
+<li>Quick concept iteration</li>
+<li>Face-cam character pose live link</li>
+<li>Render and texture pre-visualization</li>
+<li>Relighting</li>
+<li>Replacement / Paint-overs</li>
+<li>Roto</li>
+</ul>
+<p>I linked ComfyUI to Claude on my device by adding an MCP server and linking to an API key. I experimented below with generating an image with a ComfyUI model prompted solely through Claude to ensure the link worked.</p>
+<h3>AI Interactions</h3>
+<ul>
+<li><strong>Prompt:</strong> List the available models in my ComfyUI</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> Claude listed the files in my root, Checkpoints, LoRAs, Text Encoders, VAE, and diffusion Models Folders</li>
+</ul>
+<ul>
+<li><strong>Decision:</strong> This was to test if ClaudeAI on my laptop could connect with my directories and ComfyUI. This proved that it could find the directory and my installed models.</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> I have the Z-Image model. The files are in the correct folders. Build me a Z-Image text to image workflow and generate a photo of a sunset over the ocean.</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> Claude successfully connected to ComfyUI and my models BTS of my ComfyUI interface, and set up a model and prompt to render. The render in ComfyUI took around an hour and a half.</li>
+</ul>
+<ul>
+<li><strong>Decision:</strong> This was to test if Claude could connect to Comfy, my models, and succesfully queue up an image to render. It succeeded, but since I am on my laptop it took very long.</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> Italy Venice Waterway. 3D render. Make render realistic. Maintain composition and colors. Add boat in the water. Boat in Venice waterway. Brown, small boat. Row boat in Venice waterway. Calm waters. Sunny day</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> Runway added the boat without touching any other part of the provided render.</li>
+</ul>
+<ul>
+<li><strong>Decision:</strong> This was a test to see if Runway (this is model Gen-4 Turbo) could alter a rendered image, and add animation to it without compromising its integrity. The provided rendered image is a 3D render I had created in Houdini, completely without the use of generative AI. It successfully followed the task, but not to a level satisfactory for production (simple textures on boat, poor light interactions, odd movement, composition does not lead eye, no glass interaction, etc).</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<h3>What I Learned</h3>
+<p>These experiences helped me better understand the different models commonly used for VFX in the industry, and how to have interactions between them. It provided insight in API keys and MCP models. It showed me visual limits of different models, different styles of models, and helped me understand troubleshooting.</p>
+<h3>Quarter Question Connection</h3>
+<p>This connects to the quarter question as it clarifies what models may be helpful for what parts of the VFX pipeline, and how to integrate them properly.</p>
+<h3>What&#x27;s Next</h3>
+<p>I will be narrowing down my concept for Project 1. I am leaning towards using AI-generated code at first to create a procedural work of art. At the same time, I will continue to familiarize myself with generative models to later down the line use them to bring a visual effects project to completion through iteration and ideation.</p>
+</article>
+
+<p class="footer-note">Source files: <code>process-blog/week-01.md</code> and <code>process-blog/week-02.md</code> (unchanged in repo).</p>
+</body>
+</html>
