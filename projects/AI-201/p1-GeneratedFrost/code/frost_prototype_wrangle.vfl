@@ -1,0 +1,83 @@
+// Attribute Wrangle
+// Run Over: Detail (only once)
+
+// ---------- Controls ----------
+vector p0 = chv("point0");
+vector p1 = chv("point1");
+vector up = normalize(chv("up"));             // e.g. {0,1,0}
+
+int   interior     = chi("interior_points"); // e.g. 5
+float branch_len   = chf("branch_length");   // e.g. 0.08
+float roll_deg     = chf("roll");            // base rotation around stem
+float spread_deg   = chf("spread");          // branch opening angle
+float twist_total  = chf("twist_total");     // extra roll from root->tip
+float rand_amp_deg = chf("random_angle");    // random jitter per point
+int   seed         = chi("seed");
+
+// Safety
+interior = max(interior, 1);
+
+// ---------- Build stem ----------
+int stem_pts[];
+vector stem_pos[];
+
+append(stem_pts, addpoint(0, p0));
+append(stem_pos, p0);
+
+for (int i = 1; i <= interior; i++)
+{
+    float t = float(i) / float(interior + 1);   // evenly spaced
+    vector p = lerp(p0, p1, t);
+    append(stem_pts, addpoint(0, p));
+    append(stem_pos, p);
+}
+
+append(stem_pts, addpoint(0, p1));
+append(stem_pos, p1);
+
+// Main stem polyline
+int stem_prim = addprim(0, "polyline", stem_pts[0], stem_pts[1]);
+for (int i = 2; i < len(stem_pts); i++)
+{
+    addvertex(0, stem_prim, stem_pts[i]);
+}
+
+// ---------- Local frame ----------
+vector tangent = normalize(p1 - p0);
+
+// If up is almost parallel to tangent, choose fallback
+if (abs(dot(up, tangent)) > 0.999)
+    up = {1, 0, 0};
+
+vector side = normalize(cross(up, tangent));
+vector nrm  = normalize(cross(tangent, side)); // kept for stable frame
+
+// ---------- Branches at interior points ----------
+for (int i = 1; i <= interior; i++)
+{
+    float u = float(i) / float(interior + 1); // 0..1 along stem
+
+    // Rotation around stem + per-point random
+    float twist_here = radians(roll_deg + twist_total * u);
+    float jitter = radians(fit01(rand(set(float(i), float(seed), 17.123)),
+                                 -rand_amp_deg, rand_amp_deg));
+    float rotA = twist_here + jitter;
+
+    vector4 q = quaternion(rotA, tangent);
+    vector side_r = qrotate(q, side);
+    vector nrm_r  = qrotate(q, nrm); // available if you want extra shaping later
+
+    // Spread away from perpendicular, leaning slightly toward +tangent
+    float s = radians(spread_deg);
+    vector dirL = normalize( side_r * cos(s) + tangent * sin(s));
+    vector dirR = normalize(-side_r * cos(s) + tangent * sin(s));
+
+    int center = stem_pts[i];
+    vector cpos = point(0, "P", center);
+
+    int a = addpoint(0, cpos + dirL * branch_len);
+    int b = addpoint(0, cpos + dirR * branch_len);
+
+    addprim(0, "polyline", center, a);
+    addprim(0, "polyline", center, b);
+}
