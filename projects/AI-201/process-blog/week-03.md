@@ -1,17 +1,72 @@
 ## Week 3, Session 2 — 04/08/26
 
 ### What I Did
-Continued organizing research and project intentions, including make/making/made board.
+Continued organizing research and project intentions, including make/making/made board and cleaning up design intent & prd.
 
 ### AI Interactions
 
-- **Prompt:** 
+- **Prompt:**  what do you think of this schedule? 
+
+**Week 04**
+
+Development of frost generation tool. Tool should be functional by mid-week, to allow for application of more customization options.
+
+**Week 05**
+
+Finish AI-coded frost tool. The frost should be functional and easy to art direct in Houdini.
+
+**Week 06**
+
+Progress down the pipeline. Now having a tool, experiment with how I can continue to use AI to create a final product.
+
+Render with AI? Lighting iterations with AI? AI assisted matte painting in the bg? Playblast preview renders? Assess while working the most realistic applications.
+
+**Week 07**
+
+Utilize generative AI to assist in generating ideations for lighting and composition.
+
+**Week 08**
+
+Utilize generative AI to assist in compositing and ideation.
+
+**Week 09**
+
+Finish the final product, ensuring adhered to project intentions.
+
+**Week 10**
+
+Adjustments based on feedback.
 
 - **Output:** 
+This is a strong schedule — clear progression from research → tool build → pipeline integration → final polish. It fits your design intent really well.
 
-- **Decision:** 
+A few tweaks would make it even stronger:
 
-- **Tag:** 
+Week 04 split into milestones
+
+Add a hard checkpoint like: “By end of Week 04: stable base frost tool with 3 controls (density, branch length, spread).”
+This protects Week 05 from becoming “still debugging core behavior.”
+Week 06 define success criteria for AI usage
+
+Add 2-3 “allowed/target uses” you’ll test (ex: lighting ideation, matte paint exploration, playblast look-dev).
+Add one line for “what I will reject” (anything replacing final authored output), so you stay aligned with your intent.
+Week 07–08 include comparison output
+
+Plan to produce side-by-side tests: no-AI pass vs AI-assisted pass.
+This will help you answer your quarter question with evidence, not just impressions.
+Week 09 add buffer
+
+Keep 1-2 days only for render failures / comp fixes, since this is where unexpected issues usually appear.
+Week 10 lock deliverables
+
+Define exact final package now: final still/sequence, tool demo, short process writeup, and AI-use reflection.
+Makes feedback adjustments faster because scope is already fixed.
+If you want, I can turn this into a clean week-by-week roadmap section you can paste directly into your week-03.md or prd.md.
+
+- **Decision:** Applied feedback and added specifications per week and software.
+
+- **Tag:** @shift
+
 
 
 - **Prompt:** 
@@ -23,11 +78,13 @@ Continued organizing research and project intentions, including make/making/made
 - **Tag:** 
 
 ### What I Learned
+Preparation for entering production of tool.
 
 ### Quarter Question Connection
+Researching softwares and organizing/planning workflow.
 
 ### What's Next
-
+Begin to apply research and generate code for frost procedural algorithmic generation tool.
 
 
 ## Week 3, Session 1 — 04/07/26
