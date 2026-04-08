@@ -1,47 +1,3 @@
-## Week 2, Session 1 — 03/31/26
-
-### What I Did
-This week I continued to research different tools and their applications. After developing ideas for AI-generated coding projects in week 1, I shifted focus to researching more generative models. I began researching how generative AI could be used for streamlining parts of pipelines such as:
-
-* Quick concept iteration
-* Face-cam character pose live link
-* Render and texture pre-visualization
-* Relighting
-* Replacement / Paint-overs
-* Roto
-
-I linked ComfyUI to Claude on my device by adding an MCP server and linking to an API key. I experimented below with generating an image with a ComfyUI model prompted solely through Claude to ensure the link worked.
-
-Later in the week (04/03), I used Cursor to iterate on Houdini VEX for a procedural polyline with interior points and paired side branches, toward a frost / plant / branch look.
-
-### AI Interactions
-
-- **Prompt:** List the available models in my ComfyUI
-
-- **Output:** Claude listed the files in my root, Checkpoints, LoRAs, Text Encoders, VAE, and Diffusion Models folders
-
-- **Decision:** This was to test if ClaudeAI on my laptop could connect with my directories and ComfyUI. This proved that it could find the directory and my installed models.
-
-- **Tag:** @shift
-
-
-- **Prompt:** I have the Z-Image model. The files are in the correct folders. Build me a Z-Image text to image workflow and generate a photo of a sunset over the ocean.
-
-- **Output:** Claude successfully connected to ComfyUI and my models from behind the scenes in my ComfyUI interface, and set up a model and prompt to render. The render in ComfyUI took around an hour and a half.
-
-- **Decision:** This was to test if Claude could connect to Comfy, my models, and successfully queue up an image to render. It succeeded, but since I am on my laptop it took very long.
-
-- **Tag:** @shift
-
-
-- **Prompt:** Italy Venice Waterway. 3D render. Make render realistic. Maintain composition and colors. Add boat in the water. Boat in Venice waterway. Brown, small boat. Row boat in Venice waterway. Calm waters. Sunny day
-
-- **Output:** Runway added the boat without touching any other part of the provided render.
-
-- **Decision:** This was a test to see if Runway (Gen-4 Turbo) could alter a rendered image and add animation to it without compromising its integrity. The provided rendered image is a 3D render I had created in Houdini, completely without the use of generative AI. It successfully followed the task, but not to a level satisfactory for production (simple textures on the boat, poor light interactions, odd movement, composition does not lead the eye, no glass interaction, etc.).
-
-- **Tag:** @shift
-
 
 ## Week 2, Session 2 — 04/03/2026
 
@@ -176,3 +132,49 @@ I will be narrowing down my concept for Project 1. I am leaning towards using AI
 I am using these tools because they both tie into some of the most common uses of AI in the vfx industry: Streamlined coding, and visual iteration. ClaudeAI for code was chosen due to its familiarity and more common success with Houdini VEX, which is a C++-like language customized to Houdini's software. While it at times confuses syntax, as seen with its use of "const" as a variable when Houdini VEX does not use that, it often remembers corrections well. 
 
 Alongside Claude, ComfyUI is widely used in VFX because it makes many model types easy to access—especially ones useful for VFX, such as model generation, lighting changes, rotoscoping, and comp / layer separation. That gives me flexibility through the pipeline and lets me match tools to specific needs. It also links with Claude effectively.
+
+
+## Week 2, Session 1 — 03/31/26
+
+### What I Did
+This week I continued to research different tools and their applications. After developing ideas for AI-generated coding projects in week 1, I shifted focus to researching more generative models. I began researching how generative AI could be used for streamlining parts of pipelines such as:
+
+* Quick concept iteration
+* Face-cam character pose live link
+* Render and texture pre-visualization
+* Relighting
+* Replacement / Paint-overs
+* Roto
+
+I linked ComfyUI to Claude on my device by adding an MCP server and linking to an API key. I experimented below with generating an image with a ComfyUI model prompted solely through Claude to ensure the link worked.
+
+Later in the week (04/03), I used Cursor to iterate on Houdini VEX for a procedural polyline with interior points and paired side branches, toward a frost / plant / branch look.
+
+### AI Interactions
+
+- **Prompt:** List the available models in my ComfyUI
+
+- **Output:** Claude listed the files in my root, Checkpoints, LoRAs, Text Encoders, VAE, and Diffusion Models folders
+
+- **Decision:** This was to test if ClaudeAI on my laptop could connect with my directories and ComfyUI. This proved that it could find the directory and my installed models.
+
+- **Tag:** @shift
+
+
+- **Prompt:** I have the Z-Image model. The files are in the correct folders. Build me a Z-Image text to image workflow and generate a photo of a sunset over the ocean.
+
+- **Output:** Claude successfully connected to ComfyUI and my models from behind the scenes in my ComfyUI interface, and set up a model and prompt to render. The render in ComfyUI took around an hour and a half.
+
+- **Decision:** This was to test if Claude could connect to Comfy, my models, and successfully queue up an image to render. It succeeded, but since I am on my laptop it took very long.
+
+- **Tag:** @shift
+
+
+- **Prompt:** Italy Venice Waterway. 3D render. Make render realistic. Maintain composition and colors. Add boat in the water. Boat in Venice waterway. Brown, small boat. Row boat in Venice waterway. Calm waters. Sunny day
+
+- **Output:** Runway added the boat without touching any other part of the provided render.
+
+- **Decision:** This was a test to see if Runway (Gen-4 Turbo) could alter a rendered image and add animation to it without compromising its integrity. The provided rendered image is a 3D render I had created in Houdini, completely without the use of generative AI. It successfully followed the task, but not to a level satisfactory for production (simple textures on the boat, poor light interactions, odd movement, composition does not lead the eye, no glass interaction, etc.).
+
+- **Tag:** @shift
+
