@@ -4,6 +4,10 @@ This repository holds my coursework, position statements, records of resistance,
 
 Managed with the [Epistemic Stewardship Framework (ESF)](https://github.com/nmadrid27/Epistemic-Stewardship-Framework-ESF-).
 
+## Quarter Question
+
+What happens when generated code and AI-assisted imagery are used to streamline VFX production?
+
 ## Structure
 
 After running the ESF Student Toolkit installer, the repository will contain:
