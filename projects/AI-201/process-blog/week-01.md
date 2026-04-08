@@ -119,14 +119,8 @@ USES FOR VFX / PROBLEMS IT CAN ADDRESS (Catered to Project 1 Assignment)
 
 
 
-### AI Interactions
-- **Prompt:** 
-- **Output:** 
-- **Decision:** 
-- **Tag:** 
-
 ### What I Learned
-
-### Quarter Question Connection
+This research helped me get a better understanding of AI's use in my industry.
 
 ### What's Next
+Begin experimenting with different models and application to VFX
