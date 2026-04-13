@@ -1,11 +1,12 @@
 ## Week 3, Session 2 — 04/08/26
 
 ### What I Did
+
 Continued organizing research and project intentions, including make/making/made board and cleaning up design intent & prd.
 
 ### AI Interactions
 
-- **Prompt:**  what do you think of this schedule? 
+- **Prompt:**  what do you think of this schedule?
 
 **Week 04**
 
@@ -64,28 +65,349 @@ Makes feedback adjustments faster because scope is already fixed.
 If you want, I can turn this into a clean week-by-week roadmap section you can paste directly into your week-03.md or prd.md.
 
 - **Decision:** Applied feedback and added specifications per week and software.
-
 - **Tag:** @shift
-
-
-
-- **Prompt:** 
-
+- **Prompt:** Create an L system in Houdini
 - **Output:** 
+// L-system expand + turtle (XZ plane)
 
-- **Decision:** 
+string axiom = chs("axiom");
+int iters = chi("iterations");
+float step = chf("step");
+float ang = radians(chf("angle"));
 
-- **Tag:** 
+string ruleF = chs("rule_F");
+string ruleX = chs("rule_X");
+int max_chars = chi("max_chars");
+
+// --- Expand ---
+string s = axiom;
+
+for (int n = 0; n < iters; n++)
+{
+    string next = "";
+    int L = len(s);
+
+```
+for (int i = 0; i < L; i++)
+{
+    string c = substr(s, i, 1);
+
+    if (c == "F")
+        next += ruleF;
+    else if (c == "X" && len(ruleX) > 0)
+        next += ruleX;
+    else
+        next += c;
+}
+
+s = next;
+
+if (len(s) > max_chars)
+{
+    printf("WARNING: L-system string exceeded max_chars=%d. Stopping expansion.\n", max_chars);
+    break;
+}
+```
+
+}
+
+// --- Turtle ---
+vector P = {0, 0, 0};
+
+// Orientation as quaternion (identity)
+vector4 q = {0, 0, 0, 1};
+
+// Stack for '[' ... ']'
+vector Pstk[];
+vector4 qstk[];
+
+// Local forward in XZ plane (starts aiming +Z)
+vector fwd0 = {0, 0, 1};
+
+// Rotate around +Y for + / -
+vector upv = {0, 1, 0};
+
+int L2 = len(s);
+for (int i = 0; i < L2; i++)
+{
+    string c = substr(s, i, 1);
+
+```
+if (c == "F")
+{
+    vector f = normalize(qrotate(q, fwd0));
+    vector P1 = P + f * step;
+
+    int a = addpoint(0, P);
+    int b = addpoint(0, P1);
+    addprim(0, "polyline", a, b);
+
+    P = P1;
+}
+else if (c == "+")
+{
+    q = qmultiply(q, quaternion(ang, upv));
+}
+else if (c == "-")
+{
+    q = qmultiply(q, quaternion(-ang, upv));
+}
+else if (c == "[")
+{
+    append(Pstk, P);
+    append(qstk, q);
+}
+else if (c == "]")
+{
+    int n = len(Pstk);
+    if (n > 0)
+    {
+        n -= 1;
+        P = Pstk[n];
+        q = qstk[n];
+        resize(Pstk, n);
+        resize(qstk, n);
+    }
+}
+// Ignore other symbols (common: X is structural only)
+```
+
+}
+
+- **Decision:** Returned error message, syntax wrong. Fed error message into chat
+- **Tag:** @resist
+- **Prompt:** Error message
+- **Output:** 
+// L-system expand + turtle (XZ plane)
+// Run Over: Detail
+
+string axiom = chs("axiom");
+int iters = chi("iterations");
+float step = chf("step");
+float ang = radians(chf("angle"));
+
+string ruleF = chs("rule_F");
+string ruleX = chs("rule_X");
+int max_chars = chi("max_chars");
+
+// --- helpers: codepoints ---
+int ASC_F = 70;
+int ASC_X = 88;
+int ASC_PLUS = 43;
+int ASC_MINUS = 45;
+int ASC_LB = 91;  // '['
+int ASC_RB = 93;  // ']'
+
+// --- Expand ---
+string s = axiom;
+
+for (int n = 0; n < iters; n++)
+{
+    int codes[] = utf8_decode(s);
+    string next = "";
+
+```
+foreach (int cp; codes)
+{
+    if (cp == ASC_F)
+        next += ruleF;
+    else if (cp == ASC_X && len(ruleX) > 0)
+        next += ruleX;
+    else
+        next += chr(cp);
+}
+
+s = next;
+
+if (len(s) > max_chars)
+{
+    printf("WARNING: L-system string exceeded max_chars=%d. Stopping expansion.\n", max_chars);
+    break;
+}
+```
+
+}
+
+// --- Turtle ---
+vector P = {0, 0, 0};
+vector4 q = {0, 0, 0, 1}; // identity quaternion
+
+vector Pstk[];
+vector4 qstk[];
+
+vector fwd0 = {0, 0, 1};
+vector upv  = {0, 1, 0};
+
+int codes2[] = utf8_decode(s);
+foreach (int cp; codes2)
+{
+    if (cp == ASC_F)
+    {
+        vector f = normalize(qrotate(q, fwd0));
+        vector P1 = P + f * step;
+
+```
+    int a = addpoint(0, P);
+    int b = addpoint(0, P1);
+    addprim(0, "polyline", a, b);
+
+    P = P1;
+}
+else if (cp == ASC_PLUS)
+{
+    q = qmultiply(q, quaternion(ang, upv));
+}
+else if (cp == ASC_MINUS)
+{
+    q = qmultiply(q, quaternion(-ang, upv));
+}
+else if (cp == ASC_LB)
+{
+    append(Pstk, P);
+    append(qstk, q);
+}
+else if (cp == ASC_RB)
+{
+    int n = len(Pstk);
+    if (n > 0)
+    {
+        n -= 1;
+        P = Pstk[n];
+        q = qstk[n];
+        resize(Pstk, n);
+        resize(qstk, n);
+    }
+}
+```
+
+}
+
+- **Decision:** Syntax still wrong, gave another error message. Addressed most of errors from last time.
+- **Tag:** @resist
+- **Prompt:** Error message
+- **Output:** 
+// L-system expand + turtle (XZ plane)
+// Run Over: Detail
+
+string axiom = chs("axiom");
+int iters = chi("iterations");
+float step = chf("step");
+float ang = radians(chf("angle"));
+
+string ruleF = chs("rule_F");
+string ruleX = chs("rule_X");
+int max_chars = chi("max_chars");
+
+// --- Expand ---
+string s = axiom;
+
+for (int n = 0; n < iters; n++)
+{
+    string next = "";
+    string rest = s;
+
+```
+while (len(rest) > 0)
+{
+    string c = re_find(rest, "^.");
+    if (len(c) == 0)
+        break;
+
+    rest = re_replace(rest, "^.", "");
+
+    if (c == "F")
+        next += ruleF;
+    else if (c == "X" && len(ruleX) > 0)
+        next += ruleX;
+    else
+        next += c;
+}
+
+s = next;
+
+if (len(s) > max_chars)
+{
+    printf("WARNING: L-system string exceeded max_chars=%d. Stopping expansion.\n", max_chars);
+    break;
+}
+```
+
+}
+
+// --- Turtle ---
+vector P = {0, 0, 0};
+vector4 q = {0, 0, 0, 1}; // identity quaternion
+
+vector Pstk[];
+vector4 qstk[];
+
+vector fwd0 = {0, 0, 1};
+vector upv  = {0, 1, 0};
+
+string rest2 = s;
+while (len(rest2) > 0)
+{
+    string c = re_find(rest2, "^.");
+    if (len(c) == 0)
+        break;
+
+```
+rest2 = re_replace(rest2, "^.", "");
+
+if (c == "F")
+{
+    vector f = normalize(qrotate(q, fwd0));
+    vector P1 = P + f * step;
+
+    int a = addpoint(0, P);
+    int b = addpoint(0, P1);
+    addprim(0, "polyline", a, b);
+
+    P = P1;
+}
+else if (c == "+")
+{
+    q = qmultiply(q, quaternion(ang, upv));
+}
+else if (c == "-")
+{
+    q = qmultiply(q, quaternion(-ang, upv));
+}
+else if (c == "[")
+{
+    append(Pstk, P);
+    append(qstk, q);
+}
+else if (c == "]")
+{
+    int n = len(Pstk);
+    if (n > 0)
+    {
+        n -= 1;
+        P = Pstk[n];
+        q = qstk[n];
+        resize(Pstk, n);
+        resize(qstk, n);
+    }
+}
+```
+
+}
+
+- **Decision:** No error message, but code does not function. Will likely need to give more specific instrucitons, sample code, and work through slower instead of a complex prompt from the start.
+- **Tag:** @shift @resist
 
 ### What I Learned
-Preparation for entering production of tool.
+
+Preparation for entering production of tool. Go slower and simpler with prompts for VEX.
 
 ### Quarter Question Connection
+
 Researching softwares and organizing/planning workflow.
 
 ### What's Next
-Begin to apply research and generate code for frost procedural algorithmic generation tool.
 
+Begin to apply research and generate code for frost procedural algorithmic generation tool.
 
 ## Week 3, Session 1 — 04/07/26
 
@@ -104,7 +426,6 @@ I also worked briefly on the prototype for the Frost code.
 ### AI Interactions
 
 - **Prompt:** can you call back to the code we made to generate a line in houdini with 5 points on it, and lines interpolated onto those points?
-
 - **Output:** Claude pulled up the previous code:
 // Detail Wrangle
 vector p0 = chv("point0");
@@ -145,13 +466,8 @@ for (int i = 1; i <= interior; i++) {
 }
 
 - **Decision:** I wanted to continue adjusting and adding parameters
-
 - **Tag:** @shift
-
-
-
 - **Prompt:** can you make the orientation/rotation of the interpolated lines adjustable? like frost
-
 - **Output:** Claude adjusted the previous code:
 // ----- Inputs / controls -----
 vector p0 = chv("point0");
@@ -204,34 +520,36 @@ for (int i = 1; i <= interior; i++)
 {
     float u = float(i) / float(interior + 1);
 
-    // Per-point orientation controls
-    float twist_here = radians(roll_deg + twist_total * u);
-    float jitter     = radians(fit01(rand(set(i, seed, 17.123)), -rand_amp_deg, rand_amp_deg));
-    float rotA       = twist_here + jitter;
+```
+// Per-point orientation controls
+float twist_here = radians(roll_deg + twist_total * u);
+float jitter     = radians(fit01(rand(set(i, seed, 17.123)), -rand_amp_deg, rand_amp_deg));
+float rotA       = twist_here + jitter;
 
-    // Rotate side/nrm around stem tangent (quaternion)
-    vector4 q = quaternion(rotA, tangent);
-    vector side_r = qrotate(q, side);
-    vector nrm_r  = qrotate(q, nrm);
+// Rotate side/nrm around stem tangent (quaternion)
+vector4 q = quaternion(rotA, tangent);
+vector side_r = qrotate(q, side);
+vector nrm_r  = qrotate(q, nrm);
 
-    // Spread tilts branches toward +tangent / -tangent
-    float s = radians(spread_deg);
-    vector dirL = normalize(side_r * cos(s) + tangent * sin(s));
-    vector dirR = normalize(-side_r * cos(s) + tangent * sin(s));
+// Spread tilts branches toward +tangent / -tangent
+float s = radians(spread_deg);
+vector dirL = normalize(side_r * cos(s) + tangent * sin(s));
+vector dirR = normalize(-side_r * cos(s) + tangent * sin(s));
 
-    vector c = stem_pos[i];
-    int a = addpoint(0, c + dirL * branch_len);
-    int b = addpoint(0, c + dirR * branch_len);
+vector c = stem_pos[i];
+int a = addpoint(0, c + dirL * branch_len);
+int b = addpoint(0, c + dirR * branch_len);
 
-    addprim(0, "polyline", c, a);
-    addprim(0, "polyline", c, b);
+addprim(0, "polyline", c, a);
+addprim(0, "polyline", c, b);
+```
+
 }
 
 - **Decision:** This returned an error message. Realized Claude needs a lot more instruction and customization, and can't make too large of strides without breaking
-
 - **Tag:** @resist
 
-### What I Learned 
+### What I Learned
 
 Gathered more research and information to guide throughout project through industry practitioners. Also experimented with Claude's limits with VEX
 
@@ -242,4 +560,3 @@ Industry-related practitioners. Claude-generated code for Frost
 ### What's Next
 
 Begin to develop Frost code in-depth and guiding Claude to generate an operating tool. Use research from today in process.
-
