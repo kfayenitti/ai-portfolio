@@ -5,8 +5,6 @@
 
 # Position Statement: AI-Assisted Frost in VFX
 
-Living document for scope and ethics; edit as the Houdini tool and comp evolve.
-
 ## My stance
 
 I will be creating a frost simulation in Houdini, assisted by AI tools. The final output will be a Houdini render composited together in Nuke.
@@ -22,5 +20,3 @@ Generative imagery using models in ComfyUI will be used for streamlined iteratio
 ## What I will not compromise on
 
 AI will not generate a final image or output. The tool in Houdini will be used alongside other nodes and workflows. ComfyUI will also not create a final image. Generative AI will only be used for ideation and combining or slightly adjusting assets created by the user.
-
-
