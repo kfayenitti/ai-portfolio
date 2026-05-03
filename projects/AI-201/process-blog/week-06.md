@@ -59,36 +59,47 @@ thin_film_IOR           1.31
 
 ### Week 6, Session 2 - [MM/DD/YY]
 
-#### AI Interactions
+### RESEARCH
 
-- **Prompt:**
-- **Output:**
-- **Decision:**
-- **Tag:** @default
+This week, I continued to research Houdini MCP's and what people in the community are creating to integrate different models and systems into the software itself, especially with end-of-pipeline workflows.
 
-- **Prompt:**
-- **Output:**
-- **Decision:**
-- **Tag:** @shift
+I am looking into integrating these into my project, but am facing some roadblocks with expenses and technical capabilities.
 
-- **Prompt:**
-- **Output:**
-- **Decision:**
-- **Tag:** @resist
+- **Houdini AI Assistant**
+- Created by  Radu Cius
+- https://rart.gumroad.com/l/HoudiniAIAssistant
+- Puts ChatGPT, Claude, and Deepseek directly into Houdini
+- Generates VEX and can analyze workflow
+- Costs $129
+
+
+- **Houdini ComfyUI Bridge**
+- Created by Rafael Drelich Valentim and Anatolii Iudanov
+- https://www.sidefx.com/products/houdini/pipeline-ai/machine-learning-ai/
+- https://github.com/CapybaraCrowporation/houdini-comfyui-bridge#-installation
+- Puts ComfyUI in Houdini Cops
+- Can link with SOPS / geometry creation
+- Generate images in COPS
+- Example uses mo-cap driven by AI
+
+
+I also continued to apply the AI guidance on materials from last session, and adjusted lights and parameters to match the imagery generated in ideated_images.
+
+
 
 ### What I Learned
 
 This week I learned:
 
-- 
-- 
+- Continued research on how to bring projects through end of pipeline using AI tools
+- Continued finalizing appearance of tool-generated frost using guidance from AI imagery
 
 ### What's Next
 
-- Next week I will:
-- I also plan to:
+- Continue finalizing appearance of frost using AI guidance and ideation
+- 
 
 ### Quarter Question
 
-This week connects to my quarter question by:
+This week I shifted to exploring AI integration in parts of the VFX pipeline other than tool creation and coding assistance, learning of ways to integrate it into softwares and guide artists visually.
 
