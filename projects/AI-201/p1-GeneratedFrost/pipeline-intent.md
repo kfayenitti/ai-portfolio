@@ -22,10 +22,6 @@ Perception layer: perceive, decide, act, with the human in the loop.
 
 ---
 
-## Writing Your Pipeline Intent (Three Elements)
-
-The Pipeline Intent redraws that input step: what your system received, it now perceives.
-
 ### 1) My stance
 
 Right now, my system receives user-defined parameters and procedural rules in Houdini to generate frost effects. With an ML layer, it will perceive references and ideation outputs, help decide useful look directions, and act through selected changes to tool settings and pipeline outputs based on previous creations and real life references

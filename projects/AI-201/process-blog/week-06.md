@@ -6,7 +6,9 @@
 
 This week I focused on:
 
-Researched Houdini MCP and AI Integrated Assistance.
+- Researched Houdini MCP and AI Integrated Assistance (as I move towards end of pipeline and product finalization)
+- Presentation of tool
+- Using AI generation for ideation - and visually matching ideation in Houdini
 
 
 ### AI Interactions
@@ -43,12 +45,12 @@ thin_walled             1             (arms are thin — use thin_film instead o
 thin_film_thickness     180–320 nm    (iridescence, subtle)
 thin_film_IOR           1.31
 - **Decision:** This was a very good start and brought up ideas for texturing I had not done yet.I adjusted a few parameters such as increasing transmission and adding displacement
-- **Tag:** @default
+- **Tag:** @shift
 
 - **Prompt:** (chatGPT) imagine what this frost model could look like rendered, textured, and lit
 - **Output:** in ideated_images/Chat_Ideation_V01
 - **Decision:** This was a very nice reference. I used to ask Claude how to achieve these materials
-- **Tag:** @default
+- **Tag:** @shift
 
 - **Prompt:** (gemini)  imagine what this frost model could look like rendered, textured, and lit
 - **Output:** in ideated_Images/Gemini_Ideation_V06
