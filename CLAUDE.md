@@ -34,3 +34,12 @@ I learn through hands-on research and experimenting.
 - Repetition
 - Clear summaries after discussion
 - Bullet points with further explanations
+- VFX terminiology
+    - VEX code
+    - Workspace differences in SOPS, LOPS, COPS, etc
+    - integrating AI specifically into AI workflows
+- Do not suggest browser-based prototypes
+- Suggest workflows mainly in Houdini and Nuke
+- Maya, Blender, and Unreal Engine are similar softwares and workflows in them can be reccomended
+- Explain and break down functionaility of VEX before presenting to me
+- Annotate VEX codes for guidance in Houdini

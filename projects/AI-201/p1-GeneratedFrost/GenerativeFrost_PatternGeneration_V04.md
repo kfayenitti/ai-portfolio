@@ -1,63 +1,61 @@
 # Generative Frost Pattern Generation — V04
 
-V04 is the updated three-wrangle pipeline with:
+V04 is the **three-wrangle pipeline** with **carve-style growth** and a single `growth` control on the final wrangle.
 
-- Surface-orientation support from source geometry normals.
-- Unit-level stagger timing for clustered growth.
-- Strict parent-before-child twig timing.
-- Single `growth` control with carve reveal.
-- `pscale_ramp` plus growth-driven thickness for PolyWire.
+- **Wrangle 1:** scatter → main stems (static geometry + animation metadata on primitives).
+- **Wrangle 2:** main stems → paired twigs (static + metadata; twig timing is forced after parent stem).
+- **Resample + Facet:** subdivide polylines and unique points so carve animation is smooth.
+- **Wrangle 3:** one `growth` parameter; slides points along each line (no geometry deletion pop).
 
-This version preserves V03 structure while integrating all latest fixes.
+Assumes placement on the **ZX plane** (Y up), same as earlier pattern versions.
 
 ---
 
 ## Network order (copy this chain)
 
-1. `Grid` (or any source surface, can be rotated).
-2. `Scatter` (points on source surface).
-3. **Attribute Wrangle 1** (Detail only once):
-   - Input 0: scatter points
-   - Input 1: original source surface (for robust normal sampling)
-4. **Attribute Wrangle 2** (Detail only once):
-   - Input 0: output of Wrangle 1
-5. `Resample` (small segment length for smooth reveal).
-6. `Facet` with **Unique Points** ON.
-7. **Attribute Wrangle 3** (Detail only once):
-   - Input 0: output of Facet
-8. Optional: `PolyWire` using point `pscale`.
+1. `Grid` (or surface) → `Scatter` (points only).
+2. **Attribute Wrangle — Wrangle 1** (Detail only once) — builds main stems.
+3. **Attribute Wrangle — Wrangle 2** (Detail only once) — builds twigs on `is_main_stem == 1` prims.
+4. **Resample** — uniform division length (e.g. `0.02`–`0.08` in your scene units; tune to scale).
+5. **Facet** — enable **Unique Points** so each polyline vertex can move independently during carve.
+6. **Attribute Wrangle — Wrangle 3** (Detail only once) — animate using `growth` only.
+
+Optional after Wrangle 3: **PolyWire** (use `pscale` if you kept it from Wrangle 1/2).
 
 ---
 
-## Wrangle 1 — Main stems (stagger + source orientation)
+## Wrangle 1 — Main stems (static + prim metadata)
 
 **Node:** Attribute Wrangle  
 **Run Over:** Detail (only once)  
-**Inputs:**  
-- Input 0: scattered points  
-- Input 1: source surface (same one used for scatter)
+**Input:** scattered points
 
 ### Parameters
 
 | Name | Type | Notes |
-|------|------|-------|
+|------|------|--------|
 | `seed` | int | Random seed |
-| `gap_mult` | float | `< 1` tighter, `> 1` wider branch clearance |
-| `rays_min` | int | Minimum main rays per seed |
-| `rays_max` | int | Maximum main rays per seed |
-| `unit_stagger` | float | Timing spread strength (`1..8` recommended) |
+| `gap_mult` | float | `< 1` tighter, `> 1` wider gap vs neighbors |
+| `rays_min` | int | Min rays per unit (e.g. 5) |
+| `rays_max` | int | Max rays per unit (≥ `rays_min`) |
+
+### Primitive attributes written
+
+- `is_main_stem` = 1 on main rays.
+- `prim_kind` = 1 (main).
+- `grow_u` = 0..1 order along rays for staggered growth.
+- `rest_root`, `rest_tip` = rest positions for Wrangle 3.
 
 ### VEX
 
 ```vex
 // Wrangle 1 — Detail only once — main stems from scatter
-// Surface-oriented version using source geometry normal sampling from input 1.
+// ZX plane (Y up)
 
 int seed = chi("seed");
 float gap_mult = max(chf("gap_mult"), 0.05);
 int rays_min = max(3, chi("rays_min"));
 int rays_max = max(rays_min, chi("rays_max"));
-float unit_stagger = max(chf("unit_stagger"), 0.001);
 
 float TWO_PI = 2.0 * M_PI;
 
@@ -71,7 +69,6 @@ addattrib(0, "prim", "grow_u", 0.0);
 addattrib(0, "prim", "parent_u", 0.0);
 addattrib(0, "prim", "rest_root", {0,0,0});
 addattrib(0, "prim", "rest_tip", {0,0,0});
-addattrib(0, "prim", "surfaceN", {0,1,0}); // used by Wrangle 2
 
 for (int i = 0; i < n; i++)
 {
@@ -100,48 +97,13 @@ for (int i = 0; i < n; i++)
 
     setpointattrib(0, "pscale", i, d1 * 0.06, "set");
 
-    // Balanced stagger shaping (avoids end pile-up)
-    float phase = rand(set(i, seed, 9001));
-    float p = phase;
-    if (unit_stagger > 1.0)
-    {
-        float invk = 1.0 / unit_stagger;
-        if (p < 0.5) p = 0.5 * pow(p * 2.0, invk);
-        else         p = 1.0 - 0.5 * pow((1.0 - p) * 2.0, invk);
-    }
-    else
-    {
-        p = pow(p, unit_stagger);
-    }
-
-    float start_max = fit(clamp(unit_stagger, 1.0, 8.0), 1.0, 8.0, 0.72, 0.90);
-    float point_start = p * start_max;
-    float local_span = fit(clamp(unit_stagger, 1.0, 8.0), 1.0, 8.0, 0.12, 0.08);
-
-    // Robust orientation: sample normal from source surface on input 1
-    int srcprim = -1;
-    vector srcuv = {0,0,0};
-    float dsrc = xyzdist(1, Pi, srcprim, srcuv);
-
-    vector Np = {0,1,0};
-    if (srcprim >= 0)
-        Np = normalize(prim_normal(1, srcprim, srcuv.x, srcuv.y));
-    if (length2(Np) < 1e-8)
-        Np = {0,1,0};
-
-    // Local tangent basis on the source surface
-    vector ref = (abs(dot(Np, {0,1,0})) < 0.99) ? set(0,1,0) : set(1,0,0);
-    vector Tx = normalize(cross(Np, ref));
-    vector Tz = normalize(cross(Np, Tx));
-
     for (int r = 0; r < rays; r++)
     {
         float t_ray = float(r) / float(max(1, rays - 1) + 1e-6);
         float ang = base_ang + (float(r) / float(rays)) * TWO_PI;
         ang += fit01(rand(set(i, r, seed + 17)), -0.08, 0.08);
 
-        // Direction follows source surface orientation
-        vector dir = normalize(cos(ang) * Tx + sin(ang) * Tz);
+        vector dir = normalize(set(cos(ang), 0.0, sin(ang)));
 
         float allowed = max_len;
         foreach (int j; near)
@@ -171,52 +133,53 @@ for (int i = 0; i < n; i++)
         int tip = addpoint(0, tipP);
         setpointattrib(0, "pscale", tip, d1 * 0.025, "set");
 
-        float stem_grow_u = clamp(point_start + t_ray * local_span, 0.0, 0.94);
-
         int pr = addprim(0, "polyline", i, tip);
         setprimattrib(0, "is_main_stem", pr, 1, "set");
         setprimattrib(0, "prim_kind", pr, 1, "set");
-        setprimattrib(0, "grow_u", pr, stem_grow_u, "set");
+        setprimattrib(0, "grow_u", pr, t_ray, "set");
         setprimattrib(0, "parent_u", pr, 0.0, "set");
         setprimattrib(0, "rest_root", pr, Pi, "set");
         setprimattrib(0, "rest_tip", pr, tipP, "set");
-        setprimattrib(0, "surfaceN", pr, Np, "set");
     }
 }
 ```
 
 ---
 
-## Wrangle 2 — Twigs (strict parent timing + anti-bunching)
+## Wrangle 2 — Twigs (static + twig after parent timing)
 
 **Node:** Attribute Wrangle  
 **Run Over:** Detail (only once)  
 **Input:** output of Wrangle 1
 
+Twigs use **`grow_u` strictly after** the parent stem’s `grow_u`, so Wrangle 3 will not show twigs before that stem has started.
+
 ### Parameters
 
 | Name | Type | Notes |
-|------|------|-------|
-| `seed` | int | Random seed |
-| `twigs_amount` | int | Twig pairs per main stem |
-| `twig_len_mult` | float | Twig length multiplier from stem length |
-| `twig_splay_deg` | float | Twig splay angle |
-| `twig_jitter_deg` | float | Angular noise for twig direction |
-| `clearance_mult` | float | Collision clearance factor |
-| `min_len_mult` | float | Minimum twig length threshold |
-| `twig_taper_ramp` | float ramp | Length taper along stem parameter |
+|------|------|--------|
+| `seed` | int | |
+| `twigs_amount` | int | Pairs per main stem (e.g. 4) |
+| `twig_len_mult` | float | e.g. 0.22 |
+| `twig_splay_deg` | float | e.g. 40 |
+| `twig_jitter_deg` | float | e.g. 8 |
+| `clearance_mult` | float | e.g. 0.22 |
+| `min_len_mult` | float | e.g. 0.12 |
+| `twig_taper_ramp` | float ramp | Taper along stem parameter `u` |
 
 ### VEX
 
 ```vex
 // Wrangle 2 — Detail only once — paired twigs on main stems
-// Surface-oriented side vector + strict parent->child timing + anti-bunching
+// ZX plane
+// NOTE: Degree sliders are in real degrees, not 0-1 normalized ramps.
+// Use values like 20, 40, 60 (not 0.2, 0.4, 0.6) for visible changes.
 
 int seed = chi("seed");
 int twigs_amount = max(1, chi("twigs_amount"));
 float twig_len_mult = chf("twig_len_mult");
-float twig_splay_deg = chf("twig_splay_deg");
-float twig_jitter_deg = chf("twig_jitter_deg");
+float twig_splay_deg = chf("twig_splay_deg");   // Degrees input (e.g. 20-60), not 0-1
+float twig_jitter_deg = chf("twig_jitter_deg"); // Degrees input (e.g. 2-15), not 0-1
 float clearance_mult = chf("clearance_mult");
 float min_len_mult = chf("min_len_mult");
 
@@ -266,17 +229,8 @@ for (int pr = 0; pr < base_npr; pr++)
     float stem_len = distance(P0, P1);
     if (stem_len < 1e-6) continue;
 
-    // Use surface normal from parent stem (from Wrangle 1)
-    vector surfN = {0,1,0};
-    if (hasprimattrib(0, "surfaceN")) surfN = normalize(prim(0, "surfaceN", pr));
-    if (length2(surfN) < 1e-8) surfN = {0,1,0};
-
-    vector side = normalize(cross(surfN, tangent));
-    if (length(side) < 1e-6)
-    {
-        vector alt = (abs(dot(tangent, {0,1,0})) < 0.99) ? set(0,1,0) : set(1,0,0);
-        side = normalize(cross(alt, tangent));
-    }
+    vector side = normalize(set(-tangent.z, 0.0, tangent.x));
+    if (length(side) < 1e-6) side = {1,0,0};
 
     float clear_r = max(stem_len * clearance_mult, 1e-4);
     float min_L = stem_len * min_len_mult;
@@ -313,13 +267,8 @@ for (int pr = 0; pr < base_npr; pr++)
         float psm = lerp(ps0, ps1, u);
         if (psm <= 0) psm = stem_len * 0.02;
 
-        float parent_reach_u = clamp(parent_u + u * (1.0 - parent_u), 0.0, 0.999);
-        float stylistic_u = parent_u + 0.14 + u * 0.22;
-        float twig_jit = fit01(rand(set(pr, k, seed + 9991)), -0.04, 0.04);
-
-        float after_parent_delay = 0.015;
-        float twig_u = max(stylistic_u + twig_jit, parent_reach_u + after_parent_delay);
-        twig_u = clamp(twig_u, 0.0, 0.94); // avoid end clumping
+        // Twigs always start after parent stem in growth space
+        float twig_u = clamp(parent_u + 0.18 + u * 0.28, 0.0, 0.98);
 
         if (!blockL)
         {
@@ -358,58 +307,57 @@ for (int pr = 0; pr < base_npr; pr++)
 
 ---
 
-## Resample + Facet
+## Resample + Facet (required for smooth carve)
 
 ### Resample
 
-- Set a small segment `Length` to give each polyline enough points for smooth carve.
+- **Length:** set to a small fraction of your typical stem length (scene-scale dependent).
+- Goal: enough points per line so the carve slide looks continuous.
 
 ### Facet
 
-- Turn **Unique Points** ON.
-
-This is required so Wrangle 3 can move each polyline independently.
+- Turn **Unique Points** **ON** for polygons/polylines (so each vertex is its own point and Wrangle 3 can move them independently).
 
 ---
 
-## Wrangle 3 — Single growth + pscale ramp growth
+## Wrangle 3 — Single `growth`, carve-style reveal
 
 **Node:** Attribute Wrangle  
 **Run Over:** Detail (only once)  
-**Input:** after Resample + Facet
+**Input:** geometry **after** Resample + Facet
 
 ### Parameters
 
 | Name | Type | Notes |
-|------|------|-------|
-| `growth` | float | Animate 0 to 1 over shot |
-| `pscale_ramp` | float ramp | Radius profile root to tip |
+|------|------|--------|
+| `growth` | float | **0 → 1** over the shot |
+
+Example expression on `growth`:
+
+```text
+($FF - 1) / max($FEND - 1, 1)
+```
 
 ### VEX
 
 ```vex
-// Wrangle 3 — Detail only once — carve-style growth + growth-driven pscale
-// Input: after Resample + Facet (Unique Points ON)
-// Requires per-prim: grow_u, rest_root, rest_tip
+// Wrangle 3 — Detail only once — carve-style growth, single parameter
+// Requires on each polyline prim: grow_u, rest_root, rest_tip, prim_kind
 
 float growth = clamp(chf("growth"), 0.0, 1.0);
-float g = smooth(0.0, 1.0, growth);
 
 int npr = nprimitives(0);
 
 for (int pr = 0; pr < npr; pr++)
 {
-    float gu = clamp(prim(0, "grow_u", pr), 0.0, 0.999);
+    float gu = clamp(prim(0, "grow_u", pr), 0.0, 1.0);
 
     vector rootP = prim(0, "rest_root", pr);
     vector tipP0 = prim(0, "rest_tip", pr);
 
-    // Order-safe timing
-    float br = clamp((g - gu) / max(1e-5, 1.0 - gu), 0.0, 1.0);
+    // Normalized reveal: every prim reaches full rest_tip at growth == 1
+    float br = clamp((growth - gu) / max(1e-5, 1.0 - gu), 0.0, 1.0);
     br = smooth(0.0, 1.0, br);
-
-    // Thickness maturity as branch grows
-    float mature = pow(br, 0.7);
 
     int pts[] = primpoints(0, pr);
     int m = len(pts);
@@ -418,25 +366,20 @@ for (int pr = 0; pr < npr; pr++)
     for (int k = 0; k < m; k++)
     {
         float u = float(k) / float(m - 1);
-
         float u_clamped = min(u, br);
         vector Pnew = lerp(rootP, tipP0, u_clamped);
         setpointattrib(0, "P", pts[k], Pnew, "set");
-
-        float base_ps = point(0, "pscale", pts[k]);
-        float ramp_mul = chramp("pscale_ramp", u);
-        float pnew = max(base_ps * ramp_mul * mature, 1e-4);
-        setpointattrib(0, "pscale", pts[k], pnew, "set");
     }
 }
 ```
+
+**Note:** After Resample, primitive `rest_tip` is still the original tip position from Wrangle 1/2; Wrangle 3 lerps along **root → rest_tip**, which matches the resampled polyline parameterization closely enough for a clean carve look. If you need pixel-perfect match to pre-resample length, store `rest_tip` on points instead and interpolate in a point wrangle.
 
 ---
 
 ## Version notes
 
-- V04 keeps the V03 pipeline pattern but resolves:
-  - rotated surface orientation mismatch,
-  - late twig end-bunching,
-  - timing consistency under higher stagger values.
-- If surface orientation still appears wrong, confirm Wrangle 1 input 1 is connected to the same source surface used to generate scatter points.
+- **V01 / V02:** static pattern only (see earlier markdown files).
+- **V04:** this document — **three wrangles + Resample + Facet + one growth slider**.
+
+If twigs still feel early relative to a specific stem, increase the offset in Wrangle 2 (`0.18` in `twig_u = parent_u + 0.18 + ...`).
