@@ -1,3 +1,10 @@
+<!--
+MANAGED FILE — do not edit directly.
+Changes made here will be overwritten on the next /esf-update run.
+To customize Companion behavior, edit companion-notes.md instead.
+To report a bug or suggest a change: https://github.com/nmadrid27/esf-companion
+-->
+
 # The Epistemic Stewardship Framework
 ## Implementation Guide
 
@@ -16,10 +23,10 @@ This guide exists because you face a new problem that no previous generation of 
 
 The Epistemic Stewardship Framework (ESF) gives you a process for using AI that keeps the intellectual work yours. Not by restricting what tools you can use, but by structuring *when* and *how* you use them so that your thinking stays at the center.
 
-Here is the core insight: **you must know what you think before the AI tells you what to think.** The user process builds in that sequence. You articulate your understanding, stake out your position, and *then* bring AI into the conversation as a thinking partner.
+Here is the core insight: **you must know what you think before the AI tells you what to think.** The user process builds in that sequence. You articulate your understanding, stake out your position, and *then* bring AI into the conversation to challenge your position.
 If you skip that sequence, the AI fills the vacuum with plausible content, and you learn to approve rather than to think.
 
-This guide introduces a five-phase process (Inquire, Position, Explore, Make, Reflect) and four engagement levels that develop your capacity to work with AI as an intellectual partner. The goal is not less AI use or more AI use. The goal is *better* AI use: the kind where you can defend every claim, explain every choice, and honestly describe what you contributed and what the AI contributed.
+This guide introduces a five-phase process (Inquire, Position, Explore, Make, Reflect) and four engagement levels that develop your capacity to direct AI in your intellectual work. The goal is not less AI use or more AI use. The goal is *better* AI use: the kind where you can defend every claim, explain every choice, and honestly describe what you contributed and what the AI contributed.
 
 That skill, epistemic stewardship, is what your future employers, collaborators, and audiences will expect from you. Not whether you used AI, but whether you used it well.
 
@@ -79,12 +86,12 @@ Write a **Position Statement** with three elements:
 
    > *Example:* "Must include at least two primary sources I found myself. Must address the counterargument about economic factors. Must not use sources I cannot access and verify."
 
-The Position Statement should take 5–10 minutes. Those minutes are where the learning happens. If you find you cannot write it (you do not know what your position is, or you have not read enough to have one), that is the most valuable information the exercise can produce. It tells you to go back to Inquire.
+The Position Statement should take 5 to 10 minutes. Those minutes are where the learning happens. If you find you cannot write it (you do not know what your position is, or you have not read enough to have one), that is the most valuable information the exercise can produce. It tells you to go back to Inquire.
 
 Write the Position Statement offline, without AI assistance. This means not asking an AI tool to help you think through your position, suggest a structure, or prompt you with questions.
 Even well-intentioned AI questions introduce framing before you form your own position. Asking AI "What should I be thinking about?" still yields an AI-shaped position.
 
-**Accessibility exception:** If you cannot write due to a processing barrier, learning difference, or preference for verbal expression, conversational drafting is available. Tell the AI you need articulation support. It will ask you three questions: What are you making? What matters most? What will you not compromise on? Answer in whatever form you can — fragments, spoken language, bullet points. The AI structures your answers into a Position Statement draft, reads it back, and asks if it sounds like you. The ideas must be yours; the structure is the AI's contribution. This is articulation support, not content generation.
+**Conversational drafting:** If you prefer to talk through your position rather than write it cold, that is a valid path. Tell the AI you want to talk it through. It will ask you three questions: What are you making? What matters most? What will you not compromise on? Answer in whatever form works: fragments, spoken language, bullet points. The AI structures your answers into a Position Statement draft, reads it back, and asks if it sounds like you. The ideas must be yours; the structure is the AI's contribution.
 
 Your Position Statement does not need to be polished. Rough outlines, bullet points, fragments, and incomplete sentences are all acceptable. All three elements must still be present: your stance, what matters most, and what you will not compromise on. Rough form is fine; missing elements are not. What matters is that it captures your direction, not that it reads well. When you bring the Position Statement into Phase 3, the AI's first action will be a readability pass: cleaning up grammar and sentence structure without changing your ideas. You will review the cleaned version and confirm it still says what you meant before any exploration begins.
 
@@ -94,9 +101,9 @@ Your Position Statement does not need to be polished. Rough outlines, bullet poi
 
 ### Phase 3: Explore
 
-**What you do:** Now bring AI into the conversation. Use it as a thinking partner: to generate options, challenge your assumptions, surface perspectives you had not considered, and pressure-test your position.
+**What you do:** Now bring AI into the conversation. Use it to generate options, challenge your assumptions, surface perspectives you had not considered, and pressure-test your position.
 
-**Why this matters:** This is where AI is genuinely valuable. Not as a drafting machine, but as an intellectual sparring partner.
+**Why this matters:** This is where AI is genuinely valuable. Not as a drafting machine, but as a pressure test on your thinking.
 With your Position Statement as an anchor, you can engage AI output critically, measuring it against your stated priorities, not accepting it as the default.
 
 **First step: readability pass.** When you paste your Position Statement, the AI will reformat it for readability before doing anything else. This means fixing grammar, spelling, and sentence flow without adding ideas or arguments you did not include. If something in your draft is unclear, the AI will flag it rather than fill in the gap. You review the cleaned version and confirm it still says what you meant. This confirmed version becomes your working Position Statement for the rest of the project. The intellectual content stays yours; the AI just makes it easier to read.
@@ -158,9 +165,9 @@ The Reflect phase asks you to look back at the full trajectory, from your initia
 - What would I do differently next time?
 - Where was I most tempted to accept AI output uncritically, and why? (The honest answer to this question is often the most valuable reflection you can produce.)
 
-**Disclosure:** Write the first draft of your disclosure yourself. Be specific, not vague. Not "I used AI for help" but "I used AI to generate a first draft of the methodology section, which I then restructured around my Position Statement. The analysis and conclusions are my own." After you draft it, the AI may help in two ways: checking your disclosure against your Interaction Log for completeness (flagging AI involvement you did not mention), and a readability pass (grammar and structure only, no added substance). You confirm the final version.
+**Reflection:** Write your reflection first, before the disclosure. This ensures your own analysis of what happened is not anchored to the AI's accounting. The AI may clean up grammar and structure but will not add insights or fill in reflection you did not do.
 
-**Reflection editing:** The same readability pass is available for your reflection writing. Write your reflection first. The AI may clean up grammar and structure but will not add insights or fill in reflection you did not do.
+**Disclosure:** Be specific, not vague. Not "I used AI for help" but "I used AI to generate a first draft of the methodology section, which I then restructured around my Position Statement. The analysis and conclusions are my own." You can write the first draft yourself, or have the AI draft it from your session data (AI Use Log, Records of Resistance, session logs). Either way, you review the disclosure for accuracy: does it honestly describe what you contributed and what the AI contributed? The AI may also help with a completeness check against your Interaction Log (flagging AI involvement you did not mention) and a readability pass (grammar and structure only, no added substance). You confirm the final version.
 
 **Human Gate:** *Can I defend every part of this work?* This is the final gate. If someone pointed to any part of your work and asked "why did you do this?", could you answer with your own reasoning? If yes, the work is yours. If not, you know which parts need more of your thinking.
 
@@ -196,7 +203,7 @@ The Reflect phase asks you to look back at the full trajectory, from your initia
 ├─────────────────────────────────────────────────────────┤
 │  PHASE 5: REFLECT (Human Evaluates)                     │
 │  Document kept/revised/rejected and why                 │
-│  Write disclosure, complete reflection                  │
+│  Write reflection, then disclosure                      │
 │                                                         │
 │  GATE: Can I defend every part of this?                 │
 └─────────────────────────────────────────────────────────┘
@@ -208,11 +215,11 @@ The Reflect phase asks you to look back at the full trajectory, from your initia
 
 The five-phase process is the same at every level. What changes is how much support you get at each gate and how much independence you exercise.
 
-> **Naming note:** Some course contexts use shorthand labels (DISCOVER, THINK, BUILD, DESIGN) to refer to these levels. The mapping is: DISCOVER = Discovery, THINK = Guided Use, BUILD = Independent Use, DESIGN = Critical Partnership.
+> **Naming note:** Some course contexts use shorthand labels (DISCOVER, THINK, BUILD, DESIGN) to refer to these levels. The mapping is: DISCOVER = Discovery, THINK = Guided Use, BUILD = Independent Use, DESIGN = Epistemic Stewardship.
 
 > **Note on evidence base:** The four engagement levels and their readiness indicators are theoretically grounded in research on scaffolded learning, Socratic inquiry, and metacognitive development. They have not yet been empirically validated against actual user progression data. The thresholds, readiness indicators, and level descriptions reflect the framework author's professional judgment and pedagogical experience, not measured outcomes. Treat the levels as a useful developmental map, not a tested diagnostic instrument. As ESF is applied in more courses and contexts, these levels will be revised based on observed user development.
 
-If you are in a structured AI curriculum, these levels correspond to the course stages in that sequence: Discovery (DISCOVER), Guided Use (THINK), Independent Use (BUILD), Critical Partnership (DESIGN).
+If you are in a structured AI curriculum, these levels correspond to the course stages in that sequence: Discovery (DISCOVER), Guided Use (THINK), Independent Use (BUILD), Epistemic Stewardship (DESIGN).
 
 ### Level 1: Discovery
 
@@ -264,7 +271,7 @@ If you are in a structured AI curriculum, these levels correspond to the course 
 
 ---
 
-### Level 4: Critical Partnership
+### Level 4: Epistemic Stewardship
 
 **What it looks like:** You are a full epistemic steward. You can run the five-phase process across complex, high-stakes projects. You can design gates for your own work and for others'. You can defend your work, articulate your methodology, teach your approach, and critically evaluate AI-assisted work (your own and others').
 
@@ -279,7 +286,7 @@ If you are in a structured AI curriculum, these levels correspond to the course 
 | 1 | Discovery | Instructor scaffolds all gates | Can articulate AI strengths/weaknesses, write Position Statement without template |
 | 2 | Guided Use | Instructor designs gates into assignments | Consistent genuine Position Statements, consistent "yes" on Five Questions |
 | 3 | Independent Use | Self-assessed gates with peer review | Can explain methodology to a peer, produce evaluable process record |
-| 4 | Critical Partnership | Creates and evaluates own gates | Can defend work publicly, design gates for novel contexts |
+| 4 | Epistemic Stewardship | Creates and evaluates own gates | Can defend work publicly, design gates for novel contexts |
 
 ---
 
@@ -329,7 +336,7 @@ Process artifacts are the visible evidence of your thinking. They document not j
 
 ### What to Track
 
-For each significant AI interaction during Phases 3–5:
+For each significant AI interaction during Phases 3 to 5:
 
 1. **What did I ask the AI to do?** (Specific, not vague.)
 2. **What did the AI produce?** (Brief summary.)
@@ -348,7 +355,7 @@ Records of resistance are evidence that you were thinking, not just approving.
 At the end of each project:
 
 - **Position evolution:** How did my Position Statement hold up? Where did it evolve, and why?
-- **Key decisions:** What were the 2–3 most important choices I made during Explore and Make?
+- **Key decisions:** What were the 2 to 3 most important choices I made during Explore and Make?
 - **What I learned:** What did this project teach me that I would not have learned without AI?
 - **What I would change:** If I did this project again, what would I do differently?
 - **Honest assessment:** Where was I most tempted to accept AI output uncritically, and what does that tell me about my developing practice?
@@ -427,7 +434,7 @@ Add the Position Statement to your process. Three sentences: what is my position
 **If you want to develop a systematic practice:**
 Run the full five-phase process for one assignment. Track your process artifacts: what you asked, what you kept, what you rejected, and why. Write the reflection at the end.
 
-**If you are already confident in your AI collaboration:**
+**If you are already confident in your AI-assisted work:**
 Apply the five phases with full rigor to your next high-stakes assignment. Pay particular attention to Phase 5 (Reflect). The patterns in your records of resistance reveal the edges of your practice.
 
 The goal is not perfection. The goal is honest, evolving practice: the kind where you can look at your work and say, with confidence, "this is mine."
