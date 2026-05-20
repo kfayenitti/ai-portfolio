@@ -1,3 +1,7 @@
+## Initial version of the generated frost code
+
+------
+
 // Detail Wrangle (Run Over: Detail only once)
 // Parameters:
 // float main_length = 1.0

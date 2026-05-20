@@ -342,6 +342,7 @@ Example expression on `growth`:
 
 ```vex
 // Wrangle 3 — Detail only once — carve-style growth, single parameter
+// Input: geometry after Resample + Facet (Unique Points ON)
 // Requires on each polyline prim: grow_u, rest_root, rest_tip, prim_kind
 
 float growth = clamp(chf("growth"), 0.0, 1.0);

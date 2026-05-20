@@ -1,20 +1,78 @@
 #!/usr/bin/env python3
-"""Build blog-style HTML + PDF from week-01 and week-02 process markdown."""
+"""Build blog-style HTML + PDF from all process-blog/week-*.md files (sorted by week number)."""
 from __future__ import annotations
 
 import html
+import os
 import re
+import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = Path(__file__).resolve().parent
-WEEK1 = ROOT / "week-01.md"
-WEEK2 = ROOT / "week-02.md"
-HTML_OUT = OUT_DIR / "process-blog-weeks-01-02.html"
-PDF_OUT = OUT_DIR / "process-blog-weeks-01-02.pdf"
+HTML_OUT = OUT_DIR / "process-blog-combined.html"
+PDF_OUT = OUT_DIR / "process-blog-combined.pdf"
 
-CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+CHROME_EXECUTABLE_NAMES = (
+    "google-chrome-stable",
+    "google-chrome",
+    "chromium-browser",
+    "chromium",
+    "chrome",
+)
+
+
+def find_chrome_executable() -> str | None:
+    """Locate a Chromium-based browser for headless --print-to-pdf."""
+    for key in ("CHROME_PATH", "CHROMIUM_PATH"):
+        env = os.environ.get(key)
+        if not env:
+            continue
+        path = Path(env).expanduser()
+        if path.is_file():
+            return str(path)
+        found = shutil.which(env)
+        if found:
+            return found
+
+    for name in CHROME_EXECUTABLE_NAMES:
+        found = shutil.which(name)
+        if found:
+            return found
+
+    candidates: list[Path] = []
+    if sys.platform == "darwin":
+        candidates = [
+            Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+            Path("/Applications/Chromium.app/Contents/MacOS/Chromium"),
+            Path(
+                "/Applications/Google Chrome Canary.app/Contents/MacOS/"
+                "Google Chrome Canary"
+            ),
+        ]
+    elif sys.platform.startswith("linux"):
+        candidates = [
+            Path("/usr/bin/google-chrome-stable"),
+            Path("/usr/bin/google-chrome"),
+            Path("/usr/bin/chromium"),
+            Path("/usr/bin/chromium-browser"),
+            Path("/snap/bin/chromium"),
+        ]
+    elif sys.platform == "win32":
+        local = os.environ.get("LOCALAPPDATA", "")
+        program_files = os.environ.get("PROGRAMFILES", r"C:\Program Files")
+        candidates = [
+            Path(program_files) / "Google/Chrome/Application/chrome.exe",
+            Path(local) / "Google/Chrome/Application/chrome.exe",
+        ]
+
+    for path in candidates:
+        if path.is_file():
+            return str(path)
+    return None
+
 
 CSS = """
 :root {
@@ -117,6 +175,14 @@ code { font-size: 0.9em; }
 """
 
 
+def week_number(path: Path) -> int:
+    return int(path.stem.removeprefix("week-"))
+
+
+def discover_week_files() -> list[Path]:
+    return sorted(ROOT.glob("week-*.md"), key=week_number)
+
+
 def inline_md(raw: str) -> str:
     parts = re.split(r"(\*\*.+?\*\*)", raw)
     out: list[str] = []
@@ -205,7 +271,7 @@ def parse_markdown_to_fragments(text: str) -> str:
 
 
 def wrap_ai_interactions(html_fragment: str) -> str:
-    """Group consecutive - **Prompt:** blocks into .interaction cards for week 2 style."""
+    """Group consecutive - **Prompt:** blocks into .interaction cards."""
     lines = html_fragment.split("\n")
     result: list[str] = []
     buf: list[str] = []
@@ -214,7 +280,8 @@ def wrap_ai_interactions(html_fragment: str) -> str:
     def flush_buf() -> None:
         nonlocal buf, in_card
         if buf:
-            result.append('<div class="interaction">\n' + "\n".join(buf) + "\n</div>")
+            inner = "\n".join(buf)
+            result.append("<div class=\"interaction\">\n" + inner + "\n</div>")
             buf = []
         in_card = False
 
@@ -243,6 +310,7 @@ def wrap_ai_interactions(html_fragment: str) -> str:
 
 
 def trim_week2_orphan(text: str) -> str:
+    """Remove duplicate Week 1 session header accidentally appended to week-02.md."""
     lines = text.rstrip().split("\n")
     while lines and not lines[-1].strip():
         lines.pop()
@@ -251,48 +319,66 @@ def trim_week2_orphan(text: str) -> str:
     return "\n".join(lines) + "\n"
 
 
-def main() -> None:
-    w1 = WEEK1.read_text(encoding="utf-8")
-    w2 = trim_week2_orphan(WEEK2.read_text(encoding="utf-8"))
+def load_week_markdown(path: Path) -> str:
+    text = path.read_text(encoding="utf-8")
+    if path.name == "week-02.md":
+        text = trim_week2_orphan(text)
+    return text
 
-    body1 = parse_markdown_to_fragments(w1)
-    body2 = wrap_ai_interactions(parse_markdown_to_fragments(w2))
+
+def week_range_label(weeks: list[Path]) -> str:
+    if not weeks:
+        return ""
+    first, last = week_number(weeks[0]), week_number(weeks[-1])
+    if first == last:
+        return f"Week {first}"
+    return f"Weeks {first}–{last}"
+
+
+def main() -> None:
+    weeks = discover_week_files()
+    if not weeks:
+        raise SystemExit(f"No week-*.md files found in {ROOT}")
+
+    articles: list[str] = []
+    for path in weeks:
+        body = wrap_ai_interactions(parse_markdown_to_fragments(load_week_markdown(path)))
+        n = week_number(path)
+        articles.append(f'<article class="week" id="week-{n}">\n{body}\n</article>')
+
+    range_label = week_range_label(weeks)
+    source_files = ", ".join(f"<code>process-blog/{p.name}</code>" for p in weeks)
 
     doc = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI 201 Process Blog — Weeks 1 &amp; 2 · Katherine Faye Nitti</title>
+<title>AI 201 Process Blog — {html.escape(range_label)} · Katherine Faye Nitti</title>
 <style>{CSS}</style>
 </head>
 <body>
 <header class="doc-header">
   <h1>AI 201 · Process Blog</h1>
-  <p class="meta">Katherine Faye Nitti · Weeks 1 &amp; 2 combined · Export for portfolio / website</p>
+  <p class="meta">Katherine Faye Nitti · {html.escape(range_label)} combined · Export for portfolio / website</p>
 </header>
 
-<article class="week" id="week-1">
-{body1}
-</article>
+{chr(10).join(articles)}
 
-<article class="week" id="week-2">
-{body2}
-</article>
-
-<p class="footer-note">Source files: <code>process-blog/week-01.md</code> and <code>process-blog/week-02.md</code> (unchanged in repo).</p>
+<p class="footer-note">Source files: {source_files} (unchanged in repo).</p>
 </body>
 </html>
 """
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     HTML_OUT.write_text(doc, encoding="utf-8")
-    print(f"Wrote {HTML_OUT}")
+    print(f"Wrote {HTML_OUT} ({len(weeks)} weeks)")
 
-    if Path(CHROME).is_file():
+    chrome = find_chrome_executable()
+    if chrome:
         url = HTML_OUT.as_uri()
         cmd = [
-            CHROME,
+            chrome,
             "--headless=new",
             "--disable-gpu",
             "--no-pdf-header-footer",
@@ -304,7 +390,12 @@ def main() -> None:
             raise SystemExit(f"Chrome failed: {proc.stderr or proc.stdout}")
         print(f"Wrote {PDF_OUT}")
     else:
-        print("Chrome not found; HTML only.")
+        print(
+            "PDF skipped: no Chromium-based browser found.\n"
+            "  Install Chrome or Chromium, or set CHROME_PATH to the browser binary.\n"
+            f"  HTML only: {HTML_OUT}",
+            file=sys.stderr,
+        )
 
 
 if __name__ == "__main__":

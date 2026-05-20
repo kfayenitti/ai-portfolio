@@ -22,7 +22,7 @@ I’ll turn this into a clustered “frost patch” generator: multiple frost un
 
 Claude began to edit the .md directly after this, which I had to stop it from doing as I wanted to experiment before making a new .md version
 
-- **Tag: @resist**
+- **Tag:** @resist
 
 
 ### Quarter Question Connection
@@ -289,6 +289,6 @@ This week’s work sits directly under *What happens when generated code and AI-
 ### What's Next
 
 - Solidify the single-branch frost wrangle with growth animation (`generatedFrost_V02.md`) and PolyWire look-dev.
-- Pivot from “one hero branch” to **pattern / layout**: many frost units from scatter, spacing, and non-intersection—documented in `GenerativeFrost_PatternGeneration_`* and `GenerativeFrost_Compiled_V01.md`.
+- Pivot from “one hero branch” to **pattern / layout**: many frost units from scatter, spacing, and non-intersection—documented in [`GenerativeFrost_PatternGeneration_V04.md`](../p1-GeneratedFrost/GenerativeFrost_PatternGeneration_V04.md) and [`code/frost_wrangle_*.vfl`](../p1-GeneratedFrost/code/) (V01–V03 are earlier pattern iterations).
 - Keep a short log of prompts that *failed* vs *worked* so Week 05 art-direction controls are grounded in what the code can actually support.
 

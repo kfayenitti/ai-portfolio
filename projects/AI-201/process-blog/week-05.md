@@ -94,7 +94,7 @@ setpointattrib(0, "pscale", pts[k], pnew, "set");
 - **Decision:** 
 - **Tag:** @resist
 - **Prompt:** (chatgpt) this is a model of frost in a 3d software. ideate what this composition can look like rendered on a window
-- **Output:** ChatGPT_Ideation_V01 in ideated_Images
+- **Output:** Chat_Ideation_V01 in ideated_Images
 - **Decision:** 
 - **Tag:** @shift
 - **Prompt:** (figma weavy + seedance) generated a first frame, edited toward a last frame, then generated a short transition video from both frames

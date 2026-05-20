@@ -1,0 +1,95 @@
+// Generative Frost V04 — Wrangle 1: main stems from scatter
+// Node: Attribute Wrangle | Run Over: Detail (only once) | Input: scattered points
+// ZX plane (Y up). See GenerativeFrost_PatternGeneration_V04.md for full network.
+// Wrangle 2: frost_wrangle_02.vfl | Wrangle 3: frost_wrangle_03.vfl
+
+int seed = chi("seed");
+float gap_mult = max(chf("gap_mult"), 0.05);
+int rays_min = max(3, chi("rays_min"));
+int rays_max = max(rays_min, chi("rays_max"));
+
+float TWO_PI = 2.0 * M_PI;
+
+int n = npoints(0);
+if (n < 2) return;
+
+addattrib(0, "point", "pscale", 0.0);
+addattrib(0, "prim", "is_main_stem", 0);
+addattrib(0, "prim", "prim_kind", 0);
+addattrib(0, "prim", "grow_u", 0.0);
+addattrib(0, "prim", "parent_u", 0.0);
+addattrib(0, "prim", "rest_root", {0,0,0});
+addattrib(0, "prim", "rest_tip", {0,0,0});
+
+for (int i = 0; i < n; i++)
+{
+    vector Pi = point(0, "P", i);
+
+    int near2[] = nearpoints(0, Pi, 1e9, 2);
+    if (len(near2) < 2) continue;
+
+    int n1 = near2[1];
+    vector P1 = point(0, "P", n1);
+    float d1 = distance(Pi, P1);
+
+    float tight = 1.0 / gap_mult;
+
+    float max_len       = max(d1 * 0.48 * tight, 1e-4);
+    float min_len       = d1 * 0.20;
+    float clearance     = max(d1 * 0.22 * gap_mult, d1 * 0.03);
+    float safety_margin = max(d1 * 0.08 * gap_mult, d1 * 0.01);
+    float search_radius = d1 * 2.2;
+
+    int rays = int(floor(fit01(rand(set(i, seed, 7)), float(rays_min), float(rays_max + 0.999))));
+    rays = max(1, rays);
+
+    float base_ang = rand(set(i, seed, 101)) * TWO_PI;
+    int near[] = nearpoints(0, Pi, search_radius);
+
+    setpointattrib(0, "pscale", i, d1 * 0.06, "set");
+
+    for (int r = 0; r < rays; r++)
+    {
+        float t_ray = float(r) / float(max(1, rays - 1) + 1e-6);
+        float ang = base_ang + (float(r) / float(rays)) * TWO_PI;
+        ang += fit01(rand(set(i, r, seed + 17)), -0.08, 0.08);
+
+        vector dir = normalize(set(cos(ang), 0.0, sin(ang)));
+
+        float allowed = max_len;
+        foreach (int j; near)
+        {
+            if (j == i) continue;
+            vector Pj = point(0, "P", j);
+            vector v = Pj - Pi;
+            float fwd = dot(v, dir);
+            if (fwd <= 0.0) continue;
+            float lat = length(v - dir * fwd);
+            if (lat < clearance)
+            {
+                float stop = max(0.0, fwd - safety_margin);
+                allowed = min(allowed, stop);
+            }
+        }
+
+        float ulen = rand(set(i, r, seed + 555));
+        float len_bias = pow(ulen, 1.8);
+        float desired = fit(len_bias, 0.0, 1.0, min_len, max_len);
+        if (rand(set(i, r, seed + 777)) < 0.10) desired *= 1.25;
+
+        float L = min(allowed, desired);
+        if (L < min_len * 0.35) continue;
+
+        vector tipP = Pi + dir * L;
+        int tip = addpoint(0, tipP);
+        setpointattrib(0, "pscale", tip, d1 * 0.025, "set");
+
+        int pr = addprim(0, "polyline", i, tip);
+        setprimattrib(0, "is_main_stem", pr, 1, "set");
+        setprimattrib(0, "prim_kind", pr, 1, "set");
+        setprimattrib(0, "grow_u", pr, t_ray, "set");
+        setprimattrib(0, "parent_u", pr, 0.0, "set");
+        setprimattrib(0, "rest_root", pr, Pi, "set");
+        setprimattrib(0, "rest_tip", pr, tipP, "set");
+    }
+}

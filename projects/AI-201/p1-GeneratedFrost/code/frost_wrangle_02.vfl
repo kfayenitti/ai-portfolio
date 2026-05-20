@@ -1,0 +1,132 @@
+// Generative Frost V04 — Wrangle 2: paired twigs on main stems
+// Node: Attribute Wrangle | Run Over: Detail (only once) | Input: frost_wrangle_01 output
+// Degree sliders (twig_splay_deg, twig_jitter_deg) are real degrees, not 0–1 ramps.
+// See GenerativeFrost_PatternGeneration_V04.md for parms and Resample/Facet before wrangle 03.
+
+int seed = chi("seed");
+int twigs_amount = max(1, chi("twigs_amount"));
+float twig_len_mult = chf("twig_len_mult");
+float twig_splay_deg = chf("twig_splay_deg");
+float twig_jitter_deg = chf("twig_jitter_deg");
+float clearance_mult = chf("clearance_mult");
+float min_len_mult = chf("min_len_mult");
+
+float splay = radians(twig_splay_deg);
+float jitter = radians(twig_jitter_deg);
+
+addattrib(0, "point", "pscale", 0.0);
+addattrib(0, "prim", "is_main_stem", 0);
+addattrib(0, "prim", "prim_kind", 0);
+addattrib(0, "prim", "grow_u", 0.0);
+addattrib(0, "prim", "parent_u", 0.0);
+addattrib(0, "prim", "rest_root", {0,0,0});
+addattrib(0, "prim", "rest_tip", {0,0,0});
+
+int base_npr = nprimitives(0);
+int has_main = hasprimattrib(0, "is_main_stem");
+
+function int blocked_by_geo(int geo; vector A; vector B; int parent_prim; float clear_r)
+{
+    int samples = 4;
+    for (int s = 0; s <= samples; s++)
+    {
+        float t = float(s) / float(samples);
+        vector P = lerp(A, B, t);
+        int hp = -1;
+        vector uv = {0,0,0};
+        float d = xyzdist(geo, P, hp, uv);
+        if (hp >= 0 && hp != parent_prim && d < clear_r) return 1;
+    }
+    return 0;
+}
+
+for (int pr = 0; pr < base_npr; pr++)
+{
+    if (has_main && prim(0, "is_main_stem", pr) != 1) continue;
+
+    int vtx[] = primvertices(0, pr);
+    if (len(vtx) < 2) continue;
+
+    int p0 = vertexpoint(0, vtx[0]);
+    int p1 = vertexpoint(0, vtx[len(vtx)-1]);
+
+    vector P0 = point(0, "P", p0);
+    vector P1 = point(0, "P", p1);
+
+    vector tangent = normalize(P1 - P0);
+    float stem_len = distance(P0, P1);
+    if (stem_len < 1e-6) continue;
+
+    vector side = normalize(set(-tangent.z, 0.0, tangent.x));
+    if (length(side) < 1e-6) side = {1,0,0};
+
+    float clear_r = max(stem_len * clearance_mult, 1e-4);
+    float min_L = stem_len * min_len_mult;
+
+    float parent_u = prim(0, "grow_u", pr);
+
+    for (int k = 0; k < twigs_amount; k++)
+    {
+        float slot = (float(k) + 1.0) / (float(twigs_amount) + 1.0);
+        float ujit = fit01(rand(set(pr, k, seed + 101)), -0.03, 0.03);
+        float u = clamp(slot + ujit, 0.14, 0.90);
+
+        vector rootP = lerp(P0, P1, u);
+
+        float taper = chramp("twig_taper_ramp", u);
+        float Lbase = stem_len * twig_len_mult * max(0.0, taper);
+        Lbase *= fit01(rand(set(pr, k, seed + 171)), 0.85, 1.15);
+        if (Lbase < min_L) continue;
+
+        float ja = fit01(rand(set(pr, k, seed + 211)), -jitter, jitter);
+        float ang = splay + ja;
+
+        vector dirL = normalize(-cos(ang) * side + sin(ang) * tangent);
+        vector dirR = normalize( cos(ang) * side + sin(ang) * tangent);
+
+        vector tipL = rootP + dirL * Lbase;
+        vector tipR = rootP + dirR * Lbase;
+
+        int blockL = blocked_by_geo(0, rootP, tipL, pr, clear_r);
+        int blockR = blocked_by_geo(0, rootP, tipR, pr, clear_r);
+
+        float ps0 = point(0, "pscale", p0);
+        float ps1 = point(0, "pscale", p1);
+        float psm = lerp(ps0, ps1, u);
+        if (psm <= 0) psm = stem_len * 0.02;
+
+        float twig_u = clamp(parent_u + 0.18 + u * 0.28, 0.0, 0.98);
+
+        if (!blockL)
+        {
+            int rL = addpoint(0, rootP);
+            int tL = addpoint(0, tipL);
+            setpointattrib(0, "pscale", rL, psm * 0.90, "set");
+            setpointattrib(0, "pscale", tL, psm * 0.55, "set");
+
+            int prL = addprim(0, "polyline", rL, tL);
+            setprimattrib(0, "is_main_stem", prL, 0, "set");
+            setprimattrib(0, "prim_kind", prL, 2, "set");
+            setprimattrib(0, "grow_u", prL, twig_u, "set");
+            setprimattrib(0, "parent_u", prL, parent_u, "set");
+            setprimattrib(0, "rest_root", prL, rootP, "set");
+            setprimattrib(0, "rest_tip", prL, tipL, "set");
+        }
+
+        if (!blockR)
+        {
+            int rR = addpoint(0, rootP);
+            int tR = addpoint(0, tipR);
+            setpointattrib(0, "pscale", rR, psm * 0.90, "set");
+            setpointattrib(0, "pscale", tR, psm * 0.55, "set");
+
+            int prR = addprim(0, "polyline", rR, tR);
+            setprimattrib(0, "is_main_stem", prR, 0, "set");
+            setprimattrib(0, "prim_kind", prR, 2, "set");
+            setprimattrib(0, "grow_u", prR, twig_u, "set");
+            setprimattrib(0, "parent_u", prR, parent_u, "set");
+            setprimattrib(0, "rest_root", prR, rootP, "set");
+            setprimattrib(0, "rest_tip", prR, tipR, "set");
+        }
+    }
+}

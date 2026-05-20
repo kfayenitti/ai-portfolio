@@ -1,0 +1,32 @@
+// Generative Frost V04 — Wrangle 3: carve-style growth
+// Node: Attribute Wrangle | Run Over: Detail (only once)
+// Input: after Resample + Facet (Unique Points ON) on frost_wrangle_02 output
+// Requires per prim: grow_u, rest_root, rest_tip. Parameter growth (0→1).
+// Example: ($FF - 1) / max($FEND - 1, 1)
+
+float growth = clamp(chf("growth"), 0.0, 1.0);
+
+int npr = nprimitives(0);
+
+for (int pr = 0; pr < npr; pr++)
+{
+    float gu = clamp(prim(0, "grow_u", pr), 0.0, 1.0);
+
+    vector rootP = prim(0, "rest_root", pr);
+    vector tipP0 = prim(0, "rest_tip", pr);
+
+    float br = clamp((growth - gu) / max(1e-5, 1.0 - gu), 0.0, 1.0);
+    br = smooth(0.0, 1.0, br);
+
+    int pts[] = primpoints(0, pr);
+    int m = len(pts);
+    if (m < 2) continue;
+
+    for (int k = 0; k < m; k++)
+    {
+        float u = float(k) / float(m - 1);
+        float u_clamped = min(u, br);
+        vector Pnew = lerp(rootP, tipP0, u_clamped);
+        setpointattrib(0, "P", pts[k], Pnew, "set");
+    }
+}

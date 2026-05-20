@@ -176,8 +176,8 @@ Twigs use **`grow_u` strictly after** the parent stem’s `grow_u`, so Wrangle 3
 int seed = chi("seed");
 int twigs_amount = max(1, chi("twigs_amount"));
 float twig_len_mult = chf("twig_len_mult");
-float twig_splay_deg = chf("twig_splay_deg");
-float twig_jitter_deg = chf("twig_jitter_deg");
+float twig_splay_deg = chf("twig_splay_deg");   // Degrees input (e.g. 20-60), not 0-1
+float twig_jitter_deg = chf("twig_jitter_deg"); // Degrees input (e.g. 2-15), not 0-1
 float clearance_mult = chf("clearance_mult");
 float min_len_mult = chf("min_len_mult");
 

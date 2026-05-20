@@ -14,15 +14,7 @@ You just installed the ESF Companion.
 ├── skills/                       ← Six skills (onboarding, project, git, verify, update, cognitive)
 └── reference/                    ← Framework guide and disclosure protocol
 templates/                        ← Blank forms for each ESF practice
-prompts/                          ← System prompt for conversation tools
-WORKFLOW.md                       ← Visual process diagram
-```
-
-**Conversation tool install (Claude.ai, ChatGPT, Gemini):**
-
-```
-templates/                        ← Blank forms for each ESF practice
-prompts/                          ← System prompt and quick-start document
+prompts/                          ← Companion system prompt (`esf-companion.md`) for other AI tools
 WORKFLOW.md                       ← Visual process diagram
 ```
 
@@ -38,15 +30,15 @@ WORKFLOW.md                       ← Visual process diagram
 
 **If you are on Claude.ai, ChatGPT, Gemini, or another conversation tool:**
 
-1. Open `prompts/quick-start.md`
-2. Fill in your information at the top
-3. Paste the whole document as your first message — that is your entire setup
+1. Open `prompts/esf-companion.md`
+2. Copy everything below **System Prompt (copy everything below this line)**
+3. Paste that block as your system prompt or first message
 
 **If you are on Claude.ai Projects:**
 
 1. Create a project in Claude.ai
-2. Upload `companion-state.md` and your brief as project knowledge
-3. Set `prompts/esf-companion.md` as the system prompt — your context loads automatically each session
+2. Upload a filled-in copy of `templates/companion-state-template.md` and your brief from `projects/[course]/briefs/` as project knowledge
+3. Set `prompts/esf-companion.md` as the system prompt
 
 ---
 
@@ -67,7 +59,7 @@ The Position Statement is the gate. Everything else follows from it.
 
 ## Customizing the Companion
 
-**Silence mode** reduces how often the Companion speaks during a session. To turn it on, open `projects/_esf/companion-state.md` and set:
+**Silence mode** reduces how often the Companion speaks during a session. On Claude Code, run `/esf-onboarding` first; then set the preference in the companion state file onboarding creates (same structure as `templates/companion-state-template.md`):
 
 ```
 ## Preferences
@@ -83,8 +75,8 @@ With silent mode on, the Companion suppresses proactive prompts, phase announcem
 
 ## Reference links
 
-- **[WALKTHROUGH.md](WALKTHROUGH.md)** — Complete guide: onboarding, all five phases, worked examples
+
+- **[prompts/esf-companion.md](prompts/esf-companion.md)** — System prompt for ChatGPT, Gemini, and Claude.ai
 - **[WORKFLOW.md](WORKFLOW.md)** — Visual process diagram
 - **[templates/](templates/)** — Blank forms: Position Statement, Record of Resistance, AI Use Log, Five Questions, Disclosure
 - **[examples](https://github.com/nmadrid27/esf-companion/tree/main/examples)** — Filled samples across design, writing, research, and consulting
-- **[ROADMAP.md](ROADMAP.md)** — What is shipped, what is coming

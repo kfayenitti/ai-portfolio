@@ -134,7 +134,7 @@ I am using these tools because they both tie into some of the most common uses o
 Alongside Claude, ComfyUI is widely used in VFX because it makes many model types easy to access—especially ones useful for VFX, such as model generation, lighting changes, rotoscoping, and comp / layer separation. That gives me flexibility through the pipeline and lets me match tools to specific needs. It also links with Claude effectively.
 
 
-## Week 2, Session 1 — 03/31/26
+## Week 2, Session 1 — 03/31/2026
 
 ### What I Did
 This week I continued to research different tools and their applications. After developing ideas for AI-generated coding projects in week 1, I shifted focus to researching more generative models. I began researching how generative AI could be used for streamlining parts of pipelines such as:

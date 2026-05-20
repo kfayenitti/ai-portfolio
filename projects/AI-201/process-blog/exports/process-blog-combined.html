@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 201 Process Blog — Weeks 1–9 · Katherine Faye Nitti</title>
+<style>
+:root {
+  --text: #1a1a1a;
+  --muted: #5c5c5c;
+  --rule: #d0d0d0;
+  --accent: #2563eb;
+  --bg: #ffffff;
+}
+@page { margin: 2cm 1.5cm; }
+* { box-sizing: border-box; }
+html {
+  font-size: 17px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+.doc-header {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.doc-header h1 {
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem 0;
+  letter-spacing: -0.02em;
+}
+.doc-header .meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+.week {
+  margin-bottom: 3rem;
+}
+.week h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--text);
+  letter-spacing: -0.02em;
+}
+.week:first-of-type h2 { border-top: none; padding-top: 0; }
+.week h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.6rem 0;
+  color: var(--text);
+}
+.week .topic {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 1.75rem 0 0.5rem 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+p { margin: 0 0 0.85rem 0; }
+ul, ol { margin: 0 0 1rem 0; padding-left: 1.25rem; }
+li { margin-bottom: 0.25rem; }
+li ul { margin-top: 0.35rem; margin-bottom: 0.35rem; }
+.interaction {
+  margin: 1.25rem 0;
+  padding: 1rem 1.1rem;
+  background: #f7f8fa;
+  border-radius: 6px;
+  page-break-inside: avoid;
+}
+.interaction p { margin: 0 0 0.5rem 0; font-size: 0.95rem; }
+.interaction p:last-child { margin-bottom: 0; }
+.interaction strong {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.footer-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+@media print {
+  body { padding: 0; max-width: none; }
+}
+code { font-size: 0.9em; }
+</style>
+</head>
+<body>
+<header class="doc-header">
+  <h1>AI 201 · Process Blog</h1>
+  <p class="meta">Katherine Faye Nitti · Weeks 1–9 combined · Export for portfolio / website</p>
+</header>
+
+<article class="week" id="week-1">
+<h2>Week 1, Session 1 — Research and Project 1 Kickoff</h2>
+<h3>What I Did</h3>
+<p>This week we were introduced to the first project, which is to build a project tied to a creative computing concept related to our industry. Provided examples of concepts (that I filtered to apply to VFX) are:</p>
+<ul>
+<li>Generative systems: Noise fields, particle systems, growth patterns, rule-based generation.</li>
+</ul>
+<ul>
+<li>Algorithmic art: Recursion, fractals, cellular automata, L-systems. Complex visual behavior from simple rules.</li>
+</ul>
+<ul>
+<li>Animation and motion: Frame-based rendering, physics simulation, easing, time-based composition.</li>
+</ul>
+<p>Below is a breakdown of my research and ideation.</p>
+<p class="topic">COMMON MODELS/ENVIRONMENTS USED FOR VFX</p>
+<p>Claude AI</p>
+<ul>
+<li>Coding</li>
+<ul>
+<li>Houdini VEX</li>
+<li>Maya Python</li>
+<li>MEL</li>
+<li>Pipeline</li>
+<li>etc</li>
+</ul>
+</ul>
+<p>Gemini</p>
+<ul>
+<li>Image generation</li>
+<ul>
+<li>concept art</li>
+<li>plate paint-overs</li>
+<li>render mockups</li>
+<li>ideation</li>
+<li>free license with student makes more accessible</li>
+</ul>
+</ul>
+<p>ChatGPT</p>
+<ul>
+<li>Coding</li>
+<li>Image generation</li>
+<ul>
+<li>Concept</li>
+<li>Iteration and ideation</li>
+</ul>
+<li>Less accessible, I do not have subscription</li>
+</ul>
+<p>Midjourney</p>
+<ul>
+<li>Image generation</li>
+<li>Concept art</li>
+<li>Ideation</li>
+</ul>
+<p>Runway</p>
+<ul>
+<li>Image and video generation. Diverse</li>
+<ul>
+<li>Roto</li>
+<li>Background removal</li>
+<li>Upscale</li>
+<li>Video generation</li>
+</ul>
+</ul>
+<p>(Insert runway test)</p>
+<p>ComfyUI</p>
+<ul>
+<li>Node-based</li>
+<li>Main issue is accessibility (heavy models, dont have access to personal PC until maybe week 2?)</li>
+<li>Diverse range of models</li>
+<ul>
+<li>Image generation</li>
+<li>3D model generation</li>
+<li>relight</li>
+<li>text-to-video</li>
+<li>Plate paint-overs / removals</li>
+<li>Video replacements</li>
+<li>Beauty cleanups</li>
+<li>Composition separating</li>
+<li>Roto</li>
+</ul>
+</ul>
+<p>USES FOR VFX / PROBLEMS IT CAN ADDRESS (Catered to Project 1 Assignment)</p>
+<ul>
+<li>Algorithmic Growth / Generation in Houdini</li>
+<ul>
+<li>Claude / ChatGPT / Gemini</li>
+<li>Houdini VEX</li>
+<li>Use AI to generate code and complex equations</li>
+<li>Create procedural and algorithmic patterns</li>
+<ul>
+<li>Frost</li>
+<li>Plants</li>
+<li>Trees</li>
+<li>Vines</li>
+<li>Grass</li>
+<li>River networks</li>
+<li>Cracks (mud, paint, glass)</li>
+<ul>
+<li>Pottery? Kintsugi?</li>
+</ul>
+<li>Crystals</li>
+<li>Snowflakes</li>
+<li>Lightning</li>
+<li>Veins (leaves, humans)</li>
+<li>Roads</li>
+<li>Fire path</li>
+<ul>
+<li>Generate attributes for Pyro Simulation?</li>
+</ul>
+</ul>
+<li>Create customizable controls for artistic direction</li>
+<li>Have AI customize tool / value input based on keyword from user?</li>
+<ul>
+<li>EXAMPLE: River network</li>
+<ul>
+<li>AI create VEX wrangle sliders / base variables such as &quot;Number of Rivers&quot;, &quot;Average Width of Rivers&quot;, &quot;Max Width&quot;, &quot;Connection Frequency&quot; &quot;Branching&quot;</li>
+<li>User use mood buzz words that impact the created variables</li>
+<ul>
+<li>&quot;Generate a complex, busy, section of rivers&quot;. Which leads to variables with increased number of rivers, less width, higher connection frequency, more branching.</li>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<ul>
+<li>Particle Velocity Easy Customization / Initialization</li>
+<ul>
+<li>Claude / ChatGPT / Gemini</li>
+<li>Houdini VEX</li>
+<li>Use AI to generate code and complex equations</li>
+<li>Create code and easy to adjust variables / sliders that adjust the velocity of points prior to simulation</li>
+<ul>
+<li>Easy quaternion adjustments to create particles that move around counterpoints, in circular motions, outwards or inwards, etc</li>
+<li>Adjustable noises</li>
+<li>Intensities</li>
+<li>Create groups, so some particles move differently than others</li>
+</ul>
+<li>Also add code after simulation, to designate scale, color, etc</li>
+<li>Variables customizable with AI mood buzz words?</li>
+<ul>
+<li>IE: &quot;Generate a overwhelming and fast explosion of particles from origin&quot; -&gt; adjusts to have fast velocity, high noise, outward from 0,0,0</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<li>Matte Painting Basher</li>
+<ul>
+<li>ComfyUI</li>
+<li>Model?????</li>
+<li>Provide several source images to be added to a matte painting / set extension. Then provide written instruction on how to integrate images into final piece</li>
+</ul>
+</ul>
+<h3>What I Learned</h3>
+<p>This research helped me get a better understanding of AI&#x27;s use in my industry.</p>
+<h3>What&#x27;s Next</h3>
+<p>Begin experimenting with different models and application to VFX</p>
+</article>
+<article class="week" id="week-2">
+<h2>Week 2, Session 2 — 04/03/2026</h2>
+<h3>What I Did</h3>
+<p>I continued to narrow down the workflow for my desired project, and document findings along the way. Having settled on using ClaudeAI for coding in Houdini VEX, I began testing out its effectiveness with the language using prompts that slowly increased in their complexity. This helped me understand its way of working and allowed for easier troubleshooting.</p>
+<ul>
+<li><strong>Prompt:</strong> generate a code in houdini that makes a line by connecting two points with customizable positions</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> Cursor suggested a <strong>Detail</strong> Attribute Wrangle using `chv(&quot;point0&quot;)` / `chv(&quot;point1&quot;)`, `addpoint`, and `addprim(..., &quot;polyline&quot;, ...)`.</li>
+</ul>
+<p>```vex</p>
+<p>vector pos0 = chv(&quot;point0&quot;);</p>
+<p>vector pos1 = chv(&quot;point1&quot;);</p>
+<p>int pt0 = addpoint(0, pos0);</p>
+<p>int pt1 = addpoint(0, pos1);</p>
+<p>int prim = addprim(0, &quot;polyline&quot;, pt0, pt1);</p>
+<p>```</p>
+<ul>
+<li><strong>Decision:</strong> Baseline geometry for a controllable stem; parameters live on the wrangle node.</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> add five points interpolated along the line, between the two points</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> Five interior points at \(t = i/6\) for \(i = 1..5\), one polyline through all vertices.</li>
+</ul>
+<p>```vex</p>
+<p>vector p0 = chv(&quot;point0&quot;);</p>
+<p>vector p1 = chv(&quot;point1&quot;);</p>
+<p>const int interior = 5;</p>
+<p>int pt_ids[];</p>
+<p>append(pt_ids, addpoint(0, p0));</p>
+<p>for (int i = 1; i &lt;= interior; i++) {</p>
+<p>float t = float(i) / float(interior + 1);</p>
+<p>vector p = lerp(p0, p1, t);</p>
+<p>append(pt_ids, addpoint(0, p));</p>
+<p>}</p>
+<p>append(pt_ids, addpoint(0, p1));</p>
+<p>int prim = addprim(0, &quot;polyline&quot;, pt_ids[0], pt_ids[1]);</p>
+<p>for (int i = 2; i &lt; len(pt_ids); i++) {</p>
+<p>addvertex(0, prim, pt_ids[i]);</p>
+<p>}</p>
+<p>```</p>
+<ul>
+<li><strong>Decision:</strong> Even spacing along the segment for joints where branches can attach.</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> on each of the points created in the middle, add two lines branching out on either side, like frost would, or a plant, or tree branches</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> At each interior point, tangent from neighbors; `cross` with `up` for a perpendicular “side” axis; two branch polylines; optional `branch_splay` to tilt arms along the stem.</li>
+</ul>
+<p>```vex</p>
+<p>vector p0 = chv(&quot;point0&quot;);</p>
+<p>vector p1 = chv(&quot;point1&quot;);</p>
+<p>vector up = chv(&quot;up&quot;);</p>
+<p>float branch_len = chf(&quot;branch_length&quot;);</p>
+<p>float splay = radians(chf(&quot;branch_splay&quot;));</p>
+<p>const int interior = 5;</p>
+<p>int pt_ids[];</p>
+<p>vector P[];</p>
+<p>append(pt_ids, addpoint(0, p0));</p>
+<p>append(P, p0);</p>
+<p>for (int i = 1; i &lt;= interior; i++) {</p>
+<p>float t = float(i) / float(interior + 1);</p>
+<p>vector p = lerp(p0, p1, t);</p>
+<p>append(pt_ids, addpoint(0, p));</p>
+<p>append(P, p);</p>
+<p>}</p>
+<p>append(pt_ids, addpoint(0, p1));</p>
+<p>append(P, p1);</p>
+<p>{</p>
+<p>int prim = addprim(0, &quot;polyline&quot;, pt_ids[0], pt_ids[1]);</p>
+<p>for (int i = 2; i &lt; len(pt_ids); i++)</p>
+<p>addvertex(0, prim, pt_ids[i]);</p>
+<p>}</p>
+<p>for (int k = 1; k &lt;= interior; k++) {</p>
+<p>vector prev_p = P[k - 1];</p>
+<p>vector curr_p = P[k];</p>
+<p>vector next_p = P[k + 1];</p>
+<p>vector tangent = normalize(next_p - prev_p);</p>
+<p>vector side = cross(tangent, normalize(up));</p>
+<p>if (length(side) &lt; 1e-6)</p>
+<p>side = cross(tangent, {1, 0, 0});</p>
+<p>side = normalize(side);</p>
+<p>vector dir_a = normalize( cos(splay) * side + sin(splay) * tangent);</p>
+<p>vector dir_b = normalize(-cos(splay) * side + sin(splay) * tangent);</p>
+<p>int base = pt_ids[k];</p>
+<p>int pa = addpoint(0, curr_p + dir_a * branch_len);</p>
+<p>addprim(0, &quot;polyline&quot;, base, pa);</p>
+<p>int pb = addpoint(0, curr_p + dir_b * branch_len);</p>
+<p>addprim(0, &quot;polyline&quot;, base, pb);</p>
+<p>}</p>
+<p>```</p>
+<ul>
+<li><strong>Decision:</strong> Starting point for a procedural frost / branch pattern in Houdini; I will test in my scene and adjust parameters (`up`, length, splay) and fold into the capstone tool as needed. As it gets more complex, it will need further instruction. This system works well for a basic branching tool, but it needs to handle more layers and movement—it glitches and breaks when parameters are pushed in certain directions. Claude also needs clearer guidance on VEX syntax; for example, it used `const` in patterns that VEX does not support (e.g., before type declarations).</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<h3>What I Learned</h3>
+<p>These experiences helped me better understand the different models commonly used for VFX in the industry, and how to connect them in practice. They gave me insight into API keys and MCP setups. They also showed me the visual limits of different models and different model styles, and helped me practice troubleshooting.</p>
+<h3>Quarter Question Connection</h3>
+<p>This connects to the quarter question as it clarifies what models may be helpful for what parts of the VFX pipeline, and how to integrate them properly. Prototyping procedural VEX in Cursor (line, subdivision, branches) adds another angle: AI-assisted coding can streamline setup while parameters stay artist-driven, without replacing final look development or creative choices.</p>
+<h3>What&#x27;s Next</h3>
+<p>I will be narrowing down my concept for Project 1. I am leaning towards using AI-generated code from claude at first to create a procedural work of art, likely frost. At the same time, I will continue to familiarize myself with generative models in ComfyUI to later down the line use them to bring a visual effects project to completion through iteration and ideation.</p>
+<p>I am using these tools because they both tie into some of the most common uses of AI in the vfx industry: Streamlined coding, and visual iteration. ClaudeAI for code was chosen due to its familiarity and more common success with Houdini VEX, which is a C++-like language customized to Houdini&#x27;s software. While it at times confuses syntax, as seen with its use of &quot;const&quot; as a variable when Houdini VEX does not use that, it often remembers corrections well.</p>
+<p>Alongside Claude, ComfyUI is widely used in VFX because it makes many model types easy to access—especially ones useful for VFX, such as model generation, lighting changes, rotoscoping, and comp / layer separation. That gives me flexibility through the pipeline and lets me match tools to specific needs. It also links with Claude effectively.</p>
+<h2>Week 2, Session 1 — 03/31/2026</h2>
+<h3>What I Did</h3>
+<p>This week I continued to research different tools and their applications. After developing ideas for AI-generated coding projects in week 1, I shifted focus to researching more generative models. I began researching how generative AI could be used for streamlining parts of pipelines such as:</p>
+<ul>
+<li>Quick concept iteration</li>
+<li>Face-cam character pose live link</li>
+<li>Render and texture pre-visualization</li>
+<li>Relighting</li>
+<li>Replacement / Paint-overs</li>
+<li>Roto</li>
+</ul>
+<p>I linked ComfyUI to Claude on my device by adding an MCP server and linking to an API key. I experimented below with generating an image with a ComfyUI model prompted solely through Claude to ensure the link worked.</p>
+<p>Later in the week (04/03), I used Cursor to iterate on Houdini VEX for a procedural polyline with interior points and paired side branches, toward a frost / plant / branch look.</p>
+<h3>AI Interactions</h3>
+<ul>
+<li><strong>Prompt:</strong> List the available models in my ComfyUI</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> Claude listed the files in my root, Checkpoints, LoRAs, Text Encoders, VAE, and Diffusion Models folders</li>
+</ul>
+<ul>
+<li><strong>Decision:</strong> This was to test if ClaudeAI on my laptop could connect with my directories and ComfyUI. This proved that it could find the directory and my installed models.</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> I have the Z-Image model. The files are in the correct folders. Build me a Z-Image text to image workflow and generate a photo of a sunset over the ocean.</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> Claude successfully connected to ComfyUI and my models from behind the scenes in my ComfyUI interface, and set up a model and prompt to render. The render in ComfyUI took around an hour and a half.</li>
+</ul>
+<ul>
+<li><strong>Decision:</strong> This was to test if Claude could connect to Comfy, my models, and successfully queue up an image to render. It succeeded, but since I am on my laptop it took very long.</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> Italy Venice Waterway. 3D render. Make render realistic. Maintain composition and colors. Add boat in the water. Boat in Venice waterway. Brown, small boat. Row boat in Venice waterway. Calm waters. Sunny day</li>
+</ul>
+<ul>
+<li><strong>Output:</strong> Runway added the boat without touching any other part of the provided render.</li>
+</ul>
+<ul>
+<li><strong>Decision:</strong> This was a test to see if Runway (Gen-4 Turbo) could alter a rendered image and add animation to it without compromising its integrity. The provided rendered image is a 3D render I had created in Houdini, completely without the use of generative AI. It successfully followed the task, but not to a level satisfactory for production (simple textures on the boat, poor light interactions, odd movement, composition does not lead the eye, no glass interaction, etc.).</li>
+</ul>
+<ul>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+</article>
+<article class="week" id="week-3">
+<h2>Week 3, Session 2 — 04/08/26</h2>
+<h3>What I Did</h3>
+<p>Continued organizing research and project intentions, including make/making/made board and cleaning up design intent &amp; prd.</p>
+<h3>AI Interactions</h3>
+<ul>
+<li><strong>Prompt:</strong>  what do you think of this schedule?</li>
+</ul>
+<p><strong>Week 04</strong></p>
+<p>Development of frost generation tool. Tool should be functional by mid-week, to allow for application of more customization options.</p>
+<p><strong>Week 05</strong></p>
+<p>Finish AI-coded frost tool. The frost should be functional and easy to art direct in Houdini.</p>
+<p><strong>Week 06</strong></p>
+<p>Progress down the pipeline. Now having a tool, experiment with how I can continue to use AI to create a final product.</p>
+<p>Render with AI? Lighting iterations with AI? AI assisted matte painting in the bg? Playblast preview renders? Assess while working the most realistic applications.</p>
+<p><strong>Week 07</strong></p>
+<p>Utilize generative AI to assist in generating ideations for lighting and composition.</p>
+<p><strong>Week 08</strong></p>
+<p>Utilize generative AI to assist in compositing and ideation.</p>
+<p><strong>Week 09</strong></p>
+<p>Finish the final product, ensuring adhered to project intentions.</p>
+<p><strong>Week 10</strong></p>
+<p>Adjustments based on feedback.</p>
+<ul>
+<li><strong>Output:</strong></li>
+</ul>
+<p>This is a strong schedule — clear progression from research → tool build → pipeline integration → final polish. It fits your design intent really well.</p>
+<p>A few tweaks would make it even stronger:</p>
+<p>Week 04 split into milestones</p>
+<p>Add a hard checkpoint like: “By end of Week 04: stable base frost tool with 3 controls (density, branch length, spread).”</p>
+<p>This protects Week 05 from becoming “still debugging core behavior.”</p>
+<p>Week 06 define success criteria for AI usage</p>
+<p>Add 2-3 “allowed/target uses” you’ll test (ex: lighting ideation, matte paint exploration, playblast look-dev).</p>
+<p>Add one line for “what I will reject” (anything replacing final authored output), so you stay aligned with your intent.</p>
+<p>Week 07–08 include comparison output</p>
+<p>Plan to produce side-by-side tests: no-AI pass vs AI-assisted pass.</p>
+<p>This will help you answer your quarter question with evidence, not just impressions.</p>
+<p>Week 09 add buffer</p>
+<p>Keep 1-2 days only for render failures / comp fixes, since this is where unexpected issues usually appear.</p>
+<p>Week 10 lock deliverables</p>
+<p>Define exact final package now: final still/sequence, tool demo, short process writeup, and AI-use reflection.</p>
+<p>Makes feedback adjustments faster because scope is already fixed.</p>
+<p>If you want, I can turn this into a clean week-by-week roadmap section you can paste directly into your week-03.md or prd.md.</p>
+<ul>
+<li><strong>Decision:</strong> Applied feedback and added specifications per week and software.</li>
+<li><strong>Tag:</strong> @shift</li>
+<li><strong>Prompt:</strong> Create an L system in Houdini</li>
+<li><strong>Output:</strong></li>
+</ul>
+<p>// L-system expand + turtle (XZ plane)</p>
+<p>string axiom = chs(&quot;axiom&quot;);</p>
+<p>int iters = chi(&quot;iterations&quot;);</p>
+<p>float step = chf(&quot;step&quot;);</p>
+<p>float ang = radians(chf(&quot;angle&quot;));</p>
+<p>string ruleF = chs(&quot;rule_F&quot;);</p>
+<p>string ruleX = chs(&quot;rule_X&quot;);</p>
+<p>int max_chars = chi(&quot;max_chars&quot;);</p>
+<p>// --- Expand ---</p>
+<p>string s = axiom;</p>
+<p>for (int n = 0; n &lt; iters; n++)</p>
+<p>{</p>
+<p>string next = &quot;&quot;;</p>
+<p>int L = len(s);</p>
+<p>```</p>
+<p>for (int i = 0; i &lt; L; i++)</p>
+<p>{</p>
+<p>string c = substr(s, i, 1);</p>
+<p>if (c == &quot;F&quot;)</p>
+<p>next += ruleF;</p>
+<p>else if (c == &quot;X&quot; &amp;&amp; len(ruleX) &gt; 0)</p>
+<p>next += ruleX;</p>
+<p>else</p>
+<p>next += c;</p>
+<p>}</p>
+<p>s = next;</p>
+<p>if (len(s) &gt; max_chars)</p>
+<p>{</p>
+<p>printf(&quot;WARNING: L-system string exceeded max_chars=%d. Stopping expansion.\n&quot;, max_chars);</p>
+<p>break;</p>
+<p>}</p>
+<p>```</p>
+<p>}</p>
+<p>// --- Turtle ---</p>
+<p>vector P = {0, 0, 0};</p>
+<p>// Orientation as quaternion (identity)</p>
+<p>vector4 q = {0, 0, 0, 1};</p>
+<p>// Stack for &#x27;[&#x27; ... &#x27;]&#x27;</p>
+<p>vector Pstk[];</p>
+<p>vector4 qstk[];</p>
+<p>// Local forward in XZ plane (starts aiming +Z)</p>
+<p>vector fwd0 = {0, 0, 1};</p>
+<p>// Rotate around +Y for + / -</p>
+<p>vector upv = {0, 1, 0};</p>
+<p>int L2 = len(s);</p>
+<p>for (int i = 0; i &lt; L2; i++)</p>
+<p>{</p>
+<p>string c = substr(s, i, 1);</p>
+<p>```</p>
+<p>if (c == &quot;F&quot;)</p>
+<p>{</p>
+<p>vector f = normalize(qrotate(q, fwd0));</p>
+<p>vector P1 = P + f * step;</p>
+<p>int a = addpoint(0, P);</p>
+<p>int b = addpoint(0, P1);</p>
+<p>addprim(0, &quot;polyline&quot;, a, b);</p>
+<p>P = P1;</p>
+<p>}</p>
+<p>else if (c == &quot;+&quot;)</p>
+<p>{</p>
+<p>q = qmultiply(q, quaternion(ang, upv));</p>
+<p>}</p>
+<p>else if (c == &quot;-&quot;)</p>
+<p>{</p>
+<p>q = qmultiply(q, quaternion(-ang, upv));</p>
+<p>}</p>
+<p>else if (c == &quot;[&quot;)</p>
+<p>{</p>
+<p>append(Pstk, P);</p>
+<p>append(qstk, q);</p>
+<p>}</p>
+<p>else if (c == &quot;]&quot;)</p>
+<p>{</p>
+<p>int n = len(Pstk);</p>
+<p>if (n &gt; 0)</p>
+<p>{</p>
+<p>n -= 1;</p>
+<p>P = Pstk[n];</p>
+<p>q = qstk[n];</p>
+<p>resize(Pstk, n);</p>
+<p>resize(qstk, n);</p>
+<p>}</p>
+<p>}</p>
+<p>// Ignore other symbols (common: X is structural only)</p>
+<p>```</p>
+<p>}</p>
+<ul>
+<li><strong>Decision:</strong> Returned error message, syntax wrong. Fed error message into chat</li>
+<li><strong>Tag:</strong> @resist</li>
+<li><strong>Prompt:</strong> Error message</li>
+<li><strong>Output:</strong></li>
+</ul>
+<p>// L-system expand + turtle (XZ plane)</p>
+<p>// Run Over: Detail</p>
+<p>string axiom = chs(&quot;axiom&quot;);</p>
+<p>int iters = chi(&quot;iterations&quot;);</p>
+<p>float step = chf(&quot;step&quot;);</p>
+<p>float ang = radians(chf(&quot;angle&quot;));</p>
+<p>string ruleF = chs(&quot;rule_F&quot;);</p>
+<p>string ruleX = chs(&quot;rule_X&quot;);</p>
+<p>int max_chars = chi(&quot;max_chars&quot;);</p>
+<p>// --- helpers: codepoints ---</p>
+<p>int ASC_F = 70;</p>
+<p>int ASC_X = 88;</p>
+<p>int ASC_PLUS = 43;</p>
+<p>int ASC_MINUS = 45;</p>
+<p>int ASC_LB = 91;  // &#x27;[&#x27;</p>
+<p>int ASC_RB = 93;  // &#x27;]&#x27;</p>
+<p>// --- Expand ---</p>
+<p>string s = axiom;</p>
+<p>for (int n = 0; n &lt; iters; n++)</p>
+<p>{</p>
+<p>int codes[] = utf8_decode(s);</p>
+<p>string next = &quot;&quot;;</p>
+<p>```</p>
+<p>foreach (int cp; codes)</p>
+<p>{</p>
+<p>if (cp == ASC_F)</p>
+<p>next += ruleF;</p>
+<p>else if (cp == ASC_X &amp;&amp; len(ruleX) &gt; 0)</p>
+<p>next += ruleX;</p>
+<p>else</p>
+<p>next += chr(cp);</p>
+<p>}</p>
+<p>s = next;</p>
+<p>if (len(s) &gt; max_chars)</p>
+<p>{</p>
+<p>printf(&quot;WARNING: L-system string exceeded max_chars=%d. Stopping expansion.\n&quot;, max_chars);</p>
+<p>break;</p>
+<p>}</p>
+<p>```</p>
+<p>}</p>
+<p>// --- Turtle ---</p>
+<p>vector P = {0, 0, 0};</p>
+<p>vector4 q = {0, 0, 0, 1}; // identity quaternion</p>
+<p>vector Pstk[];</p>
+<p>vector4 qstk[];</p>
+<p>vector fwd0 = {0, 0, 1};</p>
+<p>vector upv  = {0, 1, 0};</p>
+<p>int codes2[] = utf8_decode(s);</p>
+<p>foreach (int cp; codes2)</p>
+<p>{</p>
+<p>if (cp == ASC_F)</p>
+<p>{</p>
+<p>vector f = normalize(qrotate(q, fwd0));</p>
+<p>vector P1 = P + f * step;</p>
+<p>```</p>
+<p>int a = addpoint(0, P);</p>
+<p>int b = addpoint(0, P1);</p>
+<p>addprim(0, &quot;polyline&quot;, a, b);</p>
+<p>P = P1;</p>
+<p>}</p>
+<p>else if (cp == ASC_PLUS)</p>
+<p>{</p>
+<p>q = qmultiply(q, quaternion(ang, upv));</p>
+<p>}</p>
+<p>else if (cp == ASC_MINUS)</p>
+<p>{</p>
+<p>q = qmultiply(q, quaternion(-ang, upv));</p>
+<p>}</p>
+<p>else if (cp == ASC_LB)</p>
+<p>{</p>
+<p>append(Pstk, P);</p>
+<p>append(qstk, q);</p>
+<p>}</p>
+<p>else if (cp == ASC_RB)</p>
+<p>{</p>
+<p>int n = len(Pstk);</p>
+<p>if (n &gt; 0)</p>
+<p>{</p>
+<p>n -= 1;</p>
+<p>P = Pstk[n];</p>
+<p>q = qstk[n];</p>
+<p>resize(Pstk, n);</p>
+<p>resize(qstk, n);</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p>}</p>
+<ul>
+<li><strong>Decision:</strong> Syntax still wrong, gave another error message. Addressed most of errors from last time.</li>
+<li><strong>Tag:</strong> @resist</li>
+<li><strong>Prompt:</strong> Error message</li>
+<li><strong>Output:</strong></li>
+</ul>
+<p>// L-system expand + turtle (XZ plane)</p>
+<p>// Run Over: Detail</p>
+<p>string axiom = chs(&quot;axiom&quot;);</p>
+<p>int iters = chi(&quot;iterations&quot;);</p>
+<p>float step = chf(&quot;step&quot;);</p>
+<p>float ang = radians(chf(&quot;angle&quot;));</p>
+<p>string ruleF = chs(&quot;rule_F&quot;);</p>
+<p>string ruleX = chs(&quot;rule_X&quot;);</p>
+<p>int max_chars = chi(&quot;max_chars&quot;);</p>
+<p>// --- Expand ---</p>
+<p>string s = axiom;</p>
+<p>for (int n = 0; n &lt; iters; n++)</p>
+<p>{</p>
+<p>string next = &quot;&quot;;</p>
+<p>string rest = s;</p>
+<p>```</p>
+<p>while (len(rest) &gt; 0)</p>
+<p>{</p>
+<p>string c = re_find(rest, &quot;^.&quot;);</p>
+<p>if (len(c) == 0)</p>
+<p>break;</p>
+<p>rest = re_replace(rest, &quot;^.&quot;, &quot;&quot;);</p>
+<p>if (c == &quot;F&quot;)</p>
+<p>next += ruleF;</p>
+<p>else if (c == &quot;X&quot; &amp;&amp; len(ruleX) &gt; 0)</p>
+<p>next += ruleX;</p>
+<p>else</p>
+<p>next += c;</p>
+<p>}</p>
+<p>s = next;</p>
+<p>if (len(s) &gt; max_chars)</p>
+<p>{</p>
+<p>printf(&quot;WARNING: L-system string exceeded max_chars=%d. Stopping expansion.\n&quot;, max_chars);</p>
+<p>break;</p>
+<p>}</p>
+<p>```</p>
+<p>}</p>
+<p>// --- Turtle ---</p>
+<p>vector P = {0, 0, 0};</p>
+<p>vector4 q = {0, 0, 0, 1}; // identity quaternion</p>
+<p>vector Pstk[];</p>
+<p>vector4 qstk[];</p>
+<p>vector fwd0 = {0, 0, 1};</p>
+<p>vector upv  = {0, 1, 0};</p>
+<p>string rest2 = s;</p>
+<p>while (len(rest2) &gt; 0)</p>
+<p>{</p>
+<p>string c = re_find(rest2, &quot;^.&quot;);</p>
+<p>if (len(c) == 0)</p>
+<p>break;</p>
+<p>```</p>
+<p>rest2 = re_replace(rest2, &quot;^.&quot;, &quot;&quot;);</p>
+<p>if (c == &quot;F&quot;)</p>
+<p>{</p>
+<p>vector f = normalize(qrotate(q, fwd0));</p>
+<p>vector P1 = P + f * step;</p>
+<p>int a = addpoint(0, P);</p>
+<p>int b = addpoint(0, P1);</p>
+<p>addprim(0, &quot;polyline&quot;, a, b);</p>
+<p>P = P1;</p>
+<p>}</p>
+<p>else if (c == &quot;+&quot;)</p>
+<p>{</p>
+<p>q = qmultiply(q, quaternion(ang, upv));</p>
+<p>}</p>
+<p>else if (c == &quot;-&quot;)</p>
+<p>{</p>
+<p>q = qmultiply(q, quaternion(-ang, upv));</p>
+<p>}</p>
+<p>else if (c == &quot;[&quot;)</p>
+<p>{</p>
+<p>append(Pstk, P);</p>
+<p>append(qstk, q);</p>
+<p>}</p>
+<p>else if (c == &quot;]&quot;)</p>
+<p>{</p>
+<p>int n = len(Pstk);</p>
+<p>if (n &gt; 0)</p>
+<p>{</p>
+<p>n -= 1;</p>
+<p>P = Pstk[n];</p>
+<p>q = qstk[n];</p>
+<p>resize(Pstk, n);</p>
+<p>resize(qstk, n);</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<p>}</p>
+<ul>
+<li><strong>Decision:</strong> No error message, but code does not function. Will likely need to give more specific instrucitons, sample code, and work through slower instead of a complex prompt from the start.</li>
+<li><strong>Tag:</strong> @shift @resist</li>
+</ul>
+<h3>What I Learned</h3>
+<p>Preparation for entering production of tool. Go slower and simpler with prompts for VEX.</p>
+<h3>Quarter Question Connection</h3>
+<p>Researching softwares and organizing/planning workflow.</p>
+<h3>What&#x27;s Next</h3>
+<p>Begin to apply research and generate code for frost procedural algorithmic generation tool.</p>
+<h2>Week 3, Session 1 — 04/07/26</h2>
+<h3>What I Did</h3>
+<p>This session, I mainly researched practitioners in the VFX industry who have implemented similar technologies to my desired project. I looked for practitioners in three different specialties:</p>
+<ul>
+<li>One who has created generated frost before in VEX - with or without Claude</li>
+<li>One who has used ClaudeAI in Houdini VEX to generate visuals</li>
+<li>One who has used ComfyUI specifically for VFX pipelines</li>
+</ul>
+<p>I also organized my research, directories, and intentions for this project, using AI to help ideate explanations to later go back and adjust with my own specifications.</p>
+<p>I also worked briefly on the prototype for the Frost code.</p>
+<h3>AI Interactions</h3>
+<ul>
+<li><strong>Prompt:</strong> can you call back to the code we made to generate a line in houdini with 5 points on it, and lines interpolated onto those points?</li>
+<li><strong>Output:</strong> Claude pulled up the previous code:</li>
+</ul>
+<p>// Detail Wrangle</p>
+<p>vector p0 = chv(&quot;point0&quot;);</p>
+<p>vector p1 = chv(&quot;point1&quot;);</p>
+<p>vector up = chv(&quot;up&quot;);</p>
+<p>float branch_len = chf(&quot;branch_length&quot;);</p>
+<p>const int interior = 5;</p>
+<p>int stem_pts[];</p>
+<p>vector stem_pos[];</p>
+<p>append(stem_pts, addpoint(0, p0));</p>
+<p>append(stem_pos, p0);</p>
+<p>for (int i = 1; i &lt;= interior; i++) {</p>
+<p>float t = float(i) / float(interior + 1);</p>
+<p>vector p = lerp(p0, p1, t);</p>
+<p>append(stem_pts, addpoint(0, p));</p>
+<p>append(stem_pos, p);</p>
+<p>}</p>
+<p>append(stem_pts, addpoint(0, p1));</p>
+<p>append(stem_pos, p1);</p>
+<p>// main stem</p>
+<p>int stem = addprim(0, &quot;polyline&quot;, stem_pts[0], stem_pts[1]);</p>
+<p>for (int i = 2; i &lt; len(stem_pts); i++) addvertex(0, stem, stem_pts[i]);</p>
+<p>// branch lines on each interior point</p>
+<p>vector tangent = normalize(p1 - p0);</p>
+<p>vector side = normalize(cross(up, tangent));</p>
+<p>for (int i = 1; i &lt;= interior; i++) {</p>
+<p>vector c = stem_pos[i];</p>
+<p>int a = addpoint(0, c - side * branch_len);</p>
+<p>int b = addpoint(0, c + side * branch_len);</p>
+<p>addprim(0, &quot;polyline&quot;, a, b);</p>
+<p>}</p>
+<ul>
+<li><strong>Decision:</strong> I wanted to continue adjusting and adding parameters</li>
+<li><strong>Tag:</strong> @shift</li>
+<li><strong>Prompt:</strong> can you make the orientation/rotation of the interpolated lines adjustable? like frost</li>
+<li><strong>Output:</strong> Claude adjusted the previous code:</li>
+</ul>
+<p>// ----- Inputs / controls -----</p>
+<p>vector p0 = chv(&quot;point0&quot;);</p>
+<p>vector p1 = chv(&quot;point1&quot;);</p>
+<p>vector up = normalize(chv(&quot;up&quot;));               // reference up, e.g. {0,1,0}</p>
+<p>int   interior      = chi(&quot;interior_points&quot;);   // e.g. 5</p>
+<p>float branch_len    = chf(&quot;branch_length&quot;);     // branch size</p>
+<p>float roll_deg      = chf(&quot;roll&quot;);              // rotates branch plane around stem</p>
+<p>float spread_deg    = chf(&quot;spread&quot;);            // opening angle away from perpendicular</p>
+<p>float twist_total   = chf(&quot;twist_total&quot;);       // extra roll from start-&gt;end</p>
+<p>float rand_amp_deg  = chf(&quot;random_angle&quot;);      // random jitter per point</p>
+<p>int   seed          = chi(&quot;seed&quot;);</p>
+<p>// ----- Build stem points -----</p>
+<p>int stem_pts[];</p>
+<p>vector stem_pos[];</p>
+<p>append(stem_pts, addpoint(0, p0));</p>
+<p>append(stem_pos, p0);</p>
+<p>for (int i = 1; i &lt;= interior; i++)</p>
+<p>{</p>
+<p>float t = float(i) / float(interior + 1);</p>
+<p>vector p = lerp(p0, p1, t);</p>
+<p>append(stem_pts, addpoint(0, p));</p>
+<p>append(stem_pos, p);</p>
+<p>}</p>
+<p>append(stem_pts, addpoint(0, p1));</p>
+<p>append(stem_pos, p1);</p>
+<p>// Stem polyline</p>
+<p>int stem = addprim(0, &quot;polyline&quot;, stem_pts[0], stem_pts[1]);</p>
+<p>for (int i = 2; i &lt; len(stem_pts); i++)</p>
+<p>addvertex(0, stem, stem_pts[i]);</p>
+<p>// ----- Stable local frame -----</p>
+<p>vector tangent = normalize(p1 - p0);</p>
+<p>// If up is parallel to tangent, pick fallback axis</p>
+<p>if (abs(dot(up, tangent)) &gt; 0.999)</p>
+<p>up = {1,0,0};</p>
+<p>vector side = normalize(cross(up, tangent));    // local X</p>
+<p>vector nrm  = normalize(cross(tangent, side));  // local Y</p>
+<p>// ----- Branches on interior points -----</p>
+<p>for (int i = 1; i &lt;= interior; i++)</p>
+<p>{</p>
+<p>float u = float(i) / float(interior + 1);</p>
+<p>```</p>
+<p>// Per-point orientation controls</p>
+<p>float twist_here = radians(roll_deg + twist_total * u);</p>
+<p>float jitter     = radians(fit01(rand(set(i, seed, 17.123)), -rand_amp_deg, rand_amp_deg));</p>
+<p>float rotA       = twist_here + jitter;</p>
+<p>// Rotate side/nrm around stem tangent (quaternion)</p>
+<p>vector4 q = quaternion(rotA, tangent);</p>
+<p>vector side_r = qrotate(q, side);</p>
+<p>vector nrm_r  = qrotate(q, nrm);</p>
+<p>// Spread tilts branches toward +tangent / -tangent</p>
+<p>float s = radians(spread_deg);</p>
+<p>vector dirL = normalize(side_r * cos(s) + tangent * sin(s));</p>
+<p>vector dirR = normalize(-side_r * cos(s) + tangent * sin(s));</p>
+<p>vector c = stem_pos[i];</p>
+<p>int a = addpoint(0, c + dirL * branch_len);</p>
+<p>int b = addpoint(0, c + dirR * branch_len);</p>
+<p>addprim(0, &quot;polyline&quot;, c, a);</p>
+<p>addprim(0, &quot;polyline&quot;, c, b);</p>
+<p>```</p>
+<p>}</p>
+<ul>
+<li><strong>Decision:</strong> This returned an error message. Realized Claude needs a lot more instruction and customization, and can&#x27;t make too large of strides without breaking</li>
+<li><strong>Tag:</strong> @resist</li>
+</ul>
+<h3>What I Learned</h3>
+<p>Gathered more research and information to guide throughout project through industry practitioners. Also experimented with Claude&#x27;s limits with VEX</p>
+<h3>Quarter Question Connection</h3>
+<p>Industry-related practitioners. Claude-generated code for Frost</p>
+<h3>What&#x27;s Next</h3>
+<p>Begin to develop Frost code in-depth and guiding Claude to generate an operating tool. Use research from today in process.</p>
+</article>
+<article class="week" id="week-4">
+<p># Week 4 — Process log</p>
+<h2>Week 4, Session 2 — 04/15/26 (Wednesday)</h2>
+<h3>What I Did</h3>
+<p>This session, I continued to work on creating the frost pattern. After creating a code previously that functioned to create a small branch, I shifted to creating a system using Claude and Houdini VEX to generate the larger, repeated pattern.</p>
+<p>Throughout the process I shifted my approach several times, noticing reoccuring errors or unsatisfying visuals.</p>
+<h3>AI Interactions</h3>
+<ul>
+<li><strong>Prompt:</strong> this is the code i have right now for my frost generation. this creates one branch. i would like it to create more frost, that is laid out in units, like in the image provided. dont worry about animation right now. just think of a system to generate groups and have them laid out without intersecting</li>
+<li><strong>Output:</strong></li>
+</ul>
+<p>I’ll turn this into a clustered “frost patch” generator: multiple frost units, each built from your existing stem/branch logic, then distributed with a non-overlap layout pass so units don’t intersect. I’m going to edit `generatedFrost_V02.md` with a new static VEX version and clear parameters for group count, spacing, and layout area.I found a clean way to keep your current branch style but replicate it as many times as needed: a two-stage wrangle (1) place unit roots with rejection sampling for spacing, then (2) build one full frost unit at each accepted root with per-unit random scale/orientation. I’m applying that now in the doc so you can paste directly into Houdini.</p>
+<ul>
+<li><strong>Decision:</strong></li>
+</ul>
+<p>Claude began to edit the .md directly after this, which I had to stop it from doing as I wanted to experiment before making a new .md version</p>
+<ul>
+<li><strong>Tag:</strong> @resist</li>
+</ul>
+<h3>Quarter Question Connection</h3>
+<p>This week helped further solidify how AI coding can be used in proceduralism and customized processes in Houdini VEX. I look forward to seeing where these softwares integrate AI, especially when it comes to coding.</p>
+<h3>What&#x27;s Next</h3>
+<p>Next week, I will wrap up the generative code for creating the frost procedural system. Then I will continue to investigate using generative AI to assist in the production pipeline as I bring the project to a completed visual.</p>
+<p>---</p>
+<h2>Week 4, Session 1 — 04/14/26</h2>
+<h3>What I Did</h3>
+<p>This session, I began working on writing working VEX in Houdini for generating a single branch of frost using ClaudeAI.</p>
+<h3>AI Interactions</h3>
+<ul>
+<li><strong>Prompt:</strong></li>
+</ul>
+<p>I am making a frost generation code in houdini. Begin by creating a code that makes a simple line, this is the main line of one branch of frost. have its length customizable. and have a pscale attribute ramping, so its thinner at the tip to later be polywired.</p>
+<ul>
+<li><strong>Output:</strong></li>
+</ul>
+<p>```vex</p>
+<p>// Parameters to create on the wrangle:</p>
+<p>// float length = 1.0</p>
+<p>// int segments = 20</p>
+<p>// float pscale_root = 0.03</p>
+<p>// float pscale_tip = 0.002</p>
+<p>// ramp  pscale_ramp (0-&gt;1 along line)</p>
+<p>float length      = chf(&quot;length&quot;);</p>
+<p>int   segments    = chi(&quot;segments&quot;);</p>
+<p>float pscale_root = chf(&quot;pscale_root&quot;);</p>
+<p>float pscale_tip  = chf(&quot;pscale_tip&quot;);</p>
+<p>segments = max(1, segments);</p>
+<p>// Create one polyline primitive</p>
+<p>int prim = addprim(0, &quot;polyline&quot;);</p>
+<p>for (int i = 0; i &lt;= segments; i++)</p>
+<p>{</p>
+<p>float u = float(i) / float(segments);   // 0 at root, 1 at tip</p>
+<p>vector pos = set(u * length, 0, 0);     // line along +X</p>
+<p>int pt = addpoint(0, pos);</p>
+<p>addvertex(0, prim, pt);</p>
+<p>// Ramp controls profile shape; base-&gt;tip values define absolute thickness range</p>
+<p>float r = chramp(&quot;pscale_ramp&quot;, u);</p>
+<p>float pscale = lerp(pscale_root, pscale_tip, r);</p>
+<p>setpointattrib(0, &quot;pscale&quot;, pt, pscale, &quot;set&quot;);</p>
+<p>}</p>
+<p>```</p>
+<ul>
+<li><strong>Decision:</strong> This worked, and I continued to add on to this line. I fell into a repetition momentarily of slowly adding to this code, until it broke.</li>
+<li><strong>Tag:</strong> @default</li>
+<li><strong>Prompt:</strong></li>
+</ul>
+<p>awesome. now, in the same wrangle, adjust it to add branches to each segment point along it, like how frost has branches coming off the main stem. these should also be adjustable</p>
+<ul>
+<li><strong>Output:</strong></li>
+</ul>
+<p>```vex</p>
+<p>// DETAIL WRANGLE (Run Over: Detail only once)</p>
+<p>//</p>
+<p>// Create these parameters:</p>
+<p>//</p>
+<p>// Main stem</p>
+<p>// float length = 1.0</p>
+<p>// int   segments = 20</p>
+<p>// float pscale_root = 0.03</p>
+<p>// float pscale_tip  = 0.002</p>
+<p>// ramp  pscale_ramp</p>
+<p>//</p>
+<p>// Branches</p>
+<p>// int   branch_points_start = 1      // first stem segment index that can branch</p>
+<p>// int   branch_points_end   = 20     // last stem segment index that can branch</p>
+<p>// int   branches_per_point  = 2</p>
+<p>// float branch_length       = 0.2</p>
+<p>// float branch_length_rand  = 0.5    // 0-1, % variation</p>
+<p>// int   branch_segments     = 4</p>
+<p>// float branch_angle_deg    = 45.0   // away from stem</p>
+<p>// float branch_angle_rand   = 20.0   // random angle variation</p>
+<p>// float twist_rand_deg      = 180.0  // random spin around stem axis</p>
+<p>// int   seed                = 1234</p>
+<p>//</p>
+<p>// Branch thickness</p>
+<p>// float branch_pscale_mult_root = 0.6</p>
+<p>// float branch_pscale_mult_tip  = 0.5</p>
+<p>float length      = chf(&quot;length&quot;);</p>
+<p>int   segments    = max(1, chi(&quot;segments&quot;));</p>
+<p>float p_root      = chf(&quot;pscale_root&quot;);</p>
+<p>float p_tip       = chf(&quot;pscale_tip&quot;);</p>
+<p>int bstart        = chi(&quot;branch_points_start&quot;);</p>
+<p>int bend          = chi(&quot;branch_points_end&quot;);</p>
+<p>int bpp           = max(0, chi(&quot;branches_per_point&quot;));</p>
+<p>float b_len_base  = chf(&quot;branch_length&quot;);</p>
+<p>float b_len_rand  = max(0.0, chf(&quot;branch_length_rand&quot;));</p>
+<p>int bsegs         = max(1, chi(&quot;branch_segments&quot;));</p>
+<p>float b_ang       = radians(chf(&quot;branch_angle_deg&quot;));</p>
+<p>float b_ang_rand  = radians(chf(&quot;branch_angle_rand&quot;));</p>
+<p>float twist_rand  = radians(chf(&quot;twist_rand_deg&quot;));</p>
+<p>int seed          = chi(&quot;seed&quot;);</p>
+<p>float b_pmul_root = chf(&quot;branch_pscale_mult_root&quot;);</p>
+<p>float b_pmul_tip  = chf(&quot;branch_pscale_mult_tip&quot;);</p>
+<p>// Build stem points first so we can branch from them</p>
+<p>int stem_pts[];</p>
+<p>resize(stem_pts, segments + 1);</p>
+<p>for (int i = 0; i &lt;= segments; i++)</p>
+<p>{</p>
+<p>float u = float(i) / float(segments);</p>
+<p>vector pos = set(u * length, 0, 0); // stem along +X</p>
+<p>int pt = addpoint(0, pos);</p>
+<p>stem_pts[i] = pt;</p>
+<p>float r = chramp(&quot;pscale_ramp&quot;, u);</p>
+<p>float pscale = lerp(p_root, p_tip, r);</p>
+<p>setpointattrib(0, &quot;pscale&quot;, pt, pscale, &quot;set&quot;);</p>
+<p>}</p>
+<p>// Create stem polyline</p>
+<p>int stem_prim = addprim(0, &quot;polyline&quot;);</p>
+<p>for (int i = 0; i &lt;= segments; i++)</p>
+<p>{</p>
+<p>addvertex(0, stem_prim, stem_pts[i]);</p>
+<p>}</p>
+<p>// Clamp branch range to valid segment indices</p>
+<p>bstart = clamp(bstart, 1, segments);</p>
+<p>bend   = clamp(bend,   1, segments);</p>
+<p>if (bend &lt; bstart)</p>
+<p>{</p>
+<p>int tmp = bstart;</p>
+<p>bstart = bend;</p>
+<p>bend = tmp;</p>
+<p>}</p>
+<p>// Branches from each chosen stem point</p>
+<p>for (int i = bstart; i &lt;= bend; i++)</p>
+<p>{</p>
+<p>vector rootP = point(0, &quot;P&quot;, stem_pts[i]);</p>
+<p>// stem-local thickness at this point</p>
+<p>float uStem = float(i) / float(segments);</p>
+<p>float rStem = chramp(&quot;pscale_ramp&quot;, uStem);</p>
+<p>float stem_pscale_here = lerp(p_root, p_tip, rStem);</p>
+<p>for (int b = 0; b &lt; bpp; b++)</p>
+<p>{</p>
+<p>float h = rand(set(i, b, seed));</p>
+<p>// length variation</p>
+<p>float len_jit = fit01(rand(set(i, b, seed + 17)),</p>
+<p>1.0 - b_len_rand,</p>
+<p>1.0 + b_len_rand);</p>
+<p>float blen = max(1e-4, b_len_base * len_jit);</p>
+<p>// random side: +Y or -Y</p>
+<p>float side = (rand(set(i, b, seed + 31)) &lt; 0.5) ? -1.0 : 1.0;</p>
+<p>// base direction roughly perpendicular to stem (+/-Y)</p>
+<p>vector dir = normalize(set(0, side, 0));</p>
+<p>// tilt away from stem by branch_angle around Z</p>
+<p>matrix3 m_tilt = ident();</p>
+<p>rotate(m_tilt, side * b_ang, set(0,0,1));</p>
+<p>dir *= m_tilt;</p>
+<p>// random extra angle around Z</p>
+<p>float a_jit = fit01(rand(set(i, b, seed + 47)), -b_ang_rand, b_ang_rand);</p>
+<p>matrix3 m_jit = ident();</p>
+<p>rotate(m_jit, a_jit, set(0,0,1));</p>
+<p>dir *= m_jit;</p>
+<p>// random twist around stem axis (X)</p>
+<p>float t = fit01(rand(set(i, b, seed + 59)), -twist_rand, twist_rand);</p>
+<p>matrix3 m_twist = ident();</p>
+<p>rotate(m_twist, t, set(1,0,0));</p>
+<p>dir *= m_twist;</p>
+<p>dir = normalize(dir);</p>
+<p>// Build one branch polyline, rooted on stem point</p>
+<p>int bprim = addprim(0, &quot;polyline&quot;);</p>
+<p>for (int j = 0; j &lt;= bsegs; j++)</p>
+<p>{</p>
+<p>float ub = float(j) / float(bsegs);</p>
+<p>vector p = rootP + dir * (ub * blen);</p>
+<p>int bpt;</p>
+<p>if (j == 0)</p>
+<p>{</p>
+<p>// Reuse stem point so branch is welded to stem</p>
+<p>bpt = stem_pts[i];</p>
+<p>}</p>
+<p>else</p>
+<p>{</p>
+<p>bpt = addpoint(0, p);</p>
+<p>// branch pscale tapers using same ramp</p>
+<p>float rb = chramp(&quot;pscale_ramp&quot;, ub);</p>
+<p>float bp_root = stem_pscale_here * b_pmul_root;</p>
+<p>float bp_tip  = stem_pscale_here * b_pmul_tip;</p>
+<p>float bpscale = lerp(bp_root, bp_tip, rb);</p>
+<p>setpointattrib(0, &quot;pscale&quot;, bpt, bpscale, &quot;set&quot;);</p>
+<p>}</p>
+<p>addvertex(0, bprim, bpt);</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>```</p>
+<ul>
+<li><strong>Decision:</strong> This began the pattern of code with syntax errors or problems with geometry generation.</li>
+<li><strong>Tag:</strong> @resist</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong></li>
+</ul>
+<p>they are still all converging. its not a viewport thing. try simply interpolating lines along each of the points. they should be parallel</p>
+<ul>
+<li><strong>Output (summary — full revised VEX not saved in this log):</strong> The model changed how branch directions were built so side branches read as parallel offsets along the stem instead of collapsing toward one meeting point. That fixed the convergence in the viewport. <strong>Tradeoff:</strong> the new version did not keep a clean line on the far end of the main stem (tip segment / topology), so I continued with smaller follow-up prompts to patch that.</li>
+<li><strong>Decision:</strong> I moved forward with this method of generation and began fixing its errors slowly with specific prompts and customizing further.</li>
+<li><strong>Tag:</strong> @shift</li>
+<li><strong>Prompt:</strong></li>
+</ul>
+<p>is it possible to turn this generated small branch of frost into an animated frost, so it is growing and generating these branches. similar to these videos</p>
+<ul>
+<li><strong>Output (conceptual plan — no implementation in this exchange):</strong></li>
+</ul>
+<p>Yes, it’s absolutely possible, and your wrangle is a good base for it. You don’t have to throw the setup away—you add a time-driven “growth” control and tie geometry to that.</p>
+<p>Idea in plain terms</p>
+<p>One scalar over time — e.g. growth from 0 → 1 across the shot (from $FF, $T, or a CHOP/channel). That number is “how far along the frost the growth has reached.”</p>
+<p>Stem first — only draw the main polyline up to the point where t &lt;= growth (or fade in points by distance along the stem).</p>
+<p>Branches after the stem passes — for each branch at stem parameter t_stem, only show it (or only extend its length) when growth has passed that t_stem. You can ease with a small overlap so the tip of the stem arrives slightly before the side arms pop.</p>
+<p>Optional “stretch” — multiply each branch’s this_len by a factor like smooth(0,1, (growth - t_stem) / width) so arms grow outward over a few frames instead of appearing at full length.</p>
+<p>All of that is just extra if / max / lerp / smooth logic around the loops you already have—same directions, same ramps, same jitter.</p>
+<ul>
+<li><strong>Decision:</strong> I reviewed this plan, which makes sense, but wanted to see it in action with the code prior. There are a few things I would do differently, such as using $FF instead of keyframing it for control.</li>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<h3>What I Learned</h3>
+<ul>
+<li>VEX detail wrangles that build geometry in one pass are powerful, but small ordering mistakes (branch range, tangent frames, welding vs new points) show up immediately in the viewport as “wrong” topology.</li>
+<li>When branches looked like they were converging, the fix was not viewport settings—it was revisiting how directions were constructed (parallel offsets along the stem vs ad-hoc rotations).</li>
+<li>Planning growth as a single scalar over time (`growth` 0→1) is straightforward in theory; implementing it cleanly means deciding *when* each knot appears and how tip behavior is handled (I noted the tip-timing issue for later patches like in `generatedFrost_V02.md`).</li>
+</ul>
+<h3>Quarter Question Connection</h3>
+<p>This week’s work sits directly under *What happens when generated code and AI-assisted imagery are used to streamline VFX production?* The AI is acting as a coding partner for procedural Houdini setup—faster iteration on VEX—but the artistic and technical decisions (parallel branches, growth order, what “wrong” looks like) stay mine. The friction (syntax errors, convergence bugs) is part of the record: generated code still needs testing and reframing in the actual DCC context.</p>
+<h3>What&#x27;s Next</h3>
+<ul>
+<li>Solidify the single-branch frost wrangle with growth animation (`generatedFrost_V02.md`) and PolyWire look-dev.</li>
+<li>Pivot from “one hero branch” to <strong>pattern / layout</strong>: many frost units from scatter, spacing, and non-intersection—documented in [`GenerativeFrost_PatternGeneration_V04.md`](../p1-GeneratedFrost/GenerativeFrost_PatternGeneration_V04.md) and [`code/frost_wrangle_*.vfl`](../p1-GeneratedFrost/code/) (V01–V03 are earlier pattern iterations).</li>
+<li>Keep a short log of prompts that *failed* vs *worked* so Week 05 art-direction controls are grounded in what the code can actually support.</li>
+</ul>
+</article>
+<article class="week" id="week-5">
+<p># Week 5 - Process log</p>
+<p>---</p>
+<h2>What I Did</h2>
+<p>This week was dedicated to finishing the Claude-generated code for the Houdini VEX Frost generation code.</p>
+<p>I polished up the code, and then began using it to create a visual. In order to do this, I inquired with Claude what parameter customizations can be best used to achieve my desired layout of frost. After using it&#x27;s reccomendations, I then further customized the tool to generate a desired animation and procedural generation of frost.</p>
+<p>From there, I began ideating for how to develop the final visual outcome. I began using different image generation models in Gemini, ChatGPT, and Claude, to brainstorm composition ideas.</p>
+<p>I intend to continue ideating using ComfyUI.</p>
+<h2>Leverage Points</h2>
+<ul>
+<li><strong>Surface Orientation</strong></li>
+</ul>
+<p>This orients the frost to the surface the user inputs, making it realistically lie on the artists chosen geometry. It is a small and necessary detail, but complex to get functioning correctly, since it relies on calculating inputted normals and calculating them correctly with the equations to generate branches.</p>
+<p>// Robust orientation: sample normal from source surface on input 1</p>
+<p>int srcprim = -1;</p>
+<p>vector srcuv = {0,0,0};</p>
+<p>float dsrc = xyzdist(1, Pi, srcprim, srcuv);</p>
+<p>vector Np = {0,1,0};</p>
+<p>if (srcprim &gt;= 0)</p>
+<p>Np = normalize(prim_normal(1, srcprim, srcuv.x, srcuv.y));</p>
+<p>if (length2(Np) &lt; 1e-8)</p>
+<p>Np = {0,1,0};</p>
+<p>// Local tangent basis on the source surface</p>
+<p>vector ref = (abs(dot(Np, {0,1,0})) &lt; 0.99) ? set(0,1,0) : set(1,0,0);</p>
+<p>vector Tx = normalize(cross(Np, ref));</p>
+<p>vector Tz = normalize(cross(Np, Tx));</p>
+<ul>
+<li><strong>Gap Multiplier</strong></li>
+</ul>
+<p>This generates the parameter that lets the user control the gap between frost chunks. This code is not only fragile and easy to break, but can greatly determine the overall appearance as decided by the artist.</p>
+<p>float tight = 1.0 / gap_mult;</p>
+<p>float max_len       = max(d1 * 0.48 * tight, 1e-4);</p>
+<p>float min_len       = d1 * 0.20;</p>
+<p>float clearance     = max(d1 * 0.22 * gap_mult, d1 * 0.03);</p>
+<p>float safety_margin = max(d1 * 0.08 * gap_mult, d1 * 0.01);</p>
+<p>float search_radius = d1 * 2.2;</p>
+<ul>
+<li><strong>Generation Randomization</strong></li>
+</ul>
+<p>This is not a user input, but is just as important, as it does the opposite of artist tools: Provides randomization in order to avoid a generated and unnatural appearance. Generates random number to interpolate with base position of main branches in each chunk.</p>
+<p>// Balanced stagger shaping (avoids end pile-up)</p>
+<p>float phase = rand(set(i, seed, 9001));</p>
+<p>float p = phase;</p>
+<p>if (unit_stagger &gt; 1.0)</p>
+<p>{</p>
+<p>float invk = 1.0 / unit_stagger;</p>
+<p>if (p &lt; 0.5) p = 0.5 * pow(p * 2.0, invk);</p>
+<p>else         p = 1.0 - 0.5 * pow((1.0 - p) * 2.0, invk);</p>
+<p>}</p>
+<p>else</p>
+<p>{</p>
+<p>p = pow(p, unit_stagger);</p>
+<p>}</p>
+<p>float start_max = fit(clamp(unit_stagger, 1.0, 8.0), 1.0, 8.0, 0.72, 0.90);</p>
+<p>float point_start = p * start_max;</p>
+<p>float local_span = fit(clamp(unit_stagger, 1.0, 8.0), 1.0, 8.0, 0.12, 0.08);</p>
+<ul>
+<li><strong>Growth &amp; Thickness Relation</strong></li>
+</ul>
+<p>Layering relationships between parameters and attributes during animation for more realistic and natural blend between settings. These are the small details that you do not really notice are there, but notice when they are not.</p>
+<p>float growth = clamp(chf(&quot;growth&quot;), 0.0, 1.0);</p>
+<p>float g = smooth(0.0, 1.0, growth);</p>
+<p>// ... timing code omitted ...</p>
+<p>float mature = pow(br, 0.7);</p>
+<p>// ... point loop ...</p>
+<p>float ramp_mul = chramp(&quot;pscale_ramp&quot;, u);</p>
+<p>float pnew = max(base_ps * ramp_mul * mature, 1e-4);</p>
+<p>setpointattrib(0, &quot;pscale&quot;, pts[k], pnew, &quot;set&quot;);</p>
+<h3>AI Interactions</h3>
+<h3>Week 5, Session 2 - 04/22/26</h3>
+<ul>
+<li><strong>Prompt:</strong> (gemini) this is a model of frost in a 3d software. ideate what this composition can look like rendered on a window</li>
+<li><strong>Output:</strong> Gemini Ideation V03 in ideated_images</li>
+<li><strong>Decision:</strong></li>
+<li><strong>Tag:</strong> @resist</li>
+<li><strong>Prompt:</strong> (chatgpt) this is a model of frost in a 3d software. ideate what this composition can look like rendered on a window</li>
+<li><strong>Output:</strong> Chat_Ideation_V01 in ideated_Images</li>
+<li><strong>Decision:</strong></li>
+<li><strong>Tag:</strong> @shift</li>
+<li><strong>Prompt:</strong> (figma weavy + seedance) generated a first frame, edited toward a last frame, then generated a short transition video from both frames</li>
+<li><strong>Output:</strong> `research/Figma_Weave_Seedance_TestVideo_V01`</li>
+<li><strong>Decision:</strong></li>
+<li><strong>Tag:</strong> @default</li>
+</ul>
+<p>---</p>
+<h3>Week 5, Session 1 - 04/20/26</h3>
+<p>#### AI Interactions</p>
+<ul>
+<li><strong>Prompt:</strong> The latest issue is an error with the Growth parameter. some of the branches growth works well, but other times, some branches begin having their sub branches grow PRIOR to the main branch growing. the subbranches should all only start growing once their main branch grows</li>
+<li><strong>Output:</strong></li>
+</ul>
+<p>your timing logic in Wrangle 2 is currently based on when the parent stem starts, not when the stem has grown far enough to reach the twig’s attachment point.</p>
+<p>That’s why some twigs can start early.</p>
+<p>...</p>
+<ul>
+<li><strong>Decision:</strong> I applied this fix, which worked, but it created a snapping effect</li>
+<li><strong>Tag:</strong> @default</li>
+<li><strong>Prompt:</strong> this is working, but there is a bit of a snap in the animtion on that last frost, and its movement is not as gradual as the rest when it grows its subbranches.</li>
+<li><strong>Output:</strong></li>
+</ul>
+<p>Your Wrangle 3 uses:</p>
+<p>float br = clamp((growth - gu) / max(1e-5, 1.0 - gu), 0.0, 1.0);</p>
+<p>If gu is near 1.0 (like 0.99), then 1.0 - gu is tiny, so the branch reveals very fast at the end.</p>
+<p>Fix (best result): add a minimum reveal window</p>
+<p>Use this updated Wrangle 3:</p>
+<p>// Wrangle 3 — Detail only once — carve-style growth, single parameter</p>
+<p>// Requires on each polyline prim: grow_u, rest_root, rest_tip, prim_kind</p>
+<p>float growth = clamp(chf(&quot;growth&quot;), 0.0, 1.0);</p>
+<p>// New controls</p>
+<p>float min_reveal_window = chf(&quot;min_reveal_window&quot;); // try 0.06 to 0.12</p>
+<p>float ease_power = chf(&quot;ease_power&quot;);               // try 1.0 to 1.6</p>
+<p>int npr = nprimitives(0);</p>
+<p>for (int pr = 0; pr &lt; npr; pr++)</p>
+<p>{</p>
+<p>float gu = clamp(prim(0, &quot;grow_u&quot;, pr), 0.0, 0.999);</p>
+<p>```</p>
+<p>vector rootP = prim(0, &quot;rest_root&quot;, pr);</p>
+<p>vector tipP0 = prim(0, &quot;rest_tip&quot;, pr);</p>
+<p>// Prevent ultra-short end-window snaps</p>
+<p>float window = max(1.0 - gu, min_reveal_window);</p>
+<p>float br = clamp((growth - gu) / window, 0.0, 1.0);</p>
+<p>br = smooth(0.0, 1.0, br);</p>
+<p>br = pow(br, ease_power); // optional artistic control</p>
+<p>int pts[] = primpoints(0, pr);</p>
+<p>int m = len(pts);</p>
+<p>if (m &lt; 2) continue;</p>
+<p>for (int k = 0; k &lt; m; k++)</p>
+<p>{</p>
+<p>float u = float(k) / float(m - 1);</p>
+<p>float u_clamped = min(u, br);</p>
+<p>vector Pnew = lerp(rootP, tipP0, u_clamped);</p>
+<p>setpointattrib(0, &quot;P&quot;, pts[k], Pnew, &quot;set&quot;);</p>
+<p>}</p>
+<p>```</p>
+<p>}</p>
+<p>Add these parameters to Wrangle 3:</p>
+<p>min_reveal_window (float): start at 0.08</p>
+<p>ease_power (float): start at 1.2</p>
+<ul>
+<li><strong>Decision:</strong> This created new parameters on the wrangle creating the growth animation, which I did not want - they also did not work very well.</li>
+<li><strong>Tag:</strong> @resist</li>
+<li><strong>Prompt:</strong> now the branches arent finishing, they are getting cut short before growing all the subbranches</li>
+<li><strong>Output:</strong>That happened because my previous fix could make br &lt; 1 at growth=1 for very late branches, so those branches never fully reached tip.</li>
+</ul>
+<p>Use this corrected Wrangle 3 (still only one parameter: growth):</p>
+<p>// Wrangle 3 — Detail only once — carve-style growth, single parameter</p>
+<p>// Requires on each polyline prim: grow_u, rest_root, rest_tip</p>
+<p>// Input: after Resample + Facet (Unique Points ON)</p>
+<p>float growth = clamp(chf(&quot;growth&quot;), 0.0, 1.0);</p>
+<p>// Optional global smoothing of the single growth control</p>
+<p>float g = smooth(0.0, 1.0, growth);</p>
+<p>int npr = nprimitives(0);</p>
+<p>for (int pr = 0; pr &lt; npr; pr++)</p>
+<p>{</p>
+<p>float gu = clamp(prim(0, &quot;grow_u&quot;, pr), 0.0, 0.999);</p>
+<p>```</p>
+<p>vector rootP = prim(0, &quot;rest_root&quot;, pr);</p>
+<p>vector tipP0 = prim(0, &quot;rest_tip&quot;, pr);</p>
+<p>// Guarantee a minimum reveal span by starting late branches a bit earlier,</p>
+<p>// but ALWAYS finish at growth=1.0</p>
+<p>float min_window = 0.08;</p>
+<p>float start_u = min(gu, 1.0 - min_window);   // shift start earlier if needed</p>
+<p>float window  = max(1e-5, 1.0 - start_u);    // always reaches full by end</p>
+<p>float br = clamp((g - start_u) / window, 0.0, 1.0);</p>
+<p>br = smooth(0.0, 1.0, br);</p>
+<p>int pts[] = primpoints(0, pr);</p>
+<p>int m = len(pts);</p>
+<p>if (m &lt; 2) continue;</p>
+<p>for (int k = 0; k &lt; m; k++)</p>
+<p>{</p>
+<p>float u = float(k) / float(m - 1);</p>
+<p>float u_clamped = min(u, br);</p>
+<p>vector Pnew = lerp(rootP, tipP0, u_clamped);</p>
+<p>setpointattrib(0, &quot;P&quot;, pts[k], Pnew, &quot;set&quot;);</p>
+<p>}</p>
+<p>```</p>
+<p>}</p>
+<ul>
+<li><strong>Decision:</strong> This worked well, and I moved on to the next issue to address.</li>
+<li><strong>Tag:</strong> @default</li>
+<li><strong>Prompt:</strong> can we make it so they begin to grow frost at different paces? right now, each unit chunk of frost begins to grow at once. however, it would be nice to see it staggered, or the growth being triggered by the ones near it beginning to grow</li>
+<li><strong>Output:</strong>Yes — this is a great next step.</li>
+</ul>
+<p>Right now your Wrangle 1 gives each scatter point similar timing structure, so many “frost islands” feel synchronized.</p>
+<p>The clean fix is to make each scatter point get its own start time based on distance from a trigger point (wave propagation) plus a little random jitter (stagger), then write that into stem grow_u.</p>
+<p>Use this full Wrangle 1 replacement:</p>
+<ul>
+<li><strong>Decision:</strong> This worked a bit, but was not very noticable. I asked for it to create a parameter, which it did, but then had to inquire that the parameter not be clamped at 1 and allow for exaggeration.</li>
+<li><strong>Tag:</strong> @shift</li>
+<li><strong>Prompt:</strong> is there any way to have pscale related to when they have started growing? so they get wider as they grow more?</li>
+<li><strong>Output:</strong></li>
+</ul>
+<p>Yes — and it works really well for frost.</p>
+<p>You can drive pscale by each branch’s local growth amount (br), so branches are thin when they first appear and thicken as they mature.</p>
+<p>Use this Wrangle 3 (single growth parameter, plus your pscale_ramp):</p>
+<p>// Wrangle 3 — Detail only once — carve-style growth + growth-driven pscale</p>
+<p>// Input: after Resample + Facet (Unique Points ON)</p>
+<p>// Requires per-prim: grow_u, rest_root, rest_tip</p>
+<p>float growth = clamp(chf(&quot;growth&quot;), 0.0, 1.0);</p>
+<p>float g = smooth(0.0, 1.0, growth);</p>
+<p>int npr = nprimitives(0);</p>
+<p>for (int pr = 0; pr &lt; npr; pr++)</p>
+<p>{</p>
+<p>float gu = clamp(prim(0, &quot;grow_u&quot;, pr), 0.0, 0.999);</p>
+<p>```</p>
+<p>vector rootP = prim(0, &quot;rest_root&quot;, pr);</p>
+<p>vector tipP0 = prim(0, &quot;rest_tip&quot;, pr);</p>
+<p>// per-branch growth progress (0..1)</p>
+<p>float br = clamp((g - gu) / max(1e-5, 1.0 - gu), 0.0, 1.0);</p>
+<p>br = smooth(0.0, 1.0, br);</p>
+<p>// thickness maturity curve: starts very thin, thickens as branch matures</p>
+<p>float mature = pow(br, 0.7); // lower = thickens sooner, higher = thickens later</p>
+<p>int pts[] = primpoints(0, pr);</p>
+<p>int m = len(pts);</p>
+<p>if (m &lt; 2) continue;</p>
+<p>for (int k = 0; k &lt; m; k++)</p>
+<p>{</p>
+<p>float u = float(k) / float(m - 1);</p>
+<p>// carve position</p>
+<p>float u_clamped = min(u, br);</p>
+<p>vector Pnew = lerp(rootP, tipP0, u_clamped);</p>
+<p>setpointattrib(0, &quot;P&quot;, pts[k], Pnew, &quot;set&quot;);</p>
+<p>// pscale = original pscale * shape along branch * growth maturity</p>
+<p>float base_ps = point(0, &quot;pscale&quot;, pts[k]);</p>
+<p>float ramp_mul = chramp(&quot;pscale_ramp&quot;, u);</p>
+<p>float pnew = base_ps * ramp_mul * mature;</p>
+<p>// keep a tiny non-zero floor for PolyWire stability</p>
+<p>pnew = max(pnew, 1e-4);</p>
+<p>setpointattrib(0, &quot;pscale&quot;, pts[k], pnew, &quot;set&quot;);</p>
+<p>}</p>
+<p>```</p>
+<p>}</p>
+<ul>
+<li><strong>Decision:</strong> This worked well and I implemented it in to the code</li>
+<li><strong>Tag:</strong> @default</li>
+</ul>
+<p>After getting a functioning, satisfactory version of the frost generation code, I moved on to ideating for the final image. I turned to Gemini and ChatGPT briefly.</p>
+<ul>
+<li><strong>Prompt:</strong> (gemini) ideate visuals for a project with a frost growing procedural animation on a window. generate a snowy scenery and ideate things that could be outside the window. the frost is the main focus in the foreground, growing on a window, but there are other details in the scene creating a snowy, wintery atmosphere</li>
+<li><strong>Output:</strong> Gemini Ideation V01 in ideated_images</li>
+<li><strong>Decision:</strong> This helped picture how the frost can look, but I did not like the composition or content of this ideation</li>
+<li><strong>Tag:</strong> @shift</li>
+<li><strong>Prompt:</strong> (gemini) make another version, think of something other than a cabin. maybe a different angle on the window, too?</li>
+<li><strong>Output:</strong> Gemini Ideation V02 in ideated_images</li>
+<li><strong>Decision:</strong> I liked the content of this scenery a bit better, but still did not like the composition. the high angle outside the window gives a sense of distance from the environment and feeling of superiority, while i was hoping for a more casual, cozy, subtle exterior.</li>
+<li><strong>Tag:</strong> @resist</li>
+</ul>
+<h3>What I Learned</h3>
+<p>This session gave me further direction on the look and composition of the frost visual using AI generated references. I also experimented with attempting to achieve visuals in Houdini to be accurate to a reference.</p>
+<h3>What&#x27;s Next</h3>
+<ul>
+<li>Next week I will dive further into finalizing the imagery. I will solidify textures and layout of the project</li>
+<li>I will also decide how I would like the background to look, and how I will use AI in its generation</li>
+</ul>
+<h3>Quarter Question</h3>
+<p>I began to experiment with how models other than Claude can be used in the VFX pipeline, specifically in concept generation and pre-visualization of imagery.</p>
+</article>
+<article class="week" id="week-6">
+<p># Week 6 - Process log</p>
+<p>---</p>
+<h2>What I Did</h2>
+<p>This week I focused on:</p>
+<ul>
+<li>Researched Houdini MCP and AI Integrated Assistance (as I move towards end of pipeline and product finalization)</li>
+<li>Presentation of tool</li>
+<li>Using AI generation for ideation - and visually matching ideation in Houdini</li>
+</ul>
+<h3>AI Interactions</h3>
+<h3>Week 6, Session 2 - 04/29/2026</h3>
+<h3>RESEARCH</h3>
+<p>This week, I continued to research Houdini MCP&#x27;s and what people in the community are creating to integrate different models and systems into the software itself, especially with end-of-pipeline workflows.</p>
+<p>I am looking into integrating these into my project, but am facing some roadblocks with expenses and technical capabilities.</p>
+<ul>
+<li><strong>Houdini AI Assistant</strong></li>
+<li>Created by  Radu Cius</li>
+<li>https://rart.gumroad.com/l/HoudiniAIAssistant</li>
+<li>Puts ChatGPT, Claude, and Deepseek directly into Houdini</li>
+<li>Generates VEX and can analyze workflow</li>
+<li>Costs $129</li>
+</ul>
+<ul>
+<li><strong>Houdini ComfyUI Bridge</strong></li>
+<li>Created by Rafael Drelich Valentim and Anatolii Iudanov</li>
+<li>https://www.sidefx.com/products/houdini/pipeline-ai/machine-learning-ai/</li>
+<li>https://github.com/CapybaraCrowporation/houdini-comfyui-bridge#-installation</li>
+<li>Puts ComfyUI in Houdini Cops</li>
+<li>Can link with SOPS / geometry creation</li>
+<li>Generate images in COPS</li>
+<li>Example uses mo-cap driven by AI</li>
+</ul>
+<p>I also continued to apply the AI guidance on materials from last session, and adjusted lights and parameters to match the imagery generated in ideated_images.</p>
+<p>---</p>
+<h3>Week 6, Session 1 - 04/27/2026</h3>
+<p>#### AI Interactions</p>
+<ul>
+<li><strong>Prompt:</strong> what parameters can i use in houdini karma material x to make a texture that renders this frost with that appearance</li>
+</ul>
+<ul>
+<li><strong>Output:</strong></li>
+</ul>
+<p>base                    0.05–0.1      (ice is mostly specular, not diffuse)</p>
+<p>base_color              #ccdeff       (desaturated blue-white)</p>
+<p>diffuse_roughness       0.3</p>
+<p>specular                1.0</p>
+<p>specular_color          #ffffff</p>
+<p>specular_roughness      0.08–0.12     (slightly rough — frost ≠ polished ice)</p>
+<p>specular_IOR            1.31          (real ice IOR)</p>
+<p>specular_anisotropy     0.3–0.45      (crystal structure causes anisotropic glint)</p>
+<p>specular_rotation       drive from noise or AO</p>
+<p>coat                    0.6</p>
+<p>coat_roughness          0.05</p>
+<p>coat_IOR                1.31</p>
+<p>subsurface              0.4–0.6</p>
+<p>subsurface_color        #a8cce8       (deeper blue for SSS)</p>
+<p>subsurface_radius       0.15 0.2 0.3  (RGB, blue channel wider = ice tint)</p>
+<p>subsurface_scale        0.08</p>
+<p>thin_walled             1             (arms are thin — use thin_film instead of volume SSS)</p>
+<p>thin_film_thickness     180–320 nm    (iridescence, subtle)</p>
+<p>thin_film_IOR           1.31</p>
+<ul>
+<li><strong>Decision:</strong> This was a very good start and brought up ideas for texturing I had not done yet.I adjusted a few parameters such as increasing transmission and adding displacement</li>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> (chatGPT) imagine what this frost model could look like rendered, textured, and lit</li>
+<li><strong>Output:</strong> in ideated_images/Chat_Ideation_V01</li>
+<li><strong>Decision:</strong> This was a very nice reference. I used to ask Claude how to achieve these materials</li>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> (gemini)  imagine what this frost model could look like rendered, textured, and lit</li>
+<li><strong>Output:</strong> in ideated_images/Gemini_Ideation_V06</li>
+<li><strong>Decision:</strong> This was a very nice reference. I used to ask Claude how to achieve these materials</li>
+<li><strong>Tag:</strong> @default</li>
+</ul>
+<h3>What I Learned</h3>
+<p>This week I learned:</p>
+<ul>
+<li>Continued research on how to bring projects through end of pipeline using AI tools</li>
+<li>Continued finalizing appearance of tool-generated frost using guidance from AI imagery</li>
+</ul>
+<h3>What&#x27;s Next</h3>
+<ul>
+<li>Continue finalizing appearance of frost using AI guidance and ideation</li>
+</ul>
+<p>-</p>
+<h3>Quarter Question</h3>
+<p>This week I shifted to exploring AI integration in parts of the VFX pipeline other than tool creation and coding assistance, learning of ways to integrate it into softwares and guide artists visually.</p>
+</article>
+<article class="week" id="week-7">
+<p># Week 7 - Process log</p>
+<p>---</p>
+<h2>What I Did</h2>
+<p>This week, I looked more into downloading and setting up the Houdini and ComfyUI linker by CapybaraCrowporation. I managed to connect it correctly, and have access to the ComfyUI nodes in Houdini. However, I would like to try on a stronger computer, as the models are taking long to run on my laptop.</p>
+<p>I used ClaudeAI throughout this process to guide the installation and troubleshoot when things were not connecting correctly.</p>
+<p>During the second session, I looked through Professor feedback on my repo and applied critique.</p>
+<p>Over the weekend, I downloaded the ComfyUI Houdini link on my PC as well.</p>
+<h3>Week 7, Session 2 - [05/08/2026]</h3>
+<p>This session, I spent the time organizing my repo according to Professors feedback.</p>
+<p>This included polishing position statement, making a document for leverage points, making a records of resistance documents, and adjusting the CLAUDE.md - as well as other cleanups.</p>
+<p>I also set up the document for user testing, and provided the tool to friends to see how they utilized it, and discovered the following issues after their testing:</p>
+<p>Testers:</p>
+<p>Amelia McPartlin - ILLU</p>
+<p>Eli Porter - GAME</p>
+<p>Syd Relkin - VFX</p>
+<ul>
+<li>Degree sliders are confusing</li>
+</ul>
+<p>I addressed this during my own break test, but it is confusing with the sliders for degree parameters being from 0-1, when they need much higher values to show visible change.</p>
+<p>Code can not adjust parameter values directly, but I can adjust the wrangles myself before providing the tool to others. I can also add sticky notes to indicate this to users.</p>
+<ul>
+<li>Clearance multiplier is confusing when working with length multiplier</li>
+</ul>
+<p>Since clearance mult is based on length, some users got confused when clearance mult was high, and then length mult was adjusted. This caused the branches to dissapear as they grew.</p>
+<p>Since i do not want to get rid of one of the parameters, since they both function accordingly, just a bit confusing, I will clarify this by adding sticky note indicators for the user in the Houdini file.</p>
+<ul>
+<li>pscale ramp overlooked</li>
+</ul>
+<p>Some users overlooked the pscale adjuster, since it is within the animation node despite not being a directly animatable parameter - also since it is a ramp. I believe adding titles to the wrangle can help make this parameter more noticable.</p>
+<h3>AI INTERACTION</h3>
+<ul>
+<li><strong>Prompt:</strong> add comments in the new generative frost md v04 at the top of wrangle 2 node, clarifying to users that degree sliders need to be inputted with degrees and not ramped 0-1</li>
+<li><strong>Output</strong> Claude annoted the code, adding notes on the doc</li>
+<li><strong>Decision</strong> I read through its additions and found they clarified well enough to users ( especially those familiar with code)</li>
+</ul>
+<p>---</p>
+<h3>Week 7, Session 1 - [05/06/2026]</h3>
+<p>This session, I mainly organized my repo to the provided feedback.</p>
+<p>As part of that, I did a breaking pass.</p>
+<p><strong>Breaking Pass</strong></p>
+<p>Changing Source Geometry:</p>
+<p>This code was intended to function on a flat plane, but I experimented with complexity of of the base geo to see how the code would react.</p>
+<p>When provided a sphere, it does not react naturally. The branches do not themselves stick, but it orients with the side of the sphere its on, adding spike-like appearances to the ball.</p>
+<p>On more polygonal shapes like a cube, it functions better, since they have flat sides that the frost does not have to bend to. It orients correctly to be parallel with the side its on. The smaller and more numerous the frost, the better it looks, as the edge overhang is lss noticable.</p>
+<p>However, since the code is not structed to calculate when a 3D shape&#x27;s plane ends, it does not cut off as it reaches the end of objects, leading the frost to stick off the sides. With simple shapes like cubes this may be able to be fixed after generation.</p>
+<p>But overall, the code functions best on a flat plane, mimicking shapes like a window or undisturbed water.</p>
+<p><strong>GAP_MULT</strong></p>
+<p>The gap_mult parameter in Wrangle 1 is a very sensitive parameter that allows overlap in frost units. It is very easy to create drastic overlap. However, this may be an artistic preference for some, so although it is sensitive I do not consider it broken.</p>
+<p class="topic">**UNIT_STAGGER**</p>
+<p>unit_stagger parameter in Wrangle 1 does not appear to do anything until the other wrangles are added, which may confuse users if they are working directly down the pipeline instead of visualizing the final output.</p>
+<p><strong>Twig Splay and Jitter Degree</strong></p>
+<p>The twig splay and jitter degree parameter naturally generates a control bar beteween values of 0-1. However, since this works in degrees, it needs much higher input to show change. If the user is not familiar with how degrees work, they may be confused as to why this parameter does not show much change.</p>
+<p>This could maybe be adjusted by clamping the values and translating a 0-1 scale in degrees? but may lead to further confusion.</p>
+<p><strong>Non-VEX Nodes</strong></p>
+<p>The artist using this tool needs to understand not to touch or move the non-vex nodes in between and after the VEX Wrangles. These are essential to processing geometry and preparing the outputted pattern for converting to mesh.</p>
+<p>After conducting these tests, I organized the file to send to other VFX artists to play test.</p>
+<p>---</p>
+<h3>What I Learned</h3>
+<p>This week I organized and troubleshooted the system and prepared for user interaction, optimizing for different artists and workflows.</p>
+<h3>What&#x27;s Next</h3>
+<p>I will finalize the visuals of the project and render out an example of how the tool can functon, intending to utilize and experiment with the Houdini and ComfyUI connection while doing so.</p>
+</article>
+<article class="week" id="week-8">
+<p># Week 8 - Process log</p>
+<p>---</p>
+<h2>What I Did</h2>
+<p>This week, I continued to move towards rendering and finalizing the look of the frost.</p>
+<p>Due to tech setbacks with downloading the ComfyUI link, I relied one last time on feeding screenshots into different models like Nano Banana and ChatGPT for visual feedback before rendering out a visual example of how the tool can be used.</p>
+<h3>Week 8, Session 2 - [05/13/2026]</h3>
+<p>There were render errors in the frost</p>
+<h3>AI INTERACTION</h3>
+<ul>
+<li><strong>Prompt:</strong> The render completed for the frost animation, but it is very glitchy. I think there is an error with the polywire or pscale? it did not occur in the viewport, only when rendering</li>
+<li><strong>Output:</strong> If motion blur is ruled out, the next most plausible buckets are thin-geometry shading, time/expression evaluation, and PolyWire input changing in ways the GL hides.</li>
+</ul>
+<p>1. Overlapping / co-planar tubes (z-fighting)</p>
+<p>2. Transmission, opacity, or nested glass</p>
+<p>3. Displacement or round curves (only on the render object)</p>
+<p>4. $F vs $T and cooked frame alignment</p>
+<p>5. Real pscale / topology pops (single-frame)</p>
+<ul>
+<li><strong>Decision:</strong> I double checked all of these, and conerted geometry as well to be safe.</li>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<p>I continued to use Claude to troubleshoot, and it reccomended checking polywire node and makign sure I keep some attributes and dont deleter all of them.</p>
+<p>---</p>
+<h3>Week 8, Session 1 - [05/11/2026]</h3>
+<ul>
+<li><strong>Prompt:</strong> render this frost on a window, render realistically</li>
+<li><strong>Output:</strong> NanoBanana_Ideation_V01 in ideated_images folder</li>
+<li><strong>Decision:</strong> This was the first time in a while it provided a sunny day image in the background. I had kind of moved past this appearance, but didnt mind what it provided, and chose to explore it a bit more</li>
+<li><strong>Tag</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> render this frost on a window, render realistically. background is darkish, real environment</li>
+<li><strong>Output:</strong> NanoBanana_Ideation_V02 in ideated_images folder</li>
+<li><strong>Decision:</strong> The background was darker, but it felt a bin unnarual with how bright the frost is. I decided to try a mix of both results</li>
+<li><strong>Tag:</strong> @shift</li>
+</ul>
+<h3>What I Learned</h3>
+<p>This week was some final troubleshooting, and solving some sudden issues with rendering using Claude as a guide.</p>
+<h3>What&#x27;s Next</h3>
+<p>I will prepare presentables for the project and gather findings</p>
+</article>
+<article class="week" id="week-9">
+<p># Week 9 - Process log</p>
+<p>---</p>
+<h2>What I Did</h2>
+<p>This week I continued to finalize and organize the code to presetn and be used by others</p>
+<h3>Week 9, Session 2 - [05/20/2026]</h3>
+<p>[Session notes]</p>
+<h3>AI INTERACTION</h3>
+<ul>
+<li><strong>Prompt:</strong></li>
+<li><strong>Output:</strong></li>
+<li><strong>Decision:</strong></li>
+<li><strong>Tag</strong> @shift | @confirm | @reject</li>
+</ul>
+<p>---</p>
+<h3>Week 9, Session 1 - [05/18/2026]</h3>
+<ul>
+<li><strong>Prompt:</strong> reccomendations for how to fill out pipieline architecture for my project?</li>
+<li><strong>Output:</strong> Claude referenced my other system maps with similar content, and began suggesting ideas. It output this graph:</li>
+</ul>
+<p>[SOURCE GEO: grid / surface]</p>
+<p>|</p>
+<p>v</p>
+<p>[HOUDINI SOPs — procedural truth]</p>
+<p>Scatter → Wrangle1 (main stems) → Wrangle2 (twigs)</p>
+<p>→ Resample → Facet → Wrangle3 (growth) → PolyWire</p>
+<p>|</p>
+<p>+--&gt; [Playblast / slap render] ----.</p>
+<p>|                                    |</p>
+<p>v                                    v</p>
+<p>[Karma/Mantra RENDER]              [ComfyUI ideation loop]</p>
+<p>|                          (lighting / comp / paint-over ideas)</p>
+<p>v                                    |</p>
+<p>[NUKE COMP — artist-made]  &lt;-----------------&#x27;</p>
+<p>|</p>
+<p>v</p>
+<p>[FINAL DELIVERABLE: Houdini render + Nuke comp — no raw AI final]</p>
+<ul>
+<li><strong>Decision:</strong> This seems to be a very good starting point, but I wanted to reorganize it slightly. I used it as a base and adjusted some things for better comprehenson and understanding of the VFX workflow</li>
+<li><strong>Tag</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> suggest changes to pipeline architecture doc?</li>
+<li><strong>Output:</strong> original:</li>
+</ul>
+<p>[SOURCE GEO: grid / surface]</p>
+<p>|</p>
+<p>v</p>
+<p>[HOUDINI SOPs — procedural frost generation (coded by Claude)]</p>
+<p>Scatter → Wrangle1 (main stems) → Wrangle2 (sub-branches)</p>
+<p>→ Resample → Facet → Wrangle3 (growth &amp; scale along branches) → PolyWire</p>
+<p>|</p>
+<p>[if user needs more guidance, provide Claude with image/description and code, and it will provide settings for parameters to achieve described goal]</p>
+<p>|</p>
+<p>+--&gt; [Playblast / slap render] ----.</p>
+<p>|                                    |</p>
+<p>v                                    v</p>
+<p>[Karma/Mantra RENDER]              [ComfyUI ideation loop]</p>
+<p>|                          (lighting / comp / paint-over ideas)</p>
+<p>v                                    |</p>
+<p>[NUKE COMP — artist-made]  &lt;-----------------&#x27;</p>
+<p>|</p>
+<p>v</p>
+<p>[FINAL DELIVERABLE: Houdini render + Nuke comp]</p>
+<p>adjusted suggestions:</p>
+<p>[SOURCE GEO: grid / surface]</p>
+<p>|</p>
+<p>v</p>
+<p>[HOUDINI SOPs — VEX frost tool (AI-assisted, artist-owned)]</p>
+<p>Scatter → Wrangle1 → Wrangle2 → Resample → Facet → Wrangle3 (growth) → PolyWire</p>
+<p>|                    ^</p>
+<p>|                    |  [Claude: code + parm guidance from prompts/refs]</p>
+<p>|                    +---- artist applies in wrangles</p>
+<p>|</p>
+<p>+--&gt; [Playblast / slap render] ----------------------.</p>
+<p>|                                                       |</p>
+<p>v                                                       v</p>
+<p>[Artist: art-direct, approve look]              [ComfyUI ideation — not final pixels]</p>
+<p>|                                          (lighting / comp / paint-over ideas)</p>
+<p>v                                                       |</p>
+<p>[Karma/Mantra RENDER]                                           |</p>
+<p>|                                                       |</p>
+<p>v                                                       |</p>
+<p>[NUKE COMP — artist-made]  &lt;------------------------------------&#x27;</p>
+<p>|</p>
+<p>v</p>
+<p>[FINAL: Houdini render + Nuke comp — no AI-generated final plate]</p>
+<ul>
+<li><strong>Decision:</strong> I liked the way it organized the Claude code and parameter input, but i wanted to reword it. also got rid of the Artist step it put before rendering, i believe that is implied</li>
+</ul>
+<p>[SOURCE GEO: grid / surface]</p>
+<p>|</p>
+<p>v</p>
+<p>[HOUDINI SOPs — VEX frost tool (AI-assisted, artist-owned)]</p>
+<p>Scatter → Wrangle1 → Wrangle2 → Resample → Facet → Wrangle3 (growth) → PolyWire</p>
+<p>|                    ^</p>
+<p>|                    |  [Claude: code + paramater guidance from prompts/refs]</p>
+<p>|                    +---- artist applies in wrangles</p>
+<p>|</p>
+<p>+--&gt; [Playblast / slap render] ----------------------.</p>
+<p>|                                                       |</p>
+<p>|                                                      v</p>
+<p>|                                         [ComfyUI ideation — not final pixels]</p>
+<p>|                                          (lighting / comp / paint-over ideas)</p>
+<p>v                                                       |</p>
+<p>[Karma/Mantra RENDER]                                           |</p>
+<p>|                                                       |</p>
+<p>v                                                       |</p>
+<p>[NUKE COMP — artist-made]  &lt;------------------------------------&#x27;</p>
+<p>|</p>
+<p>v</p>
+<p>[FINAL: Houdini render + Nuke comp]</p>
+<ul>
+<li><strong>Tag</strong> @shift</li>
+</ul>
+<ul>
+<li><strong>Prompt:</strong> I input the prompt provided by Professor Madrid to find any issues or concerns in the code and presentation/organization of the repo</li>
+<li><strong>Output:</strong> Several issues were found, such as organization of different GenerativeFrost .mds, links that are not found in repo, wrong links to ideated_images, and other issues</li>
+<li><strong>Decision:</strong> I went through the discovered inconsistiencies one by one and addressed them in each file</li>
+<li><strong>Tag</strong> @shift</li>
+</ul>
+<p>---</p>
+<h3>What I Learned</h3>
+<p>[What you learned this week]</p>
+<h3>What&#x27;s Next</h3>
+<p>[Next steps after Week 9]</p>
+</article>
+
+<p class="footer-note">Source files: <code>process-blog/week-01.md</code>, <code>process-blog/week-02.md</code>, <code>process-blog/week-03.md</code>, <code>process-blog/week-04.md</code>, <code>process-blog/week-05.md</code>, <code>process-blog/week-06.md</code>, <code>process-blog/week-07.md</code>, <code>process-blog/week-08.md</code>, <code>process-blog/week-09.md</code> (unchanged in repo).</p>
+</body>
+</html>
