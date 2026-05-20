@@ -8,7 +8,7 @@
 |--------|-------------|
 | **Input** | Directed instructions for sections of the Houdini VEX code |
 | **Process** | Generated code that implements those instructions |
-| **Output** | Code placed in a Houdini VEX Wrangle node to be troubleshot and art-directed further |
+| **Output** | Code placed in a Houdini VEX Wrangle node to troubleshoot and art-direct further |
 
 ### ComfyUI (ideation loop)
 

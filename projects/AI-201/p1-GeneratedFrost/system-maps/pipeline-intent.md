@@ -16,7 +16,7 @@ Perception layer: perceive, decide, act, with the human in the loop.
 [Perceive] -> [Decide] -> [Act]
 
 - **Perceive:** The system receives user-set Houdini parameters, test renders/playblasts, and AI-generated ideation references.
-- **Decide:** The artist evaluates whether the tool is functioning correctly, whether visuals are satisfactory, and whether controls are sufficient for desird art direction.
+- **Decide:** The artist evaluates whether the tool is functioning correctly, whether visuals are satisfactory, and whether controls are sufficient for desired art direction.
 - **Act:** The system generates procedural frost results based on selected parameters and adjustments
 - **Human:** The artist drives the full loop by setting inputs, evaluating outputs, and deciding what to change next based on their own visual preferences and perspective.
 
@@ -28,7 +28,7 @@ Right now, my system receives user-defined parameters and procedural rules in Ho
 
 ### 2) What matters most
 
-What matters most is that this tool is customizable. It creates adjustable parameters, and helps an artist achieve their desired visuals. Additionally, in the end of pipeline, AI is not used for final visual, only with ideation.
+What matters most is that this tool is customizable. It creates adjustable parameters, and helps an artist achieve their desired visuals. Additionally, at the end of the pipeline, AI is not used for final visual, only for ideation.
 
 ### 3) What I will not compromise on
 

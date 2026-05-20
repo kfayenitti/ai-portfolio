@@ -15,13 +15,13 @@ This week I continued to finalize and organize the code to presetn and be used b
 - **Prompt:** I re-prompted with the prompt provided by Prof. last class, to ensure I had addressed all important issues and that no new ones arose due to my fixes
 - **Output:** Some issues did arise, such as I had deleted a few files last class while cleaning that were mentioned in other files
 - **Decision:** I went through the list again and addressed the issues Claude brought up
-- **Tag** @shift
+- **Tag:** @shift
 
 
 - **Prompt:** While going through feedback from Prof., it reccomended to get rid of the file references quick-start.md, which does not exist. I opted to remove these references and promtped it to do so
 - **Output:** Claude attempted to repalce quick-start with references to other filess such as student-companion, which i did not think were suitable replacements
 - **Decision:** I directed Claude not to replace with its suggested files
-- **Tag** @resist
+- **Tag:** @resist
 
 ---
 
@@ -49,7 +49,7 @@ This week I continued to finalize and organize the code to presetn and be used b
 [FINAL DELIVERABLE: Houdini render + Nuke comp — no raw AI final]
 
 - **Decision:** This seems to be a very good starting point, but I wanted to reorganize it slightly. I used it as a base and adjusted some things for better comprehenson and understanding of the VFX workflow
-- **Tag** @shift 
+- **Tag:** @shift 
 
 
 - **Prompt:** suggest changes to pipeline architecture doc?
@@ -126,13 +126,13 @@ adjusted suggestions:
         v
 [FINAL: Houdini render + Nuke comp]
 
-- **Tag** @shift 
+- **Tag:** @shift 
 
 
 - **Prompt:** I input the prompt provided by Professor Madrid to find any issues or concerns in the code and presentation/organization of the repo
 - **Output:** Several issues were found, such as organization of different GenerativeFrost .mds, links that are not found in repo, wrong links to ideated_images, and other issues
 - **Decision:** I went through the discovered inconsistiencies one by one and addressed them in each file
-- **Tag** @shift
+- **Tag:** @shift
 
 
 

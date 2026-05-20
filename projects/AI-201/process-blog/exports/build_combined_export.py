@@ -183,6 +183,11 @@ def discover_week_files() -> list[Path]:
     return sorted(ROOT.glob("week-*.md"), key=week_number)
 
 
+def week_section_title(path: Path) -> str:
+    """Display heading derived from week-NN.md filename."""
+    return f"Week {week_number(path)}"
+
+
 def inline_md(raw: str) -> str:
     parts = re.split(r"(\*\*.+?\*\*)", raw)
     out: list[str] = []
@@ -309,21 +314,8 @@ def wrap_ai_interactions(html_fragment: str) -> str:
     return "\n".join(result)
 
 
-def trim_week2_orphan(text: str) -> str:
-    """Remove duplicate Week 1 session header accidentally appended to week-02.md."""
-    lines = text.rstrip().split("\n")
-    while lines and not lines[-1].strip():
-        lines.pop()
-    if lines and lines[-1].strip() == "## Week 1, Session 1":
-        lines.pop()
-    return "\n".join(lines) + "\n"
-
-
 def load_week_markdown(path: Path) -> str:
-    text = path.read_text(encoding="utf-8")
-    if path.name == "week-02.md":
-        text = trim_week2_orphan(text)
-    return text
+    return path.read_text(encoding="utf-8")
 
 
 def week_range_label(weeks: list[Path]) -> str:
@@ -344,7 +336,10 @@ def main() -> None:
     for path in weeks:
         body = wrap_ai_interactions(parse_markdown_to_fragments(load_week_markdown(path)))
         n = week_number(path)
-        articles.append(f'<article class="week" id="week-{n}">\n{body}\n</article>')
+        section = f"<h2>{html.escape(week_section_title(path))}</h2>"
+        articles.append(
+            f'<article class="week" id="week-{n}">\n{section}\n{body}\n</article>'
+        )
 
     range_label = week_range_label(weeks)
     source_files = ", ".join(f"<code>process-blog/{p.name}</code>" for p in weeks)

@@ -43,7 +43,7 @@ I continued to use Claude to troubleshoot, and it reccomended checking polywire 
 - **Prompt:** render this frost on a window, render realistically
 - **Output:** NanoBanana_Ideation_V01 in ideated_images folder
 - **Decision:** This was the first time in a while it provided a sunny day image in the background. I had kind of moved past this appearance, but didnt mind what it provided, and chose to explore it a bit more
-- **Tag** @shift
+- **Tag:** @shift
 
 - **Prompt:** render this frost on a window, render realistically. background is darkish, real environment
 - **Output:** NanoBanana_Ideation_V02 in ideated_images folder

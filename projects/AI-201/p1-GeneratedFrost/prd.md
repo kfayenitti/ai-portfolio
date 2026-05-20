@@ -26,8 +26,8 @@ I am using ai-generated code and generative AI in ComfyUI to take a VFX project 
 
 ## Out of Scope
 
-- Not building: Am overarching tool to implement AI in Houdini
-- Not building: A one-click, on demand generation of a simulation. This a tool that must be used and directed
+- Not building: An overarching tool to implement AI in Houdini
+- Not building: A one-click, on demand generation of a simulation. This is a tool that must be used and directed
 - Not building: AI-generated final renders as deliverables.
 - Saving for capstone: Final render of VFX image
 

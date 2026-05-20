@@ -15,7 +15,9 @@ Capstone workspace: procedural frost in Houdini (VEX), with ComfyUI for ideation
 | [`position-statement.md`](position-statement.md) | Stance, emphasis, non-negotiables |
 | [`prd.md`](prd.md) | Product / project requirements |
 | [`cycle-plan.md`](cycle-plan.md) | Cycle plan and timeline |
-| [`system-maps/`](system-maps/) | Design intent, system map, SOP network architecture |
+| [`system-maps/`](system-maps/) | Design intent, pipeline intent, architecture maps |
+| [`system-maps/m3-first-system-map.md`](system-maps/m3-first-system-map.md) | M3 INPUT / PROCESS / OUTPUT system map |
+| [`system-maps/pipeline-architecture.md`](system-maps/pipeline-architecture.md) | End-to-end pipeline (Houdini → ComfyUI → Nuke) |
 | [`GenerativeFrost_PatternGeneration_V04.md`](GenerativeFrost_PatternGeneration_V04.md) | Current pattern + growth doc (network order, parms, inline VEX) |
 | `GenerativeFrost_PatternGeneration_V01.md`–`V03.md` | Earlier pattern iterations (inline VEX where present) |
 | [`generatedFrost_V01.md`](generatedFrost_V01.md), [`generatedFrost_V02.md`](generatedFrost_V02.md) | Early frost tool notes (inline VEX) |
