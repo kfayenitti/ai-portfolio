@@ -1,40 +1,6 @@
 # Week 4 — Process log
 
 
-## Week 4, Session 2 — 04/15/26 (Wednesday)
-
-### What I Did
-
-This session, I continued to work on creating the frost pattern. After creating a code previously that functioned to create a small branch, I shifted to creating a system using Claude and Houdini VEX to generate the larger, repeated pattern.
-
-Throughout the process I shifted my approach several times, noticing reoccuring errors or unsatisfying visuals.
-
-
-
-### AI Interactions
-
-- **Prompt:** this is the code i have right now for my frost generation. this creates one branch. i would like it to create more frost, that is laid out in units, like in the image provided. dont worry about animation right now. just think of a system to generate groups and have them laid out without intersecting
-- **Output:**
-
-I’ll turn this into a clustered “frost patch” generator: multiple frost units, each built from your existing stem/branch logic, then distributed with a non-overlap layout pass so units don’t intersect. I’m going to edit `generatedFrost_V02.md` with a new static VEX version and clear parameters for group count, spacing, and layout area.I found a clean way to keep your current branch style but replicate it as many times as needed: a two-stage wrangle (1) place unit roots with rejection sampling for spacing, then (2) build one full frost unit at each accepted root with per-unit random scale/orientation. I’m applying that now in the doc so you can paste directly into Houdini.
-
-- **Decision:** 
-
-Claude began to edit the .md directly after this, which I had to stop it from doing as I wanted to experiment before making a new .md version
-
-- **Tag:** @resist
-
-
-### Quarter Question Connection
-
-This week helped further solidify how AI coding can be used in proceduralism and customized processes in Houdini VEX. I look forward to seeing where these softwares integrate AI, especially when it comes to coding.
-
-### What's Next
-
-Next week, I will wrap up the generative code for creating the frost procedural system. Then I will continue to investigate using generative AI to assist in the production pipeline as I bring the project to a completed visual.
-
----
-
 ## Week 4, Session 1 — 04/14/26
 
 ### What I Did
@@ -292,3 +258,38 @@ This week’s work sits directly under *What happens when generated code and AI-
 - Pivot from “one hero branch” to **pattern / layout**: many frost units from scatter, spacing, and non-intersection—documented in [`GenerativeFrost_PatternGeneration_V04.md`](../p1-GeneratedFrost/GenerativeFrost_PatternGeneration_V04.md) and [`code/frost_wrangle_*.vfl`](../p1-GeneratedFrost/code/) (V01–V03 are earlier pattern iterations).
 - Keep a short log of prompts that *failed* vs *worked* so Week 05 art-direction controls are grounded in what the code can actually support.
 
+
+
+---
+
+## Week 4, Session 2 — 04/15/26 (Wednesday)
+
+### What I Did
+
+This session, I continued to work on creating the frost pattern. After creating a code previously that functioned to create a small branch, I shifted to creating a system using Claude and Houdini VEX to generate the larger, repeated pattern.
+
+Throughout the process I shifted my approach several times, noticing reoccuring errors or unsatisfying visuals.
+
+
+
+### AI Interactions
+
+- **Prompt:** this is the code i have right now for my frost generation. this creates one branch. i would like it to create more frost, that is laid out in units, like in the image provided. dont worry about animation right now. just think of a system to generate groups and have them laid out without intersecting
+- **Output:**
+
+I’ll turn this into a clustered “frost patch” generator: multiple frost units, each built from your existing stem/branch logic, then distributed with a non-overlap layout pass so units don’t intersect. I’m going to edit `generatedFrost_V02.md` with a new static VEX version and clear parameters for group count, spacing, and layout area.I found a clean way to keep your current branch style but replicate it as many times as needed: a two-stage wrangle (1) place unit roots with rejection sampling for spacing, then (2) build one full frost unit at each accepted root with per-unit random scale/orientation. I’m applying that now in the doc so you can paste directly into Houdini.
+
+- **Decision:** 
+
+Claude began to edit the .md directly after this, which I had to stop it from doing as I wanted to experiment before making a new .md version
+
+- **Tag:** @resist
+
+
+### Quarter Question Connection
+
+This week helped further solidify how AI coding can be used in proceduralism and customized processes in Houdini VEX. I look forward to seeing where these softwares integrate AI, especially when it comes to coding.
+
+### What's Next
+
+Next week, I will wrap up the generative code for creating the frost procedural system. Then I will continue to investigate using generative AI to assist in the production pipeline as I bring the project to a completed visual.

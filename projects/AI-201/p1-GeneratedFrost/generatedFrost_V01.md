@@ -1,7 +1,25 @@
-## Initial version of the generated frost code
+# Generated Frost — V01
 
-------
+Procedural frost stem + paired side branches in a single **Detail Wrangle** (Run Over: **Detail only once**).
 
+**V01** is the **static snapshot**: the full stem and all branches are built in one pass. There is no `growth` or frame-driven extension—use **V02** when you need animated growth.
+
+## Parameters (create on the wrangle)
+
+| Name | Type | Notes |
+|------|------|--------|
+| `main_length` | float | Main stem length along +X |
+| `interior` | int | Number of interior subdivisions (root + interior points + tip) |
+| `branch_length` | float | Base branch reach |
+| `branch_splay` | float | Splay angle in degrees |
+| `branch_jitter_deg` | float | Random orientation jitter per branch (degrees) |
+| `seed` | int | Random seed |
+| `pscale_ramp` | float ramp | Thickness along stem (0 = root, 1 = tip) for polywire |
+| `branch_length_ramp` | float ramp | Branch length multiplier along stem |
+
+## VEX
+
+```vex
 // Detail Wrangle (Run Over: Detail only once)
 // Parameters:
 // float main_length = 1.0
@@ -91,3 +109,10 @@ for (int k = 1; k <= interior + 1; k++)
     setpointattrib(0, "pscale", pb, tip_ps, "set");
     addprim(0, "polyline", base, pb);
 }
+```
+
+## Notes
+
+- Feed into **PolyWire** using `pscale` for radius.
+- **V01** is the static baseline; **V02** (`generatedFrost_V02.md`) adds `growth` / `branch_grow` animation with tip-safe branch extension.
+- Tip branches use an endpoint-safe tangent (`P[k] - P[k-1]`) so the last knot still gets paired arms at full length.

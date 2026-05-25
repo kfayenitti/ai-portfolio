@@ -4,53 +4,13 @@
 
 ## What I Did
 
-This week, I looked more into downloading and setting up the Houdini and ComfyUI linker by CapybaraCrowporation. I managed to connect it correctly, and have access to the ComfyUI nodes in Houdini. However, I would like to try on a stronger computer, as the models are taking long to run on my laptop.
+This week, I looked more into downloading and setting up the Houdini and ComfyUI linker by CapybaraCrowporation. I managed to connect it correctly, and have access to the ComfyUI nodes in Houdini. However, I would like to try on a stronger computer, as the models are taking long to run on my laptop. I installed release tag v0.6.6 (commit e686444b2d89cdaeb19d06e46bdaf84ba4c3b1e1).
 
 I used ClaudeAI throughout this process to guide the installation and troubleshoot when things were not connecting correctly.
 
 During the second session, I looked through Professor feedback on my repo and applied critique.
 
 Over the weekend, I downloaded the ComfyUI Houdini link on my PC as well.
-
-### Week 7, Session 2 - [05/08/2026]
-
-This session, I spent the time organizing my repo according to Professors feedback. 
-
-This included polishing position statement, making a document for leverage points, making a records of resistance documents, and adjusting the CLAUDE.md - as well as other cleanups.
-
-I also set up the document for user testing, and provided the tool to friends to see how they utilized it, and discovered the following issues after their testing:
-
-Testers:
-
-Amelia McPartlin - ILLU
-Eli Porter - GAME
-Syd Relkin - VFX
-
-- Degree sliders are confusing
-
-I addressed this during my own break test, but it is confusing with the sliders for degree parameters being from 0-1, when they need much higher values to show visible change.
-
-Code can not adjust parameter values directly, but I can adjust the wrangles myself before providing the tool to others. I can also add sticky notes to indicate this to users.
-
-
-- Clearance multiplier is confusing when working with length multiplier
-
-Since clearance mult is based on length, some users got confused when clearance mult was high, and then length mult was adjusted. This caused the branches to dissapear as they grew.
-
-Since i do not want to get rid of one of the parameters, since they both function accordingly, just a bit confusing, I will clarify this by adding sticky note indicators for the user in the Houdini file.
-
-- pscale ramp overlooked
-
-Some users overlooked the pscale adjuster, since it is within the animation node despite not being a directly animatable parameter - also since it is a ramp. I believe adding titles to the wrangle can help make this parameter more noticable.
-
-
-### AI INTERACTION
-
-- **Prompt:** add comments in the new generative frost md v04 at the top of wrangle 2 node, clarifying to users that degree sliders need to be inputted with degrees and not ramped 0-1
-- **Output** Claude annoted the code, adding notes on the doc 
-- **Decision** I read through its additions and found they clarified well enough to users ( especially those familiar with code)
-
----
 
 ### Week 7, Session 1 - [05/06/2026]
 
@@ -94,6 +54,46 @@ After conducting these tests, I organized the file to send to other VFX artists 
 
 ---
 
+
+---
+
+### Week 7, Session 2 - [05/08/2026]
+
+This session, I spent the time organizing my repo according to Professors feedback. 
+
+This included polishing position statement, making a document for leverage points, making a records of resistance documents, and adjusting the CLAUDE.md - as well as other cleanups.
+
+I also set up the document for user testing, and provided the tool to friends to see how they utilized it, and discovered the following issues after their testing:
+
+Testers:
+
+Amelia McPartlin - ILLU
+Eli Porter - GAME
+Syd Relkin - VFX
+
+- Degree sliders are confusing
+
+I addressed this during my own break test, but it is confusing with the sliders for degree parameters being from 0-1, when they need much higher values to show visible change.
+
+Code can not adjust parameter values directly, but I can adjust the wrangles myself before providing the tool to others. I can also add sticky notes to indicate this to users.
+
+
+- Clearance multiplier is confusing when working with length multiplier
+
+Since clearance mult is based on length, some users got confused when clearance mult was high, and then length mult was adjusted. This caused the branches to dissapear as they grew.
+
+Since i do not want to get rid of one of the parameters, since they both function accordingly, just a bit confusing, I will clarify this by adding sticky note indicators for the user in the Houdini file.
+
+- pscale ramp overlooked
+
+Some users overlooked the pscale adjuster, since it is within the animation node despite not being a directly animatable parameter - also since it is a ramp. I believe adding titles to the wrangle can help make this parameter more noticable.
+
+
+### AI INTERACTION
+
+- **Prompt:** add comments in the new generative frost md v04 at the top of wrangle 2 node, clarifying to users that degree sliders need to be inputted with degrees and not ramped 0-1
+- **Output** Claude annoted the code, adding notes on the doc 
+- **Decision** I read through its additions and found they clarified well enough to users ( especially those familiar with code)
 ### What I Learned
 
 This week I organized and troubleshooted the system and prepared for user interaction, optimizing for different artists and workflows.

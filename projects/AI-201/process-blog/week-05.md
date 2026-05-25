@@ -87,23 +87,6 @@ setpointattrib(0, "pscale", pts[k], pnew, "set");
 
 ### AI Interactions
 
-### Week 5, Session 2 - 04/22/26
-
-- **Prompt:** (gemini) this is a model of frost in a 3d software. ideate what this composition can look like rendered on a window
-- **Output:** Gemini Ideation V03 in ideated_images
-- **Decision:** 
-- **Tag:** @resist
-- **Prompt:** (chatgpt) this is a model of frost in a 3d software. ideate what this composition can look like rendered on a window
-- **Output:** Chat_Ideation_V01 in ideated_Images
-- **Decision:** 
-- **Tag:** @shift
-- **Prompt:** (figma weavy + seedance) generated a first frame, edited toward a last frame, then generated a short transition video from both frames
-- **Output:** `research/Figma_Weave_Seedance_TestVideo_V01`
-- **Decision:** 
-- **Tag:** @default
-
----
-
 ### Week 5, Session 1 - 04/20/26
 
 #### AI Interactions
@@ -315,3 +298,20 @@ This session gave me further direction on the look and composition of the frost 
 ### Quarter Question
 
 I began to experiment with how models other than Claude can be used in the VFX pipeline, specifically in concept generation and pre-visualization of imagery.
+
+---
+
+### Week 5, Session 2 - 04/22/26
+
+- **Prompt:** (gemini) this is a model of frost in a 3d software. ideate what this composition can look like rendered on a window
+- **Output:** Gemini Ideation V03 in ideated_images
+- **Decision:** 
+- **Tag:** @resist
+- **Prompt:** (chatgpt) this is a model of frost in a 3d software. ideate what this composition can look like rendered on a window
+- **Output:** Chat_Ideation_V01 in ideated_Images
+- **Decision:** 
+- **Tag:** @shift
+- **Prompt:** (figma weavy + seedance) generated a first frame, edited toward a last frame, then generated a short transition video from both frames
+- **Output:** `research/Figma_Weave_Seedance_TestVideo_V01`
+- **Decision:** 
+- **Tag:** @default

@@ -6,25 +6,6 @@
 
 This week I continued to finalize and organize the code to presetn and be used by others
 
-### Week 9, Session 2 - [05/20/2026]
-
-[Session notes]
-
-### AI INTERACTION
-
-- **Prompt:** I re-prompted with the prompt provided by Prof. last class, to ensure I had addressed all important issues and that no new ones arose due to my fixes
-- **Output:** Some issues did arise, such as I had deleted a few files last class while cleaning that were mentioned in other files
-- **Decision:** I went through the list again and addressed the issues Claude brought up
-- **Tag:** @shift
-
-
-- **Prompt:** While going through feedback from Prof., it reccomended to get rid of the file references quick-start.md, which does not exist. I opted to remove these references and promtped it to do so
-- **Output:** Claude attempted to repalce quick-start with references to other filess such as student-companion, which i did not think were suitable replacements
-- **Decision:** I directed Claude not to replace with its suggested files
-- **Tag:** @resist
-
----
-
 ### Week 9, Session 1 - [05/18/2026]
 
 - **Prompt:** reccomendations for how to fill out pipieline architecture for my project?
@@ -138,6 +119,25 @@ adjusted suggestions:
 
 ---
 
+
+---
+
+### Week 9, Session 2 - [05/20/2026]
+
+[Session notes]
+
+### AI INTERACTION
+
+- **Prompt:** I re-prompted with the prompt provided by Prof. last class, to ensure I had addressed all important issues and that no new ones arose due to my fixes
+- **Output:** Some issues did arise, such as I had deleted a few files last class while cleaning that were mentioned in other files
+- **Decision:** I went through the list again and addressed the issues Claude brought up
+- **Tag:** @shift
+
+
+- **Prompt:** While going through feedback from Prof., it reccomended to get rid of the file references quick-start.md, which does not exist. I opted to remove these references and promtped it to do so
+- **Output:** Claude attempted to repalce quick-start with references to other filess such as student-companion, which i did not think were suitable replacements
+- **Decision:** I directed Claude not to replace with its suggested files
+- **Tag:** @resist
 ### What I Learned
 
 [What you learned this week]
