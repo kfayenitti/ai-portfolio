@@ -97,7 +97,7 @@ The biggest note for this is the moments in which Claude did not properly unders
 
 ## 4. Iteration arc
 
-*Reader should trace rough prototype → defended final. Name key change + reason per version.*
+
 
 ### First Playable (M4 target)
 
@@ -233,7 +233,6 @@ OUTPUT
 
 **Ethical question (from pipeline intent):** How can AI support VFX pipeline efficiency without reducing artist authorship or replacing creative judgment?
 
-### Components added / removed / moved (you write)
 
 The system map stayed relatively consistent throughout the process. Changes mostly include the role of different models in the workflow, such as how generative AI fits into the pipeline, and what specific models might be best to be used.
 
@@ -309,7 +308,7 @@ Many records of resistance were either technical errors that needed to be correc
 
 ---
 
-## Five Questions: [Project Name]
+## Five Questions
 
 1. **Can I defend this?**
   Yes, I can defend this work. The code for this tool is completely AI-generated, but it was required for the creator to know the fundementals of VEX and Houdini to ensure Claude was coding correctly, and troubleshoot errors it did not anticipate. Additionally, it is completely customizable by an artist with parameters.
