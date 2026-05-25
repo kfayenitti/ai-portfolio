@@ -16,3 +16,5 @@ This repository is the Applied AI toolkit for Katherine Faye Nitti, a VFX studen
 This project explores how AI can serve as an ethical, behind-the-scenes collaborator in VFX pipelines — supporting tool development in Houdini, accelerating iteration, and improving production workflows without replacing the artist's creative voice.
 
 **Position statement:** [`p1-GeneratedFrost/position-statement.md`](p1-GeneratedFrost/position-statement.md)
+
+**Process book:** [`process-book.md`](process-book.md)
