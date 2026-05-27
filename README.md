@@ -8,6 +8,10 @@ Managed with the [Epistemic Stewardship Framework (ESF)](https://github.com/nmad
 
 What happens when generated code and AI-assisted imagery are used to streamline VFX production?
 
+## Published work
+
+- **AI 201 process book (blog):** [AI Creative Computing — Claude VEX Tool Generation](https://kfayenitti.wixsite.com/katherine-nitti-art/post/ai-creative-computing-claude-vex-tool-generation)
+
 ## Structure
 
 After running the ESF Student Toolkit installer, the repository will contain:

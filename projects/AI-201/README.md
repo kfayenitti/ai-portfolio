@@ -18,3 +18,5 @@ This project explores how AI can serve as an ethical, behind-the-scenes collabor
 **Position statement:** [`p1-GeneratedFrost/position-statement.md`](p1-GeneratedFrost/position-statement.md)
 
 **Process book:** [`process-book.md`](process-book.md)
+
+**Process book (published):** [AI Creative Computing — Claude VEX Tool Generation](https://kfayenitti.wixsite.com/katherine-nitti-art/post/ai-creative-computing-claude-vex-tool-generation)
